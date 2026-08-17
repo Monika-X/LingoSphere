@@ -227,15 +227,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     counters.forEach(counter => counterObserver.observe(counter));
 
-    // 5. Blog Category & Search Filtering
+    // 5. Blog Category, Search & Pagination
     const filterBtns = document.querySelectorAll('[data-filter]');
     const blogSearch = document.getElementById('blog-search');
     const blogCards = document.querySelectorAll('#blog-grid > article');
     const blogEmpty = document.getElementById('blog-empty');
+    const blogViewMore = document.getElementById('blog-view-more');
 
     if (filterBtns.length) {
         let activeFilter = 'all';
         let searchQuery = '';
+        let visibleCount = 4;
 
         const normalize = (text) => (text || '').trim().toLowerCase().replace(/\s+/g, '-');
         const matchesFilters = (element) => {
@@ -252,18 +254,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const applyFilters = () => {
             let visible = 0;
+            let hiddenByPagination = 0;
             blogCards.forEach(card => {
-                const show = matchesFilters(card);
-                card.style.display = show ? '' : 'none';
-                if (show) visible++;
+                const match = matchesFilters(card);
+                if (match && visible < visibleCount) {
+                    card.style.display = '';
+                    visible++;
+                } else if (match) {
+                    card.style.display = 'none';
+                    hiddenByPagination++;
+                } else {
+                    card.style.display = 'none';
+                }
             });
             if (blogEmpty) blogEmpty.style.display = visible === 0 ? 'block' : 'none';
+            if (blogViewMore) blogViewMore.style.display = hiddenByPagination > 0 ? 'inline-flex' : 'none';
         };
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 activeFilter = btn.dataset.filter;
+                visibleCount = 4;
                 filterBtns.forEach(b => b.classList.toggle('active', b === btn));
                 applyFilters();
             });
@@ -271,8 +283,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         blogSearch?.addEventListener('input', () => {
             searchQuery = blogSearch.value.trim().toLowerCase();
+            visibleCount = 4;
             applyFilters();
         });
+
+        blogViewMore?.addEventListener('click', () => {
+            visibleCount += 4;
+            applyFilters();
+        });
+
+        applyFilters();
     }
 
     // 6. Campus Branch Tab Switching
@@ -290,5 +310,33 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // 7. Newsletter Subscription (no page reload)
+    const newsletterForms = document.querySelectorAll('form.footer-newsletter, form.newsletter-form, form.cta-form');
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    newsletterForms.forEach(form => {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const input = form.querySelector('input[type="email"]');
+            const email = (input?.value || '').trim();
+
+            if (!email || !emailPattern.test(email)) {
+                input?.focus();
+                return;
+            }
+
+            form.querySelectorAll('.newsletter-success').forEach(el => el.remove());
+
+            const success = document.createElement('div');
+            success.className = 'newsletter-success success-visible';
+            success.setAttribute('role', 'status');
+            success.innerHTML = '<i class="fa-solid fa-circle-check"></i><p>Welcome to the list! Check your inbox to confirm your subscription.</p>';
+
+            form.insertAdjacentElement('afterend', success);
+            input.value = '';
+            setTimeout(() => success.remove(), 6000);
+        });
+    });
 
 });

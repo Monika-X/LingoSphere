@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -7,8 +7,111 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* ============================================================
+           Maintenance â€” Premium Edition
+           Refined, understated elegance (lighter than Home 2)
+           ============================================================ */
+        html, body {
+            min-height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        .mtn {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(900px 420px at 50% 0%, rgba(200, 169, 107, 0.16), transparent),
+                var(--c-midnight);
+            color: var(--c-ivory);
+            padding: 120px 0 150px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+        .mtn::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 7rem;
+            background: linear-gradient(to top, var(--c-bg-primary), transparent);
+            pointer-events: none;
+        }
+        .mtn-art {
+            display: block;
+            width: min(520px, 100%);
+            height: auto;
+            margin: 0 auto 3rem;
+            filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.35));
+        }
+        .mtn-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.6rem, 5vw, 4rem);
+            line-height: 1.15;
+            color: var(--c-ivory);
+            margin-bottom: 1.25rem;
+        }
+        .mtn-title em {
+            font-style: italic;
+            color: var(--c-gold);
+        }
+        .mtn p {
+            max-width: 620px;
+            margin: 0 auto 1.25rem;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: rgba(250, 247, 242, 0.82);
+        }
+        .mtn-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 1.2rem;
+            border: 1px solid rgba(200, 169, 107, 0.45);
+            background: rgba(200, 169, 107, 0.08);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--c-gold);
+            margin-bottom: 2.5rem;
+        }
+        .mtn-status i {
+            animation: mtnPulse 1.6s ease-in-out infinite;
+        }
+        @keyframes mtnPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.45; transform: scale(0.8); }
+        }
+        .mtn .btn {
+            border-radius: 50px;
+            letter-spacing: 2px;
+        }
+        .mtn .btn + .btn {
+            margin-left: 1rem;
+        }
+        .mtn .btn-outline {
+            border-color: rgba(250, 247, 242, 0.3);
+            color: var(--c-ivory);
+        }
+        .mtn .btn-outline:hover {
+            border-color: var(--c-gold);
+            color: var(--c-gold);
+            background: transparent;
+        }
+        @media (max-width: 520px) {
+            .mtn .btn + .btn {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+        }
+    </style>
 </head>
-<body style="display: flex; flex-direction: column; min-height: 100vh;">
+<body>
     <!-- Header -->
     <header class="header header-inverse">
         <div class="container nav-container">
@@ -40,16 +143,16 @@
     </header>
 
     <!-- Maintenance Content -->
-    <section class="page-header" style="background-color: var(--c-midnight); padding: 0; text-align: center; color: white; flex-grow: 1; display: flex; align-items: center; justify-content: center;">
-        <div class="container reveal" style="max-width: 800px;">
-            <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 2rem;">
-                <path d="M85 50C85 69.33 69.33 85 50 85C43.5 85 37.4 83.2 32.2 80.2L15 85L19.8 67.8C16.8 62.6 15 56.5 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="var(--c-gold)" stroke-width="8" stroke-linejoin="round"/>
-                <path d="M40 35V60H60" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
-            </svg>
-            <h1 class="hero-title" style="color: white; font-size: clamp(3rem, 5vw, 4.5rem); margin-bottom: 1.5rem;">We'll Be Back Shortly.</h1>
-            <p style="font-size: 1.25rem; opacity: 0.8; margin-bottom: 3rem; line-height: 1.8;">Our digital campus is currently undergoing scheduled maintenance to improve your learning experience. We appreciate your patience and look forward to welcoming you back soon.</p>
-            <div style="display: flex; gap: 1rem; justify-content: center;">
+    <section class="mtn">
+        <div class="container reveal">
+            <span class="section-subtitle" style="color: var(--c-gold); border-color: var(--c-gold);">Scheduled Maintenance</span>
+            <img src="../images/maintenance.svg" alt="LingoSphere under maintenance illustration" class="mtn-art">
+            <h1 class="mtn-title">We'll Be <em>Back Shortly</em>.</h1>
+            <p>Our digital campus is currently undergoing scheduled maintenance to improve your learning experience. We appreciate your patience and look forward to welcoming you back soon.</p>
+            <span class="mtn-status"><i class="fa-solid fa-circle"></i> Work in Progress</span>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                 <a href="mailto:support@lingosphere.edu" class="btn btn-gold">Contact Support</a>
+                <a href="../index.html" class="btn btn-outline">Return Home</a>
             </div>
         </div>
     </section>
@@ -75,7 +178,7 @@
                     <div class="footer-socials">
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="footer-social-btn"><svg class="x-logo" viewBox="0 0 512 512" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
@@ -131,3 +234,4 @@
     <script src="../js/main.js"></script>
 </body>
 </html>
+

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -11,20 +11,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        /* Contact Page Styles */
-        
-        /* 1. Page Header */
-.page-header {
-            padding: 150px 0 100px;
-            background-image: linear-gradient(rgba(31, 42, 68, 0.88), rgba(122, 40, 72, 0.88)), url('../images/contact-hero.jpg');
+<style>
+        /* ============================================================
+           Contact â€” Premium Edition
+           Refined, understated elegance (lighter than Home 2)
+           ============================================================ */
+
+        /* ---------- 1. Page Header ---------- */
+        .page-header {
+            padding: 175px 0 120px;
+            background-image:
+                radial-gradient(700px 320px at 50% -20%, rgba(200, 169, 107, 0.18), transparent),
+                linear-gradient(rgba(31, 42, 68, 0.9), rgba(122, 40, 72, 0.88)),
+                url('../images/contact-hero.jpg');
             background-size: cover;
             background-position: center;
             color: var(--c-ivory);
             text-align: center;
+            position: relative;
+        }
+        .page-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 50px;
+            background: linear-gradient(to top, var(--c-bg-primary), transparent);
+        }
+        .page-header .section-title {
+            color: var(--c-ivory);
+            border: none;
+        }
+        .page-header .section-title em {
+            font-style: italic;
+            color: var(--c-gold);
+        }
+        .page-header p {
+            color: rgba(250, 247, 242, 0.85);
         }
 
-        /* 2. Contact Info Cards */
+        /* ---------- 2. Contact Info Cards ---------- */
         .contact-cards-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -36,25 +60,61 @@
         .contact-card {
             background: var(--c-bg-secondary);
             padding: var(--s-6);
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-xl);
             box-shadow: 0 10px 30px var(--c-shadow);
             text-align: center;
             border: 1px solid var(--c-border);
+            position: relative;
+            overflow: hidden;
+            transition: transform var(--t-normal), box-shadow var(--t-normal), border-color var(--t-normal);
+        }
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--c-gold), var(--c-burgundy));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--t-normal);
+        }
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px var(--c-shadow);
+            border-color: rgba(200, 169, 107, 0.45);
+        }
+        .contact-card:hover::before {
+            transform: scaleX(1);
         }
         .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--c-bg-tertiary);
-            color: var(--c-burgundy);
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, rgba(200, 169, 107, 0.16), rgba(122, 40, 72, 0.14));
+            border: 1px solid rgba(200, 169, 107, 0.45);
+            color: var(--c-gold);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
             margin: 0 auto var(--s-4);
+            transition: all var(--t-normal);
+        }
+        .contact-card:hover .contact-icon {
+            background: linear-gradient(135deg, var(--c-gold), #E0C58F);
+            border-color: var(--c-gold);
+            color: var(--c-midnight);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(200, 169, 107, 0.35);
+        }
+        .contact-card a {
+            transition: color var(--t-fast);
+        }
+        .contact-card a:hover {
+            color: var(--c-gold);
         }
 
-        /* 4. Form Section */
+        /* ---------- 3. Form Section ---------- */
         .form-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -64,35 +124,90 @@
         @media (max-width: 992px) {
             .form-section { grid-template-columns: 1fr; }
         }
+        .contact-info-list {
+            list-style: none;
+        }
+        .contact-info-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.1rem;
+            padding: 1.1rem 0;
+            border-bottom: 1px solid var(--c-border);
+        }
+        .contact-info-list li:last-child {
+            border-bottom: none;
+        }
+        .contact-info-list i {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(200, 169, 107, 0.12);
+            border: 1px solid rgba(200, 169, 107, 0.4);
+            color: var(--c-gold);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            flex-shrink: 0;
+            transition: all var(--t-normal);
+        }
+        .contact-info-list li:hover i {
+            background-color: var(--c-gold);
+            color: var(--c-midnight);
+        }
+        .contact-info-list strong {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+        }
+        .contact-info-list span {
+            display: block;
+            color: var(--c-text-secondary);
+            font-size: 0.9rem;
+        }
         .contact-form {
             background: var(--c-bg-secondary);
             padding: var(--s-8);
             border-radius: var(--radius-xl);
             box-shadow: 0 5px 25px var(--c-shadow);
             border: 1px solid var(--c-border);
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--c-gold), var(--c-burgundy));
         }
         .form-group {
             margin-bottom: var(--s-4);
         }
         .form-label {
             display: block;
-            margin-bottom: var(--s-2);
-            font-weight: 600;
-            font-size: 0.9rem;
+            margin-bottom: 0.6rem;
+            font-weight: 700;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--c-text-secondary);
         }
         .form-control {
             width: 100%;
-            padding: var(--s-3);
+            padding: 0.95rem 1.2rem;
             border: 1px solid var(--c-border);
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius-md);
             background: var(--c-bg-primary);
             color: var(--c-text-primary);
             font-family: inherit;
-            transition: border-color var(--t-fast);
+            font-size: 0.95rem;
+            transition: border-color var(--t-fast), box-shadow var(--t-fast);
         }
         .form-control:focus {
             outline: none;
             border-color: var(--c-gold);
+            box-shadow: 0 0 0 3px rgba(200, 169, 107, 0.15);
         }
         textarea.form-control {
             resize: vertical;
@@ -106,35 +221,239 @@
         }
         .form-group.error .form-control { border-color: #d9534f; }
         .form-group.error .form-error { display: block; }
+        .contact-form .btn {
+            border-radius: 50px;
+            letter-spacing: 2px;
+        }
+        .contact-form .newsletter-success {
+            padding: 1.4rem;
+            flex-direction: column;
+            text-align: center;
+            gap: 0.9rem;
+            border-radius: var(--radius-lg);
+            margin-top: var(--s-4);
+        }
+        .contact-form .newsletter-success i {
+            font-size: 2.2rem;
+        }
+        .contact-form .newsletter-success p {
+            margin: 0;
+        }
 
-/* 4. Branch Selector */
-        /* Campus section styled in css/style.css */
+        /* ---------- 4. Branch Selector ---------- */
+        .branch-head {
+            max-width: 640px;
+            margin-bottom: var(--s-8);
+        }
+        .branch-head .section-title em {
+            font-style: italic;
+            color: var(--c-gold);
+        }
+        .branch-head p {
+            margin: 0;
+        }
+        .branch-tab {
+            border-color: rgba(200, 169, 107, 0.5);
+        }
+        .branch-tab.active,
+        .branch-tab.active:hover {
+            background: linear-gradient(90deg, var(--c-gold), #E0C58F);
+            border-color: transparent;
+            color: var(--c-midnight);
+            box-shadow: 0 8px 20px rgba(200, 169, 107, 0.35);
+        }
+        .branch-content {
+            border-color: rgba(200, 169, 107, 0.35);
+            padding: 3.5rem;
+            min-height: 440px;
+        }
+        .branch-content::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--c-gold), var(--c-burgundy));
+        }
+        .branch-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--c-gold);
+            background: rgba(15, 21, 35, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(200, 169, 107, 0.4);
+            border-radius: 50px;
+            margin-bottom: 1.1rem;
+        }
+        .branch-content h3 {
+            font-size: 2.2rem;
+        }
+        .branch-address {
+            color: rgba(250, 247, 242, 0.85);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+        .branch-address i {
+            color: var(--c-gold);
+        }
+        .branch-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin: 1.75rem 0 2rem;
+            flex-wrap: wrap;
+        }
+        .branch-stats div {
+            border-left: 1px solid rgba(200, 169, 107, 0.35);
+            padding-left: 1.25rem;
+        }
+        .branch-stats div:first-child {
+            border-left: none;
+            padding-left: 0;
+        }
+        .branch-stats strong {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--c-gold);
+            display: block;
+            line-height: 1;
+        }
+        .branch-stats span {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(250, 247, 242, 0.7);
+        }
+        .branch-content .btn-outline {
+            border-radius: 50px;
+            letter-spacing: 1.5px;
+        }
 
-        /* 5. FAQ Accordion */
+        /* ---------- 5. FAQ Accordion ---------- */
+        .faq-wrap {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: var(--s-10);
+            align-items: start;
+        }
+        @media (max-width: 992px) {
+            .faq-wrap {
+                grid-template-columns: 1fr;
+                gap: var(--s-8);
+            }
+        }
+        .faq-side {
+            position: sticky;
+            top: calc(var(--header-height) + 2rem);
+        }
+        @media (max-width: 992px) {
+            .faq-side {
+                position: static;
+            }
+        }
+        .faq-side .section-title em {
+            font-style: italic;
+            color: var(--c-gold);
+        }
+        .faq-cta-card {
+            margin-top: var(--s-6);
+            padding: var(--s-6);
+            border: 1px dashed rgba(200, 169, 107, 0.5);
+            border-radius: var(--radius-lg);
+            background: rgba(200, 169, 107, 0.06);
+        }
+        .faq-cta-card > i {
+            color: var(--c-gold);
+            font-size: 1.8rem;
+        }
+        .faq-cta-card strong {
+            display: block;
+            margin: 0.75rem 0 0.25rem;
+            font-size: 1.1rem;
+        }
+        .faq-cta-card p {
+            font-size: 0.9rem;
+            margin-bottom: 1.25rem;
+        }
+        .faq-cta-card .btn {
+            border-radius: 50px;
+            width: 100%;
+            letter-spacing: 2px;
+        }
         .faq-accordion {
             max-width: 800px;
-            margin: 0 auto;
         }
         .accordion-item {
-            margin-bottom: var(--s-4);
+            margin-bottom: var(--s-3);
             border: 1px solid var(--c-border);
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-lg);
             overflow: hidden;
+            background: var(--c-bg-secondary);
+            position: relative;
+            transition: border-color var(--t-normal), box-shadow var(--t-normal);
+        }
+        .accordion-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: linear-gradient(to bottom, var(--c-gold), var(--c-burgundy));
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform var(--t-normal);
+            z-index: 1;
+        }
+        .accordion-item:has(.accordion-header.active) {
+            border-color: rgba(200, 169, 107, 0.5);
+            box-shadow: 0 12px 28px var(--c-shadow);
+        }
+        .accordion-item:has(.accordion-header.active)::before {
+            transform: scaleY(1);
         }
         .accordion-header {
             width: 100%;
             text-align: left;
-            padding: var(--s-4);
+            padding: var(--s-5);
             background: var(--c-bg-secondary);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--c-text-primary);
+            border: none;
+            cursor: pointer;
+            transition: color var(--t-fast);
         }
         [dir="rtl"] .accordion-header { text-align: right; }
-        .accordion-header.active { color: var(--c-burgundy); }
+        .accordion-header.active { color: var(--c-gold); }
+        .accordion-icon-wrap {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid rgba(200, 169, 107, 0.4);
+            background: rgba(200, 169, 107, 0.1);
+            color: var(--c-gold);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all var(--t-normal);
+        }
+        .accordion-header.active .accordion-icon-wrap {
+            background: linear-gradient(135deg, var(--c-gold), #E0C58F);
+            border-color: var(--c-gold);
+            color: var(--c-midnight);
+        }
         .accordion-icon {
             transition: transform var(--t-fast);
         }
@@ -148,19 +467,10 @@
             background: var(--c-bg-primary);
         }
         .accordion-content {
-            padding: var(--s-4);
+            padding: var(--s-5);
             color: var(--c-text-secondary);
             border-top: 1px solid var(--c-border);
-        }
-
-/* 6. Map */
-        .map-section {
-            width: 100%;
-            height: 450px;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            margin-top: var(--s-8);
-            border: 1px solid var(--c-border);
+            line-height: 1.7;
         }
     </style>
 </head>
@@ -197,10 +507,11 @@
     </header>
 
     <!-- 1. Header -->
-    <section class="page-header">
+<section class="page-header">
         <div class="container reveal">
-            <h1 class="section-title" style="color: white; border: none;">Get in Touch</h1>
-            <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem; opacity: 0.9;">We are here to answer any questions you may have about our courses, enrollment, or corporate partnerships.</p>
+            <span class="section-subtitle" style="color: var(--c-gold);">Contact</span>
+            <h1 class="section-title">Get in <em>Touch</em></h1>
+            <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem;">We are here to answer any questions you may have about our courses, enrollment, or corporate partnerships.</p>
         </div>
     </section>
 
@@ -231,18 +542,32 @@
 <!-- 3. Form Section -->
     <section class="section">
         <div class="container form-section">
-            <div class="reveal">
+<div class="reveal">
                 <span class="section-subtitle">Enrollment Enquiry</span>
-                <h2 class="section-title">Send us a Message</h2>
+                <h2 class="section-title">Send us a <em>Message</em></h2>
                 <p class="mb-6 text-secondary">Fill out the form below and one of our academic counselors will get back to you within 24 hours to discuss your language goals.</p>
                 
-                <ul style="list-style: none;">
-                    <li class="mb-4 d-flex align-items-center">
-                        <i class="fa-solid fa-clock c-gold" style="margin-right: 15px; font-size: 1.5rem;"></i>
+                <ul class="contact-info-list">
+                    <li>
+                        <i class="fa-solid fa-clock"></i>
                         <div>
                             <strong>Working Hours</strong>
-                            <p class="text-secondary" style="font-size: 0.9rem;">Mon - Fri: 8:00 AM - 8:00 PM</p>
-                            <p class="text-secondary" style="font-size: 0.9rem;">Sat: 9:00 AM - 2:00 PM</p>
+                            <span>Mon â€“ Fri: 8:00 AM â€“ 8:00 PM</span>
+                            <span>Saturday: 9:00 AM â€“ 2:00 PM</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-headset"></i>
+                        <div>
+                            <strong>Response Time</strong>
+                            <span>Every enquiry answered within 24 hours</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-globe"></i>
+                        <div>
+                            <strong>Global Support</strong>
+                            <span>EN Â· FR Â· DE Â· ES Â· ä¸­æ–‡</span>
                         </div>
                     </li>
                 </ul>
@@ -282,12 +607,13 @@
         </div>
     </section>
 
-    <!-- 4. Branch Selector -->
+<!-- 4. Branch Selector -->
     <section class="branch-selector">
         <div class="container">
-            <div class="text-center reveal mb-6">
+            <div class="branch-head reveal">
                 <span class="section-subtitle">Global Presence</span>
-                <h2 class="section-title">Our Campuses</h2>
+                <h2 class="section-title">Our <em>Campuses</em></h2>
+                <p class="text-secondary">Three flagship locations, one standard of excellence. Visit us in person or join our virtual classrooms from anywhere in the world.</p>
             </div>
             
             <div class="branch-tabs reveal">
@@ -297,36 +623,61 @@
             </div>
 
             <div class="branch-content active" id="ny" style="background-image: url('../images/campus-new-york.jpg');">
+                <span class="branch-eyebrow"><i class="fa-solid fa-building-columns"></i> Flagship Campus</span>
                 <h3 class="mb-2">LingoSphere New York</h3>
-                <p class="mb-4" style="opacity: 0.9;">123 Global Avenue, Manhattan, NY 10001</p>
+                <p class="branch-address mb-4"><i class="fa-solid fa-location-dot"></i> 123 Global Avenue, Manhattan, NY 10001</p>
+                <div class="branch-stats">
+                    <div><strong>12,000+</strong><span>Alumni</span></div>
+                    <div><strong>2011</strong><span>Established</span></div>
+                    <div><strong>40+</strong><span>Languages</span></div>
+                </div>
                 <a href="https://www.google.com/maps/search/?api=1&query=123+Global+Avenue+Manhattan+NY+10001" target="_blank" rel="noopener" class="btn btn-outline">Get Directions</a>
             </div>
             <div class="branch-content" id="ldn" style="background-image: url('../images/campus-london.jpg');">
+                <span class="branch-eyebrow"><i class="fa-solid fa-crown"></i> European Headquarters</span>
                 <h3 class="mb-2">LingoSphere London</h3>
-                <p class="mb-4" style="opacity: 0.9;">45 Victoria Street, Westminster, London SW1H 0EU</p>
+                <p class="branch-address mb-4"><i class="fa-solid fa-location-dot"></i> 45 Victoria Street, Westminster, London SW1H 0EU</p>
+                <div class="branch-stats">
+                    <div><strong>8,500+</strong><span>Alumni</span></div>
+                    <div><strong>2015</strong><span>Established</span></div>
+                    <div><strong>25+</strong><span>Languages</span></div>
+                </div>
                 <a href="https://www.google.com/maps/search/?api=1&query=45+Victoria+Street+Westminster+London+SW1H+0EU" target="_blank" rel="noopener" class="btn btn-outline">Get Directions</a>
             </div>
             <div class="branch-content" id="ber" style="background-image: url('../images/campus-berlin.jpg');">
+                <span class="branch-eyebrow"><i class="fa-solid fa-industry"></i> Corporate Hub</span>
                 <h3 class="mb-2">LingoSphere Berlin</h3>
-                <p class="mb-4" style="opacity: 0.9;">Friedrichstraße 140, 10117 Berlin, Germany</p>
+                <p class="branch-address mb-4"><i class="fa-solid fa-location-dot"></i> FriedrichstraÃŸe 140, 10117 Berlin, Germany</p>
+                <div class="branch-stats">
+                    <div><strong>5,200+</strong><span>Alumni</span></div>
+                    <div><strong>2020</strong><span>Established</span></div>
+                    <div><strong>100%</strong><span>Corporate Programs</span></div>
+                </div>
                 <a href="https://www.google.com/maps/search/?api=1&query=Friedrichstra%C3%9Fe+140+10117+Berlin+Germany" target="_blank" rel="noopener" class="btn btn-outline">Get Directions</a>
             </div>
         </div>
     </section>
 
-    <!-- 5. FAQ Accordion -->
+<!-- 5. FAQ Accordion -->
     <section class="section">
-        <div class="container">
-            <div class="text-center reveal mb-8">
+        <div class="container faq-wrap">
+            <div class="faq-side reveal">
                 <span class="section-subtitle">Knowledge Base</span>
-                <h2 class="section-title">Frequently Asked Questions</h2>
+                <h2 class="section-title">Frequently Asked <em>Questions</em></h2>
+                <p class="text-secondary">Everything you need to know before starting your journey with us.</p>
+                <div class="faq-cta-card">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <strong>Still have questions?</strong>
+                    <p class="text-secondary">Our academic counselors are happy to help you find the right program.</p>
+                    <a href="#enquiryForm" class="btn btn-gold">Ask Us Anything</a>
+                </div>
             </div>
             
             <div class="faq-accordion reveal">
                 <div class="accordion-item">
                     <button class="accordion-header">
                         How long does it take to become fluent?
-                        <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                        <span class="accordion-icon-wrap"><i class="fa-solid fa-chevron-down accordion-icon"></i></span>
                     </button>
                     <div class="accordion-body">
                         <div class="accordion-content">
@@ -337,7 +688,7 @@
                 <div class="accordion-item">
                     <button class="accordion-header">
                         Do you provide certificates upon completion?
-                        <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                        <span class="accordion-icon-wrap"><i class="fa-solid fa-chevron-down accordion-icon"></i></span>
                     </button>
                     <div class="accordion-body">
                         <div class="accordion-content">
@@ -348,7 +699,7 @@
 <div class="accordion-item">
                     <button class="accordion-header">
                         Can I switch from group batches to private coaching?
-                        <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                        <span class="accordion-icon-wrap"><i class="fa-solid fa-chevron-down accordion-icon"></i></span>
                     </button>
                     <div class="accordion-body">
                         <div class="accordion-content">
@@ -359,7 +710,7 @@
                 <div class="accordion-item">
                     <button class="accordion-header">
                         Do you offer classes online or only in person?
-                        <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                        <span class="accordion-icon-wrap"><i class="fa-solid fa-chevron-down accordion-icon"></i></span>
                     </button>
                     <div class="accordion-body">
                         <div class="accordion-content">
@@ -370,7 +721,7 @@
                 <div class="accordion-item">
                     <button class="accordion-header">
                         What is the maximum class size?
-                        <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                        <span class="accordion-icon-wrap"><i class="fa-solid fa-chevron-down accordion-icon"></i></span>
                     </button>
                     <div class="accordion-body">
                         <div class="accordion-content">
@@ -381,7 +732,7 @@
                 <div class="accordion-item">
                     <button class="accordion-header">
                         Do you teach languages beyond English, French, German, and Spanish?
-                        <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                        <span class="accordion-icon-wrap"><i class="fa-solid fa-chevron-down accordion-icon"></i></span>
                     </button>
                     <div class="accordion-body">
                         <div class="accordion-content">
@@ -392,7 +743,7 @@
                 <div class="accordion-item">
                     <button class="accordion-header">
                         Is there an enrollment deadline?
-                        <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                        <span class="accordion-icon-wrap"><i class="fa-solid fa-chevron-down accordion-icon"></i></span>
                     </button>
                     <div class="accordion-body">
                         <div class="accordion-content">
@@ -401,8 +752,8 @@
                     </div>
                 </div>
             </div>
-</div>
-</section>
+        </div>
+    </section>
 
 <footer class="footer">
         <div class="container">
@@ -424,7 +775,7 @@
                     <div class="footer-socials">
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="footer-social-btn"><svg class="x-logo" viewBox="0 0 512 512" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
@@ -494,9 +845,15 @@ const inputs = form.querySelectorAll('input[required], textarea[required]');
                 }
             });
 
-            if(isValid) {
-                alert('Thank you for your enquiry. We will contact you soon.');
+if(isValid) {
+                form.querySelectorAll('.newsletter-success').forEach(el => el.remove());
+                const success = document.createElement('div');
+                success.className = 'newsletter-success success-visible';
+                success.setAttribute('role', 'status');
+                success.innerHTML = '<i class="fa-solid fa-circle-check"></i><div><strong style="display: block; margin-bottom: 0.25rem;">Enquiry received!</strong><p>Thank you for reaching out. Our academic counselors will contact you within 24 hours.</p></div>';
+                form.appendChild(success);
                 form.reset();
+                setTimeout(() => success.remove(), 6000);
             }
         });
 
@@ -530,4 +887,5 @@ const inputs = form.querySelectorAll('input[required], textarea[required]');
     </script>
 </body>
 </html>
+
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,487 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* ============================================================
+           Blog â€” Premium Edition
+           Refined, understated elegance (lighter than Home 2)
+           ============================================================ */
+
+        /* ---------- 1. Hero ---------- */
+        .blog-hero {
+            padding: 180px 0 110px;
+            background-image:
+                radial-gradient(700px 320px at 50% -20%, rgba(200, 169, 107, 0.18), transparent),
+                linear-gradient(rgba(31, 42, 68, 0.9), rgba(122, 40, 72, 0.88)),
+                url('../images/blog-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: var(--c-ivory);
+            position: relative;
+        }
+        .blog-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 50px;
+            background: linear-gradient(to top, var(--c-bg-primary), transparent);
+        }
+        .blog-hero .hero-title {
+            color: var(--c-ivory);
+            margin-bottom: 1.5rem;
+        }
+        .blog-hero .hero-title em {
+            font-style: italic;
+            color: var(--c-gold);
+        }
+        .blog-hero p {
+            color: rgba(250, 247, 242, 0.85);
+        }
+
+        /* ---------- 2. Featured Article ---------- */
+        .blog-featured {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background-color: var(--c-bg-secondary);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            border: 1px solid var(--c-border);
+            transition: box-shadow var(--t-normal);
+        }
+        .blog-featured:hover {
+            box-shadow: 0 24px 50px var(--c-shadow);
+        }
+        .blog-featured-img {
+            min-height: 400px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .blog-featured-label {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 1.1rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--c-midnight);
+            background: linear-gradient(90deg, var(--c-gold), #E0C58F);
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .blog-featured-content {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .blog-featured-tag {
+            color: var(--c-gold);
+            font-weight: 700;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        .blog-featured-content h2 {
+            font-family: var(--font-heading);
+            font-size: 2.4rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        .blog-featured-content h2 em {
+            font-style: italic;
+            color: var(--c-gold);
+        }
+        .blog-featured-content > p {
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+        .blog-featured-foot {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .blog-featured-author {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+        .blog-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: var(--c-slate);
+            overflow: hidden;
+            border: 1px solid rgba(200, 169, 107, 0.4);
+            flex-shrink: 0;
+        }
+        .blog-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .blog-featured-author h4 {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        .blog-featured-author span {
+            font-size: 0.8rem;
+            color: var(--c-slate);
+        }
+        .blog-featured-arrow {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--c-gold), #E0C58F);
+            color: var(--c-midnight);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform var(--t-normal), box-shadow var(--t-normal);
+            flex-shrink: 0;
+        }
+        .blog-featured-arrow:hover {
+            transform: translateX(4px);
+            box-shadow: 0 10px 24px rgba(200, 169, 107, 0.4);
+        }
+
+        /* ---------- 3. Filter Bar ---------- */
+        .blog-filter-bar {
+            background-color: var(--c-bg-secondary);
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--c-border);
+            border-bottom: 1px solid var(--c-border);
+            margin-bottom: var(--s-8);
+        }
+        .blog-filter-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .blog-filters {
+            display: flex;
+            gap: 0.75rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+        .hide-scrollbar {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .blog-filter-bar .filter-btn {
+            padding: 0.65rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: 1px solid var(--c-border);
+            background: transparent;
+            color: var(--c-text-secondary);
+            transition: all var(--t-normal);
+            white-space: nowrap;
+        }
+        .blog-filter-bar .filter-btn:hover {
+            border-color: var(--c-gold);
+            color: var(--c-gold);
+        }
+        .blog-filter-bar .filter-btn.active {
+            background: linear-gradient(90deg, var(--c-gold), #E0C58F);
+            border-color: transparent;
+            color: var(--c-midnight);
+            box-shadow: 0 8px 20px rgba(200, 169, 107, 0.35);
+        }
+        .blog-search {
+            position: relative;
+        }
+        .blog-search input {
+            padding: 0.75rem 1.4rem 0.75rem 2.6rem;
+            border-radius: 50px;
+            border: 1px solid var(--c-border);
+            background-color: var(--c-bg-primary);
+            color: var(--c-text-primary);
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+            width: 260px;
+            transition: border-color var(--t-fast), box-shadow var(--t-fast);
+        }
+        .blog-search input:focus {
+            border-color: var(--c-gold);
+            box-shadow: 0 0 0 3px rgba(200, 169, 107, 0.15);
+        }
+        .blog-search i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--c-slate);
+            font-size: 0.9rem;
+        }
+
+        /* ---------- 4. Blog Grid ---------- */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+        }
+        .blog-card {
+            border: 1px solid var(--c-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background-color: var(--c-bg-secondary);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform var(--t-normal), box-shadow var(--t-normal), border-color var(--t-normal);
+        }
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--c-gold), var(--c-burgundy));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--t-normal);
+            z-index: 2;
+        }
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px var(--c-shadow);
+            border-color: rgba(200, 169, 107, 0.45);
+        }
+        .blog-card:hover::before {
+            transform: scaleX(1);
+        }
+        .blog-card-img {
+            height: 220px;
+            background-color: var(--c-slate);
+            overflow: hidden;
+            position: relative;
+        }
+        .blog-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(40%);
+            transition: filter var(--t-normal), transform var(--t-slow);
+        }
+        .blog-card:hover .blog-card-img img {
+            filter: grayscale(0);
+            transform: scale(1.06);
+        }
+        .blog-card-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.35rem 0.85rem;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--c-ivory);
+            background: rgba(15, 21, 35, 0.72);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(200, 169, 107, 0.4);
+            border-radius: 50px;
+        }
+        .blog-card-body {
+            padding: 1.75rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            line-height: 1.35;
+            margin-bottom: 0.9rem;
+        }
+        .blog-card-title a {
+            color: inherit;
+            transition: color var(--t-fast);
+        }
+        .blog-card-title a:hover {
+            color: var(--c-gold);
+        }
+        .blog-card-excerpt {
+            font-size: 0.92rem;
+            margin-bottom: 1.4rem;
+            flex-grow: 1;
+        }
+        .blog-card-foot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.75rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--c-border);
+        }
+        .blog-meta {
+            font-size: 0.82rem;
+            color: var(--c-slate);
+        }
+        .blog-read {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--c-text-primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            transition: color var(--t-fast);
+        }
+        .blog-read i {
+            color: var(--c-gold);
+            transition: transform var(--t-fast);
+        }
+        .blog-read:hover {
+            color: var(--c-gold);
+        }
+        .blog-read:hover i {
+            transform: translateX(4px);
+        }
+        .view-more-btn {
+            border-radius: 50px;
+            padding: 0.9rem 2.5rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            gap: 0.75rem;
+        }
+        .view-more-btn i {
+            transition: transform var(--t-normal);
+        }
+        .view-more-btn:hover i {
+            transform: translateY(4px);
+        }
+
+        /* ---------- 5. Newsletter Panel ---------- */
+        .newsletter-panel {
+            background-color: var(--c-bg-tertiary);
+            padding: 4.5rem 2rem;
+            border-radius: var(--radius-xl);
+            text-align: center;
+            border: 1px solid var(--c-border);
+            position: relative;
+            overflow: hidden;
+        }
+        .newsletter-panel::before {
+            content: '';
+            position: absolute;
+            top: -60px; left: 50%;
+            width: 480px; height: 220px;
+            background: radial-gradient(ellipse, rgba(200, 169, 107, 0.14), transparent);
+            transform: translateX(-50%);
+        }
+        .newsletter-panel > i {
+            font-size: 2.6rem;
+            color: var(--c-gold);
+            margin-bottom: 1.25rem;
+            position: relative;
+        }
+        .newsletter-panel h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .newsletter-panel h2 em {
+            font-style: italic;
+            color: var(--c-gold);
+        }
+        .newsletter-panel p {
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--c-text-secondary);
+            position: relative;
+        }
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 0.75rem;
+            position: relative;
+        }
+        .newsletter-form input {
+            flex-grow: 1;
+            min-width: 0;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid var(--c-border);
+            background-color: var(--c-bg-primary);
+            color: var(--c-text-primary);
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color var(--t-fast), box-shadow var(--t-fast);
+        }
+        .newsletter-form input:focus {
+            border-color: var(--c-gold);
+            box-shadow: 0 0 0 3px rgba(200, 169, 107, 0.15);
+        }
+        .newsletter-form .btn {
+            border-radius: 50px;
+            letter-spacing: 2px;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 1200px) {
+            .blog-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 992px) {
+            .blog-featured {
+                grid-template-columns: 1fr;
+            }
+            .blog-featured-img {
+                min-height: 260px;
+            }
+            .blog-featured-content {
+                padding: 2.5rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.75rem;
+            }
+            .blog-search input {
+                width: 100%;
+            }
+            .blog-search {
+                flex-grow: 1;
+            }
+            .newsletter-panel {
+                padding: 3rem 1.5rem;
+            }
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+        @media (max-width: 520px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header header-inverse">
@@ -37,36 +518,38 @@
             <button class="mobile-menu-btn" aria-label="Toggle Menu" aria-expanded="false"><span></span><span></span><span></span></button>
         </div>
     </header>
+
     <!-- 1. Blog Hero -->
-    <section class="page-header" style="background-image: linear-gradient(rgba(31, 42, 68, 0.88), rgba(122, 40, 72, 0.88)), url('../images/blog-hero.jpg'); background-size: cover; background-position: center; padding: 180px 0 100px; text-align: center; color: white;">
+    <section class="blog-hero">
         <div class="container reveal">
-            <span class="section-subtitle" style="color: var(--c-gold); border-color: var(--c-gold);">The Journal</span>
-            <h1 class="hero-title" style="color: white; margin-bottom: 1.5rem;">Insights & Perspectives</h1>
-            <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem; opacity: 0.9;">Explore deep dives into linguistic mastery, cultural nuances, and the art of global communication.</p>
+            <span class="section-subtitle" style="color: var(--c-gold);">The Journal</span>
+            <h1 class="hero-title">Insights & <em>Perspectives</em></h1>
+            <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem;">Explore deep dives into linguistic mastery, cultural nuances, and the art of global communication.</p>
         </div>
     </section>
 
     <!-- 2. Featured Article -->
     <section class="section">
-    <section class="section">
         <div class="container">
-            <div id="blog-featured" data-category="cultural-insights" class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background-color: var(--c-bg-secondary); border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--c-border);">
-                <div style="background-image: url('../images/blog-japanese.jpg'); background-size: cover; background-position: center; min-height: 400px;"></div>
-                <div style="padding: 4rem 3rem 4rem 0; display: flex; flex-direction: column; justify-content: center;">
-                    <span style="color: var(--c-gold); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">Cultural Insights</span>
-                    <h2 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.2;">The Silent Language of Japanese Business Meetings.</h2>
-                    <p class="text-secondary" style="margin-bottom: 2rem; font-size: 1.1rem;">Mastering the bow is just the beginning. Discover the unwritten rules of corporate negotiation in Tokyo, from seating arrangements to the subtle art of reading the air.</p>
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <div style="display: flex; align-items: center; gap: 1rem;">
-                            <div style="width: 40px; height: 40px; border-radius: 50%; background-color: var(--c-slate); overflow: hidden;">
-                                <img src="../images/team_leader.png" alt="Author" style="width: 100%; height: 100%; object-fit: cover;">
+            <div id="blog-featured" data-category="cultural-insights" class="blog-featured reveal">
+                <div class="blog-featured-img" style="background-image: url('../images/blog-japanese.jpg');">
+                    <span class="blog-featured-label"><i class="fa-solid fa-star"></i> Featured</span>
+                </div>
+                <div class="blog-featured-content">
+                    <span class="blog-featured-tag">Cultural Insights</span>
+                    <h2>The Silent Language of <em>Japanese Business</em> Meetings.</h2>
+                    <p class="text-secondary">Mastering the bow is just the beginning. Discover the unwritten rules of corporate negotiation in Tokyo, from seating arrangements to the subtle art of reading the air.</p>
+                    <div class="blog-featured-foot">
+                        <div class="blog-featured-author">
+                            <div class="blog-avatar">
+                                <img src="../images/team_leader.png" alt="Author">
                             </div>
                             <div>
-                                <h4 style="margin: 0; font-size: 0.95rem;">Dr. Julian Reed</h4>
-                                <span style="font-size: 0.8rem; color: var(--c-slate);">August 12, 2026 • 8 min read</span>
+                                <h4>Dr. Julian Reed</h4>
+                                <span>August 12, 2026 â€¢ 8 min read</span>
                             </div>
                         </div>
-                        <a href="blog-details.html" style="width: 45px; height: 45px; border-radius: 50%; background-color: var(--c-burgundy); color: white; display: flex; align-items: center; justify-content: center; transition: background-color 0.3s ease;">
+                        <a href="blog-details.html?id=japanese" class="blog-featured-arrow" aria-label="Read article">
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </div>
@@ -76,17 +559,17 @@
     </section>
 
     <!-- 3. Categories & Search -->
-    <section style="background-color: var(--c-bg-secondary); padding: 1.5rem 0; border-bottom: 1px solid var(--c-border);">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-            <div style="display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 0.5rem;" class="hide-scrollbar">
-                <a href="#" class="btn filter-btn active" data-filter="all">All Articles</a>
-                <a href="#" class="btn btn-outline filter-btn" data-filter="language-tips">Language Tips</a>
-                <a href="#" class="btn btn-outline filter-btn" data-filter="cultural-insights">Cultural Insights</a>
-                <a href="#" class="btn btn-outline filter-btn" data-filter="corporate">Corporate</a>
+    <section class="blog-filter-bar">
+        <div class="container blog-filter-inner">
+            <div class="blog-filters hide-scrollbar">
+                <a href="#" class="filter-btn active" data-filter="all">All Articles</a>
+                <a href="#" class="filter-btn" data-filter="language-tips">Language Tips</a>
+                <a href="#" class="filter-btn" data-filter="cultural-insights">Cultural Insights</a>
+                <a href="#" class="filter-btn" data-filter="corporate">Corporate</a>
             </div>
-            <div style="position: relative;">
-                <input type="text" id="blog-search" placeholder="Search journal..." style="padding: 0.8rem 1.5rem 0.8rem 2.5rem; border-radius: 50px; border: 1px solid var(--c-border); background-color: var(--c-bg-primary); color: var(--c-text-primary); font-family: inherit; outline: none; width: 250px;">
-                <i class="fa-solid fa-search" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--c-slate);"></i>
+            <div class="blog-search">
+                <input type="text" id="blog-search" placeholder="Search journal...">
+                <i class="fa-solid fa-search"></i>
             </div>
         </div>
     </section>
@@ -94,276 +577,279 @@
     <!-- 4. Blog Grid -->
     <section class="section" style="padding-top: 0;">
         <div class="container">
-            <div id="blog-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem;">
+            <div id="blog-grid" class="blog-grid">
                 <!-- Article 1 -->
-                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
-                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/blog-french.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                <article class="blog-card reveal" data-category="language-tips">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-french.jpg" alt="Blog Image">
+                        <span class="blog-card-tag">Language Tips</span>
                     </div>
-                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
-                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Language Tips</span>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">Mastering the French Subjunctive Without Tears</a></h3>
-                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">A practical, straightforward guide to understanding when and why the French use the subjunctive mood in daily conversation.</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
-                            <span style="font-size: 0.85rem; color: var(--c-slate);">Aug 05, 2026</span>
-                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
-                        </div>
-                    </div>
-                </article>
-                
-                <!-- Article 2 -->
-                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
-                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/blog-ceos.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
-                    </div>
-                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
-                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Corporate</span>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">Why English is No Longer Enough for Global CEOs</a></h3>
-                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">Explore the rising trend of multilingual executives and how speaking a client's native language dramatically increases deal closures.</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
-                            <span style="font-size: 0.85rem; color: var(--c-slate);">Jul 28, 2026</span>
-                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title"><a href="blog-details.html?id=french">Mastering the French Subjunctive Without Tears</a></h3>
+                        <p class="text-secondary blog-card-excerpt">A practical, straightforward guide to understanding when and why the French use the subjunctive mood in daily conversation.</p>
+                        <div class="blog-card-foot">
+                            <span class="blog-meta">Aug 05, 2026</span>
+                            <a href="blog-details.html?id=french" class="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </article>
 
-<!-- Article 3 -->
-                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
-                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/blog-spanish.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                <!-- Article 2 -->
+                <article class="blog-card reveal" data-category="corporate">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-ceos.jpg" alt="Blog Image">
+                        <span class="blog-card-tag">Corporate</span>
                     </div>
-                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
-                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Cultural Insights</span>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">The History of Spanish Idioms</a></h3>
-                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">Uncover the fascinating, often bizarre origins behind the most common conversational phrases used in modern Spain and Latin America.</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
-                            <span style="font-size: 0.85rem; color: var(--c-slate);">Jul 15, 2026</span>
-                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title"><a href="blog-details.html?id=ceos">Why English is No Longer Enough for Global CEOs</a></h3>
+                        <p class="text-secondary blog-card-excerpt">Explore the rising trend of multilingual executives and how speaking a client's native language dramatically increases deal closures.</p>
+                        <div class="blog-card-foot">
+                            <span class="blog-meta">Jul 28, 2026</span>
+                            <a href="blog-details.html?id=ceos" class="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="blog-card reveal" data-category="cultural-insights">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-spanish.jpg" alt="Blog Image">
+                        <span class="blog-card-tag">Cultural Insights</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title"><a href="blog-details.html?id=spanish">The History of Spanish Idioms</a></h3>
+                        <p class="text-secondary blog-card-excerpt">Uncover the fascinating, often bizarre origins behind the most common conversational phrases used in modern Spain and Latin America.</p>
+                        <div class="blog-card-foot">
+                            <span class="blog-meta">Jul 15, 2026</span>
+                            <a href="blog-details.html?id=spanish" class="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </article>
 
                 <!-- Article 4 -->
-                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
-                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/blog-german.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                <article class="blog-card reveal" data-category="language-tips">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-german.jpg" alt="Blog Image">
+                        <span class="blog-card-tag">Language Tips</span>
                     </div>
-                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
-                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Language Tips</span>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">The Art of German Compound Nouns</a></h3>
-                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">From Rindfleischetikettierungsüberwachung to everyday monsters, learn how Germans build meaning by stacking words with precision.</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
-                            <span style="font-size: 0.85rem; color: var(--c-slate);">Jul 08, 2026</span>
-                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title"><a href="blog-details.html?id=german">The Art of German Compound Nouns</a></h3>
+                        <p class="text-secondary blog-card-excerpt">From RindfleischetikettierungsÃ¼berwachung to everyday monsters, learn how Germans build meaning by stacking words with precision.</p>
+                        <div class="blog-card-foot">
+                            <span class="blog-meta">Jul 08, 2026</span>
+                            <a href="blog-details.html?id=german" class="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </article>
 
                 <!-- Article 5 -->
-                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
-                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/blog-pronunciation.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                <article class="blog-card reveal" data-category="language-tips">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-pronunciation.jpg" alt="Blog Image">
+                        <span class="blog-card-tag">Language Tips</span>
                     </div>
-                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
-                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Language Tips</span>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">Why Pronunciation Matters More Than Vocabulary</a></h3>
-                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">A hundred perfect words spoken badly beat a hundred imperfect words spoken clearly. Here is how to reorder your priorities.</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
-                            <span style="font-size: 0.85rem; color: var(--c-slate);">Jun 30, 2026</span>
-                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title"><a href="blog-details.html?id=pronunciation">Why Pronunciation Matters More Than Vocabulary</a></h3>
+                        <p class="text-secondary blog-card-excerpt">A hundred perfect words spoken badly beat a hundred imperfect words spoken clearly. Here is how to reorder your priorities.</p>
+                        <div class="blog-card-foot">
+                            <span class="blog-meta">Jun 30, 2026</span>
+                            <a href="blog-details.html?id=pronunciation" class="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </article>
 
                 <!-- Article 6 -->
-                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
-                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/blog-mandarin.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                <article class="blog-card reveal" data-category="corporate">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-mandarin.jpg" alt="Blog Image">
+                        <span class="blog-card-tag">Corporate</span>
                     </div>
-                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
-                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Corporate</span>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">Negotiating in Mandarin: A Survival Guide</a></h3>
-                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">Guanxi, face, and the numbers that never sound like the numbers. Essential tactics for your first high-stakes deal in Shanghai.</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
-                            <span style="font-size: 0.85rem; color: var(--c-slate);">Jun 22, 2026</span>
-                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title"><a href="blog-details.html?id=mandarin">Negotiating in Mandarin: A Survival Guide</a></h3>
+                        <p class="text-secondary blog-card-excerpt">Guanxi, face, and the numbers that never sound like the numbers. Essential tactics for your first high-stakes deal in Shanghai.</p>
+                        <div class="blog-card-foot">
+                            <span class="blog-meta">Jun 22, 2026</span>
+                            <a href="blog-details.html?id=mandarin" class="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </article>
 
                 <!-- Article 7 -->
-                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
-                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/blog-codeswitching.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                <article class="blog-card reveal" data-category="corporate">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-codeswitching.jpg" alt="Blog Image">
+                        <span class="blog-card-tag">Corporate</span>
                     </div>
-                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
-                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Corporate</span>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">Code-Switching in Multinational Offices</a></h3>
-                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">When teams flip between languages mid-meeting, what is lost, what is gained, and how leaders can harness it deliberately.</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
-                            <span style="font-size: 0.85rem; color: var(--c-slate);">Jun 14, 2026</span>
-                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title"><a href="blog-details.html?id=codeswitching">Code-Switching in Multinational Offices</a></h3>
+                        <p class="text-secondary blog-card-excerpt">When teams flip between languages mid-meeting, what is lost, what is gained, and how leaders can harness it deliberately.</p>
+                        <div class="blog-card-foot">
+                            <span class="blog-meta">Jun 14, 2026</span>
+                            <a href="blog-details.html?id=codeswitching" class="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </article>
 
                 <!-- Article 8 -->
-                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
-                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/blog-psychology.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                <article class="blog-card reveal" data-category="language-tips">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-psychology.jpg" alt="Blog Image">
+                        <span class="blog-card-tag">Language Tips</span>
                     </div>
-                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
-                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Language Tips</span>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">The Psychology of Language Learning</a></h3>
-                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">Why adults freeze up, how motivation compounds, and the science of building a habit that actually sticks past week three.</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
-                            <span style="font-size: 0.85rem; color: var(--c-slate);">Jun 05, 2026</span>
-                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title"><a href="blog-details.html?id=psychology">The Psychology of Language Learning</a></h3>
+                        <p class="text-secondary blog-card-excerpt">Why adults freeze up, how motivation compounds, and the science of building a habit that actually sticks past week three.</p>
+                        <div class="blog-card-foot">
+                            <span class="blog-meta">Jun 05, 2026</span>
+                            <a href="blog-details.html?id=psychology" class="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </article>
 
                 <!-- Article 9 -->
-                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
-                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/blog-diplofrench.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                <article class="blog-card reveal" data-category="cultural-insights">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-diplofrench.jpg" alt="Blog Image">
+                        <span class="blog-card-tag">Cultural Insights</span>
                     </div>
-                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
-                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Cultural Insights</span>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">Diplomatic French: Words That Win Deals</a></h3>
-                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">The conditional tense, the art of the understatement, and why saying maybe is sometimes the strongest yes in Paris.</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
-                            <span style="font-size: 0.85rem; color: var(--c-slate);">May 27, 2026</span>
-                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title"><a href="blog-details.html?id=diplofrench">Diplomatic French: Words That Win Deals</a></h3>
+                        <p class="text-secondary blog-card-excerpt">The conditional tense, the art of the understatement, and why saying maybe is sometimes the strongest yes in Paris.</p>
+                        <div class="blog-card-foot">
+                            <span class="blog-meta">May 27, 2026</span>
+                            <a href="blog-details.html?id=diplofrench" class="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </article>
 
                 <!-- Article 10 -->
-                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
-                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/blog-spanishtenses.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                <article class="blog-card reveal" data-category="language-tips">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-spanishtenses.jpg" alt="Blog Image">
+                        <span class="blog-card-tag">Language Tips</span>
                     </div>
-                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
-                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Language Tips</span>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">Mastering Spanish Verb Tenses Without Fear</a></h3>
-                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">From the dreaded subjunctive to the perfecto, a mental map that makes Spanish time feel natural instead of like algebra.</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
-                            <span style="font-size: 0.85rem; color: var(--c-slate);">May 19, 2026</span>
-                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title"><a href="blog-details.html?id=spanishtenses">Mastering Spanish Verb Tenses Without Fear</a></h3>
+                        <p class="text-secondary blog-card-excerpt">From the dreaded subjunctive to the perfecto, a mental map that makes Spanish time feel natural instead of like algebra.</p>
+                        <div class="blog-card-foot">
+                            <span class="blog-meta">May 19, 2026</span>
+                            <a href="blog-details.html?id=spanishtenses" class="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </article>
 
                 <!-- Article 11 -->
-                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
-                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/blog-techenglish.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                <article class="blog-card reveal" data-category="corporate">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-techenglish.jpg" alt="Blog Image">
+                        <span class="blog-card-tag">Corporate</span>
                     </div>
-                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
-                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Corporate</span>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">English for Tech: Speaking Engineer</a></h3>
-                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">Standups, RFCs, and the vocabulary of shipping. The English playbook every developer relocating to an international team needs.</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
-                            <span style="font-size: 0.85rem; color: var(--c-slate);">May 11, 2026</span>
-                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title"><a href="blog-details.html?id=techenglish">English for Tech: Speaking Engineer</a></h3>
+                        <p class="text-secondary blog-card-excerpt">Standups, RFCs, and the vocabulary of shipping. The English playbook every developer relocating to an international team needs.</p>
+                        <div class="blog-card-foot">
+                            <span class="blog-meta">May 11, 2026</span>
+                            <a href="blog-details.html?id=techenglish" class="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </article>
 
                 <!-- Article 12 -->
-                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
-                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/blog-pause.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                <article class="blog-card reveal" data-category="language-tips">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-pause.jpg" alt="Blog Image">
+                        <span class="blog-card-tag">Language Tips</span>
                     </div>
-                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
-                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Language Tips</span>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">The Power of the Pause in Public Speaking</a></h3>
-                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">Silence is a muscle. How deliberate pauses transform nervous presenters into authoritative speakers in any language.</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
-                            <span style="font-size: 0.85rem; color: var(--c-slate);">May 03, 2026</span>
-                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title"><a href="blog-details.html?id=pause">The Power of the Pause in Public Speaking</a></h3>
+                        <p class="text-secondary blog-card-excerpt">Silence is a muscle. How deliberate pauses transform nervous presenters into authoritative speakers in any language.</p>
+                        <div class="blog-card-foot">
+                            <span class="blog-meta">May 03, 2026</span>
+                            <a href="blog-details.html?id=pause" class="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </article>
 
                 <!-- Article 13 -->
-                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
-                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/blog-arabic.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                <article class="blog-card reveal" data-category="cultural-insights">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-arabic.jpg" alt="Blog Image">
+                        <span class="blog-card-tag">Cultural Insights</span>
                     </div>
-                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
-                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Cultural Insights</span>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">Arabic Business Etiquette Essentials</a></h3>
-                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">The right hand, the coffee ceremony, and the pace of trust. What every professional should know before a Gulf meeting.</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
-                            <span style="font-size: 0.85rem; color: var(--c-slate);">Apr 25, 2026</span>
-                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title"><a href="blog-details.html?id=arabic">Arabic Business Etiquette Essentials</a></h3>
+                        <p class="text-secondary blog-card-excerpt">The right hand, the coffee ceremony, and the pace of trust. What every professional should know before a Gulf meeting.</p>
+                        <div class="blog-card-foot">
+                            <span class="blog-meta">Apr 25, 2026</span>
+                            <a href="blog-details.html?id=arabic" class="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </article>
 
                 <!-- Article 14 -->
-                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
-                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/blog-ai.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                <article class="blog-card reveal" data-category="cultural-insights">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-ai.jpg" alt="Blog Image">
+                        <span class="blog-card-tag">Cultural Insights</span>
                     </div>
-                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
-                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Cultural Insights</span>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">Learning Languages in the Age of AI</a></h3>
-                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">Apps translate, humans communicate. Where artificial fluency ends and real cultural competence begins in 2026.</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
-                            <span style="font-size: 0.85rem; color: var(--c-slate);">Apr 17, 2026</span>
-                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title"><a href="blog-details.html?id=ai">Learning Languages in the Age of AI</a></h3>
+                        <p class="text-secondary blog-card-excerpt">Apps translate, humans communicate. Where artificial fluency ends and real cultural competence begins in 2026.</p>
+                        <div class="blog-card-foot">
+                            <span class="blog-meta">Apr 17, 2026</span>
+                            <a href="blog-details.html?id=ai" class="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </article>
 
                 <!-- Article 15 -->
-                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
-                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/blog-gerengineering.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                <article class="blog-card reveal" data-category="corporate">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-gerengineering.jpg" alt="Blog Image">
+                        <span class="blog-card-tag">Corporate</span>
                     </div>
-                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
-                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Corporate</span>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">German for Engineering: Precision in Words</a></h3>
-                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">From Technische Dokumentation to the passive voice of approval, the exact language that keeps Munich projects on track.</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
-                            <span style="font-size: 0.85rem; color: var(--c-slate);">Apr 09, 2026</span>
-                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title"><a href="blog-details.html?id=gerengineering">German for Engineering: Precision in Words</a></h3>
+                        <p class="text-secondary blog-card-excerpt">From Technische Dokumentation to the passive voice of approval, the exact language that keeps Munich projects on track.</p>
+                        <div class="blog-card-foot">
+                            <span class="blog-meta">Apr 09, 2026</span>
+                            <a href="blog-details.html?id=gerengineering" class="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </article>
 
                 <!-- Article 16 -->
-                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
-                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/blog-dinner.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                <article class="blog-card reveal" data-category="cultural-insights">
+                    <div class="blog-card-img">
+                        <img src="../images/blog-dinner.jpg" alt="Blog Image">
+                        <span class="blog-card-tag">Cultural Insights</span>
                     </div>
-                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
-                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Cultural Insights</span>
-                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">The Etiquette of Business Dinners Abroad</a></h3>
-                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">Chopsticks in Tokyo, forks in Lyon, hands in Riyadh. A field guide to dining rules that close deals and avoid offense.</p>
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
-                            <span style="font-size: 0.85rem; color: var(--c-slate);">Apr 01, 2026</span>
-                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title"><a href="blog-details.html?id=dinner">The Etiquette of Business Dinners Abroad</a></h3>
+                        <p class="text-secondary blog-card-excerpt">Chopsticks in Tokyo, forks in Lyon, hands in Riyadh. A field guide to dining rules that close deals and avoid offense.</p>
+                        <div class="blog-card-foot">
+                            <span class="blog-meta">Apr 01, 2026</span>
+                            <a href="blog-details.html?id=dinner" class="blog-read">Read Article <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </article>
-</div>
+            </div>
             <div id="blog-empty" class="text-secondary" style="display: none; text-align: center; padding: 4rem 0; font-size: 1.1rem;">No articles found. Try a different category or search term.</div>
+            <div class="text-center" style="margin-top: var(--s-8);">
+                <button id="blog-view-more" class="btn btn-outline view-more-btn">View More Articles <i class="fa-solid fa-arrow-down"></i></button>
+            </div>
         </div>
     </section>
 
     <!-- 5. Newsletter Banner -->
     <section class="section" style="padding-top: 0;">
         <div class="container">
-            <div class="reveal" style="background-color: var(--c-bg-tertiary); padding: 4rem; border-radius: var(--radius-xl); text-align: center; border: 1px solid var(--c-border);">
-                <i class="fa-regular fa-envelope-open" style="font-size: 3rem; color: var(--c-gold); margin-bottom: 1.5rem;"></i>
-                <h2 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem;">Join The Private List</h2>
-                <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; color: var(--c-text-secondary);">Get weekly curations of our best language insights, cultural deep dives, and exclusive program offers delivered to your inbox.</p>
-                <form class="cta-form" style="display: flex; max-width: 500px; margin: 0 auto; gap: 0.5rem;">
-                    <input type="email" placeholder="Enter your email address" required style="flex-grow: 1; padding: 1rem 1.5rem; border-radius: var(--radius-sm); border: 1px solid var(--c-border); background-color: var(--c-bg-primary); color: var(--c-text-primary); font-family: inherit; outline: none;">
+            <div class="newsletter-panel reveal">
+                <i class="fa-regular fa-envelope-open"></i>
+                <h2>Join The <em>Private List</em></h2>
+                <p>Get weekly curations of our best language insights, cultural deep dives, and exclusive program offers delivered to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
                     <button type="submit" class="btn btn-gold">Subscribe</button>
                 </form>
             </div>
@@ -390,7 +876,7 @@
                     <div class="footer-socials">
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="footer-social-btn"><svg class="x-logo" viewBox="0 0 512 512" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
@@ -445,4 +931,5 @@
     <script src="../js/main.js"></script>
 </body>
 </html>
+
 

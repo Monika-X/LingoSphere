@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="LingoSphere under maintenance illustration">
+    <defs>
+        <linearGradient id="mtnPlanet" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#7A2848"/>
+            <stop offset="100%" stop-color="#1F2A44"/>
+        </linearGradient>
+        <linearGradient id="mtnRing" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#E0C58F"/>
+            <stop offset="50%" stop-color="#C8A96B"/>
+            <stop offset="100%" stop-color="#E0C58F"/>
+        </linearGradient>
+        <linearGradient id="mtnTool" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#E0C58F"/>
+            <stop offset="100%" stop-color="#B78F4E"/>
+        </linearGradient>
+    </defs>
+
+    <!-- Stars -->
+    <g fill="#C8A96B">
+        <path d="M96 74 l7 17 17 7 -17 7 -7 17 -7 -17 -17 -7 17 -7z" opacity="0.9"/>
+        <path d="M552 88 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z" opacity="0.7"/>
+        <path d="M470 46 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z" opacity="0.5"/>
+        <circle cx="150" cy="152" r="3" fill="#E0C58F" opacity="0.6"/>
+        <circle cx="528" cy="176" r="2.5" fill="#E0C58F" opacity="0.5"/>
+        <circle cx="86" cy="272" r="2.5" fill="#E0C58F" opacity="0.5"/>
+        <circle cx="590" cy="330" r="3" fill="#E0C58F" opacity="0.6"/>
+        <circle cx="208" cy="380" r="2.5" fill="#E0C58F" opacity="0.4"/>
+    </g>
+
+    <!-- Orbit ring -->
+    <g transform="rotate(-12 320 250)">
+        <ellipse cx="320" cy="250" rx="224" ry="86" fill="none" stroke="url(#mtnRing)" stroke-width="3" stroke-dasharray="10 8" opacity="0.85"/>
+        <ellipse cx="320" cy="250" rx="224" ry="86" fill="none" stroke="#C8A96B" stroke-width="1" opacity="0.3"/>
+    </g>
+
+    <!-- Moon on the ring -->
+    <g transform="rotate(-12 320 250)">
+        <circle cx="536" cy="250" r="20" fill="#E0C58F"/>
+        <circle cx="536" cy="250" r="20" fill="none" stroke="#1F2A44" stroke-opacity="0.35" stroke-width="3"/>
+        <circle cx="542" cy="243" r="4" fill="#1F2A44" opacity="0.3"/>
+        <circle cx="530" cy="256" r="3" fill="#1F2A44" opacity="0.25"/>
+    </g>
+
+    <!-- Planet -->
+    <circle cx="320" cy="250" r="128" fill="url(#mtnPlanet)"/>
+    <circle cx="320" cy="250" r="128" fill="none" stroke="#C8A96B" stroke-opacity="0.55" stroke-width="1.5"/>
+    <path d="M262 206 q34 -28 78 -12" stroke="#C8A96B" stroke-opacity="0.55" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <path d="M288 318 q52 24 104 -6" stroke="#C8A96B" stroke-opacity="0.4" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <path d="M236 268 q22 10 44 -2" stroke="#C8A96B" stroke-opacity="0.3" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <circle cx="376" cy="228" r="5" fill="#E0C58F" opacity="0.7"/>
+    <circle cx="394" cy="252" r="3.5" fill="#E0C58F" opacity="0.5"/>
+    <circle cx="270" cy="300" r="3.5" fill="#E0C58F" opacity="0.45"/>
+
+    <!-- Wrench over the planet -->
+    <g transform="translate(388 158) rotate(-38)">
+        <rect x="-7" y="-64" width="14" height="104" rx="7" fill="url(#mtnTool)"/>
+        <circle cx="0" cy="-76" r="24" fill="none" stroke="url(#mtnTool)" stroke-width="13"/>
+        <circle cx="9" cy="-68" r="11" fill="#1F2A44"/>
+        <circle cx="-2" cy="40" r="12" fill="#E0C58F"/>
+        <circle cx="-2" cy="40" r="12" fill="none" stroke="#1F2A44" stroke-opacity="0.4" stroke-width="2"/>
+    </g>
+
+    <!-- Speech bubble -->
+    <g transform="translate(452 92)">
+        <path d="M0 6 a6 6 0 0 1 6 -6 h120 a6 6 0 0 1 6 6 v58 a6 6 0 0 1 -6 6 h-74 l-20 22 v-22 h-26 a6 6 0 0 1 -6 -6z" fill="#2A3857"/>
+        <path d="M0 6 a6 6 0 0 1 6 -6 h120 a6 6 0 0 1 6 6 v58 a6 6 0 0 1 -6 6 h-74 l-20 22 v-22 h-26 a6 6 0 0 1 -6 -6z" fill="none" stroke="#C8A96B" stroke-opacity="0.6" stroke-width="1.5"/>
+        <circle cx="34" cy="35" r="6" fill="#C8A96B"/>
+        <circle cx="66" cy="35" r="6" fill="#C8A96B" opacity="0.65"/>
+        <circle cx="98" cy="35" r="6" fill="#C8A96B" opacity="0.35"/>
+    </g>
+
+    <!-- Sparkles -->
+    <g fill="#E0C58F">
+        <path d="M180 96 l3.5 8 8 3.5 -8 3.5 -3.5 8 -3.5 -8 -8 -3.5 8 -3.5z" opacity="0.8"/>
+        <path d="M508 388 l4 9.5 9.5 4 -9.5 4 -4 9.5 -4 -9.5 -9.5 -4 9.5 -4z" opacity="0.7"/>
+        <path d="M110 430 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z" opacity="0.55"/>
+    </g>
+</svg>

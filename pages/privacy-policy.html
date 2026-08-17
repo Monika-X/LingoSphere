@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,196 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* ============================================================
+           Legal â€” Premium Edition
+           Refined, understated elegance (lighter than Home 2)
+           ============================================================ */
+
+        /* ---------- 1. Hero ---------- */
+        .legal-hero {
+            background-color: var(--c-midnight);
+            padding: 180px 0 110px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .legal-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(800px 360px at 50% 100%, rgba(200, 169, 107, 0.15), transparent);
+            pointer-events: none;
+        }
+        .legal-hero::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 5rem;
+            background: linear-gradient(to top, var(--c-bg-primary), transparent);
+            pointer-events: none;
+        }
+        .legal-hero .hero-title em {
+            font-style: italic;
+            color: var(--c-gold);
+        }
+        .legal-hero p {
+            color: rgba(250, 247, 242, 0.85);
+        }
+
+        /* ---------- 2. Document Layout ---------- */
+        .legal-wrap {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: var(--s-12);
+            align-items: start;
+        }
+        @media (max-width: 992px) {
+            .legal-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+        .legal-toc {
+            position: sticky;
+            top: calc(var(--header-height) + 2rem);
+        }
+        @media (max-width: 992px) {
+            .legal-toc {
+                position: static;
+                order: -1;
+            }
+        }
+        .legal-toc-card {
+            background-color: var(--c-bg-secondary);
+            border: 1px solid var(--c-border);
+            border-radius: var(--radius-lg);
+            padding: var(--s-6);
+            position: relative;
+            overflow: hidden;
+        }
+        .legal-toc-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--c-gold), var(--c-burgundy));
+        }
+        .legal-toc-card h4 {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--c-gold);
+            margin-bottom: var(--s-4);
+        }
+        .legal-toc-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.55rem 0.75rem;
+            border-radius: var(--radius-md);
+            color: var(--c-text-secondary);
+            font-size: 0.92rem;
+            transition: all var(--t-fast);
+        }
+        .legal-toc-link i {
+            color: var(--c-gold);
+            font-size: 0.65rem;
+            opacity: 0.65;
+            transition: opacity var(--t-fast), transform var(--t-fast);
+        }
+        .legal-toc-link:hover {
+            background: rgba(200, 169, 107, 0.08);
+            color: var(--c-gold);
+        }
+        .legal-toc-link:hover i {
+            opacity: 1;
+            transform: translateX(3px);
+        }
+
+        /* ---------- 3. Document ---------- */
+        .legal-doc {
+            max-width: 760px;
+        }
+        .legal-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.45rem 1.15rem;
+            border: 1px solid var(--c-border);
+            background-color: var(--c-bg-secondary);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            color: var(--c-text-secondary);
+            margin-bottom: var(--s-8);
+        }
+        .legal-meta i {
+            color: var(--c-gold);
+            font-size: 0.75rem;
+        }
+        .legal-section {
+            margin-bottom: var(--s-12);
+        }
+        .legal-section h3 {
+            font-family: var(--font-heading);
+            font-size: 1.65rem;
+            color: var(--c-text-primary);
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .legal-num {
+            font-family: var(--font-heading);
+            font-style: italic;
+            color: var(--c-gold);
+            font-size: 1.15rem;
+        }
+        .legal-section p {
+            color: var(--c-text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .legal-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem;
+        }
+        .legal-section li {
+            position: relative;
+            padding-left: 1.9rem;
+            margin-bottom: 0.8rem;
+            color: var(--c-text-secondary);
+            line-height: 1.7;
+        }
+        .legal-section li::before {
+            content: '';
+            position: absolute;
+            left: 0.15rem;
+            top: 0.62em;
+            width: 7px;
+            height: 7px;
+            background: linear-gradient(135deg, var(--c-gold), #E0C58F);
+            transform: rotate(45deg);
+        }
+        .legal-highlight {
+            background-color: var(--c-bg-tertiary);
+            border-left: 3px solid var(--c-gold);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--c-text-secondary);
+            line-height: 1.7;
+        }
+        .legal-highlight strong {
+            color: var(--c-text-primary);
+        }
+        .legal-doc .section-subtitle {
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 <body>
     <header class="header header-inverse">
@@ -39,47 +229,68 @@
     </header>
 
     <!-- 1. Hero Section -->
-    <section class="page-header" style="background-color: var(--c-midnight); padding: 180px 0 100px; text-align: center; color: white;">
+    <section class="legal-hero">
         <div class="container reveal">
             <span class="section-subtitle" style="color: var(--c-gold); border-color: var(--c-gold);">Legal</span>
-            <h1 class="hero-title" style="color: white; margin-bottom: 1.5rem;">Privacy Policy</h1>
-            <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem; opacity: 0.9;">How we protect, manage, and secure your personal data.</p>
+            <h1 class="hero-title" style="color: white; margin-bottom: 1.5rem;">Privacy <em>Policy</em></h1>
+            <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem;">How we protect, manage, and secure your personal data.</p>
         </div>
     </section>
 
     <!-- 2. Content -->
     <section class="section">
         <div class="container reveal">
-            <div class="glass-card" style="max-width: 900px; margin: 0 auto; padding: 4rem; background-color: var(--c-bg-secondary);">
-                <div style="font-family: var(--font-body); color: var(--c-text-secondary); line-height: 1.8;">
-                    <p style="font-size: 0.9rem; margin-bottom: 2rem;"><strong>Last Updated: August 17, 2026</strong></p>
-                    
-                    <h3 style="color: var(--c-text-primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem;">1. Introduction</h3>
-                    <p style="margin-bottom: 1.5rem;">Welcome to LingoSphere. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website (regardless of where you visit it from) and tell you about your privacy rights and how the law protects you.</p>
-                    
-                    <h3 style="color: var(--c-text-primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem;">2. The Data We Collect About You</h3>
-                    <p style="margin-bottom: 1.5rem;">Personal data, or personal information, means any information about an individual from which that person can be identified. We may collect, use, store and transfer different kinds of personal data about you which we have grouped together as follows:</p>
-                    <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem;">
-                        <li style="margin-bottom: 0.5rem;"><strong>Identity Data</strong> includes first name, last name, username or similar identifier, title, and date of birth.</li>
-                        <li style="margin-bottom: 0.5rem;"><strong>Contact Data</strong> includes billing address, delivery address, email address and telephone numbers.</li>
-                        <li style="margin-bottom: 0.5rem;"><strong>Financial Data</strong> includes bank account and payment card details.</li>
-                        <li style="margin-bottom: 0.5rem;"><strong>Transaction Data</strong> includes details about payments to and from you and other details of products and services you have purchased from us.</li>
-                        <li style="margin-bottom: 0.5rem;"><strong>Technical Data</strong> includes internet protocol (IP) address, your login data, browser type and version, time zone setting and location.</li>
-                    </ul>
+            <div class="legal-wrap">
+                <aside class="legal-toc">
+                    <div class="legal-toc-card">
+                        <h4>In This Document</h4>
+                        <a href="#s1" class="legal-toc-link"><i class="fa-solid fa-angle-right"></i> Introduction</a>
+                        <a href="#s2" class="legal-toc-link"><i class="fa-solid fa-angle-right"></i> The Data We Collect</a>
+                        <a href="#s3" class="legal-toc-link"><i class="fa-solid fa-angle-right"></i> How We Use Your Data</a>
+                        <a href="#s4" class="legal-toc-link"><i class="fa-solid fa-angle-right"></i> Data Security</a>
+                        <a href="#s5" class="legal-toc-link"><i class="fa-solid fa-angle-right"></i> Your Legal Rights</a>
+                    </div>
+                </aside>
+                <div class="legal-doc">
+                    <span class="legal-meta"><i class="fa-solid fa-calendar-check"></i> Last Updated: August 17, 2026</span>
 
-                    <h3 style="color: var(--c-text-primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem;">3. How We Use Your Personal Data</h3>
-                    <p style="margin-bottom: 1.5rem;">We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:</p>
-                    <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem;">
-                        <li style="margin-bottom: 0.5rem;">Where we need to perform the contract we are about to enter into or have entered into with you.</li>
-                        <li style="margin-bottom: 0.5rem;">Where it is necessary for our legitimate interests (or those of a third party) and your interests and fundamental rights do not override those interests.</li>
-                        <li style="margin-bottom: 0.5rem;">Where we need to comply with a legal or regulatory obligation.</li>
-                    </ul>
+                    <div id="s1" class="legal-section">
+                        <h3><span class="legal-num">01</span> Introduction</h3>
+                        <p>Welcome to LingoSphere. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website (regardless of where you visit it from) and tell you about your privacy rights and how the law protects you.</p>
+                    </div>
 
-                    <h3 style="color: var(--c-text-primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem;">4. Data Security</h3>
-                    <p style="margin-bottom: 1.5rem;">We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorised way, altered or disclosed. In addition, we limit access to your personal data to those employees, agents, contractors and other third parties who have a business need to know. They will only process your personal data on our instructions and they are subject to a duty of confidentiality.</p>
+                    <div id="s2" class="legal-section">
+                        <h3><span class="legal-num">02</span> The Data We Collect About You</h3>
+                        <p>Personal data, or personal information, means any information about an individual from which that person can be identified. We may collect, use, store and transfer different kinds of personal data about you which we have grouped together as follows:</p>
+                        <ul>
+                            <li><strong>Identity Data</strong> includes first name, last name, username or similar identifier, title, and date of birth.</li>
+                            <li><strong>Contact Data</strong> includes billing address, delivery address, email address and telephone numbers.</li>
+                            <li><strong>Financial Data</strong> includes bank account and payment card details.</li>
+                            <li><strong>Transaction Data</strong> includes details about payments to and from you and other details of products and services you have purchased from us.</li>
+                            <li><strong>Technical Data</strong> includes internet protocol (IP) address, your login data, browser type and version, time zone setting and location.</li>
+                        </ul>
+                    </div>
 
-                    <h3 style="color: var(--c-text-primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem;">5. Your Legal Rights</h3>
-                    <p style="margin-bottom: 1.5rem;">Under certain circumstances, you have rights under data protection laws in relation to your personal data, including the right to request access, correction, erasure, restriction, transfer, to object to processing, to portability of data and (where the lawful ground of processing is consent) to withdraw consent.</p>
+                    <div id="s3" class="legal-section">
+                        <h3><span class="legal-num">03</span> How We Use Your Personal Data</h3>
+                        <p>We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:</p>
+                        <ul>
+                            <li>Where we need to perform the contract we are about to enter into or have entered into with you.</li>
+                            <li>Where it is necessary for our legitimate interests (or those of a third party) and your interests and fundamental rights do not override those interests.</li>
+                            <li>Where we need to comply with a legal or regulatory obligation.</li>
+                        </ul>
+                    </div>
+
+                    <div id="s4" class="legal-section">
+                        <h3><span class="legal-num">04</span> Data Security</h3>
+                        <p>We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorised way, altered or disclosed. In addition, we limit access to your personal data to those employees, agents, contractors and other third parties who have a business need to know. They will only process your personal data on our instructions and they are subject to a duty of confidentiality.</p>
+                        <div class="legal-highlight"><strong>Our commitment:</strong> your data is encrypted in transit and at rest, access is logged and reviewed, and our team undergoes annual privacy training.</div>
+                    </div>
+
+                    <div id="s5" class="legal-section">
+                        <h3><span class="legal-num">05</span> Your Legal Rights</h3>
+                        <p>Under certain circumstances, you have rights under data protection laws in relation to your personal data, including the right to request access, correction, erasure, restriction, transfer, to object to processing, to portability of data and (where the lawful ground of processing is consent) to withdraw consent.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -106,7 +317,7 @@
                     <div class="footer-socials">
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="footer-social-btn"><svg class="x-logo" viewBox="0 0 512 512" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
@@ -163,3 +374,4 @@
     <script src="../js/main.js"></script>
 </body>
 </html>
+

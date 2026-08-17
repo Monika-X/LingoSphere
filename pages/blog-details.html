@@ -1,12 +1,396 @@
-<!DOCTYPE html>
-<html lang='en' dir='ltr' data-theme='light'>
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>blog-details.html | LingoSphere</title>
-    <link href='https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap' rel='stylesheet'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'>
-    <link rel='stylesheet' href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article | LingoSphere</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* ============================================================
+           Blog Article â€” Premium Edition
+           Refined, understated elegance (lighter than Home 2)
+           ============================================================ */
+
+        /* ---------- 1. Article Hero ---------- */
+        .bd-hero {
+            background-color: var(--c-midnight);
+            background-image:
+                radial-gradient(700px 320px at 50% -20%, rgba(200, 169, 107, 0.16), transparent);
+            padding: 180px 0 130px;
+            color: var(--c-ivory);
+            text-align: center;
+            position: relative;
+        }
+        .bd-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 50px;
+            background: linear-gradient(to top, var(--c-bg-primary), transparent);
+        }
+        .bd-hero-inner {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .bd-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.4rem, 5vw, 3.4rem);
+            line-height: 1.15;
+            color: var(--c-ivory);
+            margin: 1.25rem auto 2.25rem;
+        }
+        .bd-title em {
+            font-style: italic;
+            color: var(--c-gold);
+        }
+        .bd-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .bd-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-align: left;
+        }
+        .bd-avatar {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background-color: var(--c-slate);
+            overflow: hidden;
+            border: 1px solid rgba(200, 169, 107, 0.5);
+            flex-shrink: 0;
+        }
+        .bd-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .bd-author h4 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--c-ivory);
+        }
+        .bd-author span {
+            font-size: 0.8rem;
+            color: rgba(250, 247, 242, 0.7);
+        }
+        .bd-divider {
+            width: 1px;
+            height: 34px;
+            background-color: rgba(250, 247, 242, 0.2);
+        }
+        .bd-meta-info {
+            text-align: left;
+            font-size: 0.85rem;
+            color: rgba(250, 247, 242, 0.7);
+            line-height: 1.6;
+        }
+
+        /* ---------- 2. Hero Image ---------- */
+        .bd-hero-img-wrap {
+            position: relative;
+        }
+        .bd-hero-img-wrap::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid var(--c-gold);
+            border-radius: var(--radius-xl);
+            transform: translate(18px, 18px);
+            z-index: -1;
+        }
+        .bd-hero-img {
+            height: 500px;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            background-color: var(--c-slate);
+            box-shadow: 0 20px 40px var(--c-shadow);
+        }
+        .bd-hero-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ---------- 3. Article Layout ---------- */
+        .bd-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 4rem;
+            align-items: start;
+        }
+        @media (max-width: 992px) {
+            .bd-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        .bd-article {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--c-text-secondary);
+        }
+        .bd-dropcap::first-letter {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            float: left;
+            line-height: 0.8;
+            margin-right: 1rem;
+            color: var(--c-gold);
+        }
+        .bd-article h3 {
+            font-family: var(--font-heading);
+            font-size: 1.7rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--c-text-primary);
+        }
+        .bd-article em {
+            color: var(--c-burgundy);
+        }
+        [data-theme="dark"] .bd-article em {
+            color: var(--c-gold);
+        }
+        .bd-quote {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--c-text-primary);
+            border-left: 4px solid var(--c-gold);
+            padding-left: 2rem;
+            margin: 3rem 0;
+            position: relative;
+        }
+        .bd-quote::before {
+            content: '\201C';
+            font-size: 5rem;
+            font-family: var(--font-heading);
+            color: rgba(200, 169, 107, 0.35);
+            position: absolute;
+            top: -1.8rem;
+            left: 1.5rem;
+            line-height: 1;
+        }
+        .takeaways {
+            background-color: var(--c-bg-tertiary);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            margin: 3rem 0;
+            border: 1px solid var(--c-border);
+            position: relative;
+            overflow: hidden;
+        }
+        .takeaways::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: linear-gradient(to bottom, var(--c-gold), var(--c-burgundy));
+        }
+        .takeaways h4 {
+            margin-bottom: 1.25rem;
+            color: var(--c-text-primary);
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+        }
+        .takeaways ul {
+            list-style: none;
+            margin-bottom: 0;
+        }
+        .takeaways li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.45rem 0;
+        }
+        .takeaways li i {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(200, 169, 107, 0.12);
+            border: 1px solid rgba(200, 169, 107, 0.4);
+            color: var(--c-gold);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+
+        /* ---------- 4. Tags & Share ---------- */
+        .bd-tagsrow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            border-top: 1px solid var(--c-border);
+            padding-top: 2rem;
+            margin-top: 4rem;
+        }
+        .bd-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .bd-tag {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 0.35rem 0.9rem;
+            background-color: var(--c-bg-tertiary);
+            border: 1px solid var(--c-border);
+            border-radius: 50px;
+            color: var(--c-text-secondary);
+            transition: all var(--t-fast);
+        }
+        .bd-tag:hover {
+            border-color: var(--c-gold);
+            color: var(--c-gold);
+        }
+        .bd-share {
+            display: flex;
+            gap: 0.6rem;
+        }
+        .bd-share a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid var(--c-border);
+            color: var(--c-slate);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--t-fast);
+        }
+.bd-share a:hover {
+            background: linear-gradient(135deg, var(--c-gold), #E0C58F);
+            border-color: var(--c-gold);
+            color: var(--c-midnight);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(200, 169, 107, 0.35);
+        }
+        .bd-share a svg {
+            width: 0.95rem;
+            height: 0.95rem;
+            display: block;
+        }
+
+        /* ---------- 5. Sidebar ---------- */
+        .bd-side {
+            position: sticky;
+            top: calc(var(--header-height) + 2rem);
+        }
+        @media (max-width: 992px) {
+            .bd-side {
+                position: static;
+            }
+        }
+        .bd-author-card {
+            background-color: var(--c-bg-secondary);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--c-border);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .bd-author-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--c-gold), var(--c-burgundy));
+        }
+        .bd-author-card .bd-avatar {
+            width: 84px;
+            height: 84px;
+            margin: 0 auto 1rem;
+        }
+        .bd-author-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .bd-author-card p {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .bd-author-card .btn {
+            border-radius: 50px;
+            padding: 0.5rem 1.4rem;
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+        }
+        .bd-related {
+            background-color: var(--c-bg-secondary);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--c-border);
+        }
+        .bd-related h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--c-text-primary);
+        }
+        .bd-related a {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            color: inherit;
+            padding-bottom: 1.25rem;
+            margin-bottom: 1.25rem;
+            border-bottom: 1px dashed var(--c-border);
+        }
+        .bd-related a:last-child {
+            padding-bottom: 0;
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+        .bd-thumb {
+            width: 72px;
+            height: 72px;
+            border-radius: var(--radius-md);
+            background-color: var(--c-slate);
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        .bd-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%);
+            transition: filter var(--t-normal), transform var(--t-normal);
+        }
+        .bd-related a:hover .bd-thumb img {
+            filter: grayscale(0);
+            transform: scale(1.06);
+        }
+        .bd-related h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+            line-height: 1.35;
+            transition: color var(--t-fast);
+        }
+        .bd-related a:hover h4 {
+            color: var(--c-gold);
+        }
+        .bd-related span {
+            font-size: 0.75rem;
+            color: var(--c-slate);
+        }
+
+        @media (max-width: 768px) {
+            .bd-hero-img {
+                height: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header header-inverse">
@@ -37,26 +421,27 @@
             <button class="mobile-menu-btn" aria-label="Toggle Menu" aria-expanded="false"><span></span><span></span><span></span></button>
         </div>
     </header>
+
     <!-- 1. Article Hero -->
-    <section class="page-header" style="background-color: var(--c-midnight); padding: 180px 0 100px; color: white;">
+    <section class="bd-hero">
         <div class="container reveal">
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <span class="section-subtitle" style="color: var(--c-gold); border-color: var(--c-gold);">Cultural Insights</span>
-                <h1 class="hero-title" style="color: white; margin-bottom: 1.5rem; font-size: 3rem;">The Silent Language of Japanese Business Meetings.</h1>
-                <div style="display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-top: 2rem;">
-                    <div style="display: flex; align-items: center; gap: 1rem;">
-                        <div style="width: 50px; height: 50px; border-radius: 50%; background-color: var(--c-slate); overflow: hidden;">
-                            <img src="../images/team_leader.png" alt="Author" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="bd-hero-inner">
+                <span id="bd-category" class="section-subtitle" style="color: var(--c-gold);">Cultural Insights</span>
+                <h1 id="bd-title" class="bd-title">The Silent Language of <em>Japanese Business</em> Meetings.</h1>
+                <div class="bd-meta">
+                    <div class="bd-author">
+                        <div class="bd-avatar">
+                            <img id="bd-avatar" src="../images/team_leader.png" alt="Author">
                         </div>
-                        <div style="text-align: left;">
-                            <h4 style="margin: 0; font-size: 1rem;">Dr. Julian Reed</h4>
-                            <span style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Lead APAC Consultant</span>
+                        <div>
+                            <h4 id="bd-author-name">Dr. Julian Reed</h4>
+                            <span id="bd-author-role">Lead APAC Consultant</span>
                         </div>
                     </div>
-                    <div style="width: 1px; height: 30px; background-color: rgba(255,255,255,0.2);"></div>
-                    <div style="text-align: left; color: rgba(255,255,255,0.7); font-size: 0.85rem;">
-                        <div>August 12, 2026</div>
-                        <div>8 min read</div>
+                    <span class="bd-divider"></span>
+                    <div class="bd-meta-info">
+                        <div id="bd-date">August 12, 2026</div>
+                        <div id="bd-read">8 min read</div>
                     </div>
                 </div>
             </div>
@@ -66,99 +451,40 @@
     <!-- 2. Hero Image -->
     <section style="margin-top: -50px; position: relative; z-index: 2;">
         <div class="container">
-            <div class="reveal" style="width: 100%; height: 500px; border-radius: var(--radius-xl); overflow: hidden; background-color: var(--c-slate); box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
-                <img src="../images/about_hero.png" alt="Article Hero" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="bd-hero-img-wrap reveal">
+                <figure class="bd-hero-img">
+                    <img id="bd-hero-img" src="../images/blog-japanese.jpg" alt="Article Hero">
+                </figure>
             </div>
         </div>
     </section>
 
     <!-- 3. Article Content -->
     <section class="section">
-        <div class="container" style="display: grid; grid-template-columns: 1fr 300px; gap: 4rem;">
+        <div class="container bd-layout">
             <!-- Main Content -->
-            <div class="reveal" style="font-size: 1.1rem; line-height: 1.8; color: var(--c-text-secondary);">
-                <p class="mb-4"><span style="font-size: 4rem; float: left; line-height: 0.8; margin-right: 1rem; color: var(--c-gold); font-family: var(--font-heading);">M</span>astering the bow is just the beginning. Discover the unwritten rules of corporate negotiation in Tokyo, from seating arrangements to the subtle art of reading the air.</p>
-                <p class="mb-4">In western business cultures, directness is often celebrated. We are taught to 'cut to the chase' and 'put our cards on the table.' However, when conducting business in Japan, such an approach can be perceived as aggressive and lacking in refinement. The true art of Japanese business negotiation lies not in what is said, but in what is left unsaid.</p>
-                
-                <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin: 3rem 0 1.5rem; color: var(--c-text-primary);">Reading the Air (Kuuki wo Yomu)</h3>
-                <p class="mb-4">One of the most critical concepts for foreign executives to grasp is <em>Kuuki wo Yomu</em>, which literally translates to "reading the air." It refers to the ability to sense the mood, understand unspoken sentiments, and act accordingly without needing explicit instructions.</p>
-                
-                <blockquote style="font-family: var(--font-heading); font-size: 1.5rem; font-style: italic; color: var(--c-burgundy); border-left: 4px solid var(--c-gold); padding-left: 2rem; margin: 3rem 0;">
-                    "In a Tokyo boardroom, silence is rarely empty. It is often filled with profound contemplation, respect, or a polite disagreement that words would only brutalize."
-                </blockquote>
-                
-                <p class="mb-4">When a proposal is met with a sharp intake of breath through the teeth and a slight tilt of the head, it rarely means agreement. It is a polite, non-confrontational way of expressing difficulty or disagreement.</p>
-
-                <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin: 3rem 0 1.5rem; color: var(--c-text-primary);">The Seating Protocol (Sekiji)</h3>
-                <p class="mb-4">Where you sit in a meeting room is not a matter of choice; it is deeply rooted in hierarchical respect. The seat furthest from the door, known as the <em>Kamiza</em> (seat of honor), is reserved for the most senior person or the guest of honor. The seat closest to the door, the <em>Shimoza</em>, is for the most junior person.</p>
-                
-                <div style="background-color: var(--c-bg-tertiary); padding: 2rem; border-radius: var(--radius-lg); margin: 3rem 0; border: 1px solid var(--c-border);">
-                    <h4 style="margin-bottom: 1rem; color: var(--c-text-primary);">Key Takeaways</h4>
-                    <ul style="list-style-type: disc; padding-left: 1.5rem; margin-bottom: 0;">
-                        <li class="mb-2">Never rush silences during a negotiation.</li>
-                        <li class="mb-2">Always wait to be seated; do not assume your place.</li>
-                        <li class="mb-0">Pay close attention to non-verbal cues over explicit statements.</li>
-                    </ul>
-                </div>
-                
-                <p>Understanding these cultural nuances is what separates a successful international enterprise from one that struggles to gain traction in the APAC region.</p>
-                
-                <!-- Tags and Share -->
-                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--c-border); padding-top: 2rem; margin-top: 4rem;">
-                    <div style="display: flex; gap: 0.5rem;">
-                        <span style="font-size: 0.85rem; font-weight: 600; padding: 0.3rem 0.8rem; background-color: var(--c-bg-tertiary); border-radius: var(--radius-sm);">#Japan</span>
-                        <span style="font-size: 0.85rem; font-weight: 600; padding: 0.3rem 0.8rem; background-color: var(--c-bg-tertiary); border-radius: var(--radius-sm);">#BusinessEtiquette</span>
-                        <span style="font-size: 0.85rem; font-weight: 600; padding: 0.3rem 0.8rem; background-color: var(--c-bg-tertiary); border-radius: var(--radius-sm);">#Corporate</span>
-                    </div>
-                    <div style="display: flex; gap: 1rem; color: var(--c-slate);">
-                        <a href="#" style="color: inherit; transition: color 0.3s ease;"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="#" style="color: inherit; transition: color 0.3s ease;"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#" style="color: inherit; transition: color 0.3s ease;"><i class="fa-solid fa-link"></i></a>
-                    </div>
-                </div>
-            </div>
+            <div id="bd-article" class="reveal bd-article"></div>
 
             <!-- Sidebar -->
-            <aside class="reveal">
+            <aside class="reveal bd-side">
                 <!-- Author Bio -->
-                <div style="background-color: var(--c-bg-secondary); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--c-border); margin-bottom: 2rem; text-align: center;">
-                    <div style="width: 80px; height: 80px; border-radius: 50%; background-color: var(--c-slate); overflow: hidden; margin: 0 auto 1rem;">
-                        <img src="../images/team_leader.png" alt="Author" style="width: 100%; height: 100%; object-fit: cover;">
+                <div id="bd-author-card" class="bd-author-card">
+                    <div class="bd-avatar">
+                        <img src="../images/team_leader.png" alt="Author">
                     </div>
-                    <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Dr. Julian Reed</h3>
-                    <p class="text-secondary" style="font-size: 0.9rem; margin-bottom: 1rem;">Linguist and cultural consultant specializing in East Asian corporate communications.</p>
-                    <a href="about.html" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.8rem;">View Profile</a>
+                    <h3>Dr. Julian Reed</h3>
+                    <p class="text-secondary">Linguist and cultural consultant specializing in East Asian corporate communications.</p>
+                    <a href="about.html" class="btn btn-outline">View Profile</a>
                 </div>
 
                 <!-- Related Articles -->
-                <div style="background-color: var(--c-bg-secondary); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--c-border);">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 1.5rem; font-family: var(--font-heading);">Related Articles</h3>
-                    
-                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                        <a href="blog-details.html" style="display: flex; gap: 1rem; align-items: center; color: inherit;">
-                            <div style="width: 70px; height: 70px; border-radius: var(--radius-sm); background-color: var(--c-slate); flex-shrink: 0; overflow: hidden;">
-                                <img src="../images/about_hero.png" alt="Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
-                            </div>
-                            <div>
-                                <h4 style="font-size: 0.9rem; margin-bottom: 0.2rem; line-height: 1.3;">Mastering the French Subjunctive</h4>
-                                <span style="font-size: 0.75rem; color: var(--c-slate);">Aug 05, 2026</span>
-                            </div>
-                        </a>
-                        
-                        <a href="blog-details.html" style="display: flex; gap: 1rem; align-items: center; color: inherit;">
-                            <div style="width: 70px; height: 70px; border-radius: var(--radius-sm); background-color: var(--c-slate); flex-shrink: 0; overflow: hidden;">
-                                <img src="../images/about_hero.png" alt="Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
-                            </div>
-                            <div>
-                                <h4 style="font-size: 0.9rem; margin-bottom: 0.2rem; line-height: 1.3;">Why English is No Longer Enough</h4>
-                                <span style="font-size: 0.75rem; color: var(--c-slate);">Jul 28, 2026</span>
-                            </div>
-                        </a>
-                    </div>
+                <div id="bd-related" class="bd-related">
+                    <h3>Related Articles</h3>
                 </div>
             </aside>
         </div>
     </section>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -179,7 +505,7 @@
                     <div class="footer-socials">
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="footer-social-btn"><svg class="x-logo" viewBox="0 0 512 512" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
@@ -231,7 +557,100 @@
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 
+    <script src="../js/blog-data.js"></script>
+    <script>
+        /* ============================================================
+           Article Renderer â€” reads ?id=<slug>, fills the page from
+           BLOG_POSTS. Falls back to the featured (japanese) article.
+           ============================================================ */
+        (function () {
+            var params = new URLSearchParams(window.location.search);
+            var id = params.get('id') || 'japanese';
+            var post = BLOG_POSTS[id] || BLOG_POSTS.japanese;
+            var fullTitle = post.pre + post.em + post.post;
+
+            document.getElementById('bd-category').textContent = post.category;
+            document.getElementById('bd-title').innerHTML = post.pre + '<em>' + post.em + '</em>' + post.post;
+            document.title = fullTitle + ' | LingoSphere';
+            document.getElementById('bd-avatar').src = post.avatar;
+            document.getElementById('bd-author-name').textContent = post.author;
+            document.getElementById('bd-author-role').textContent = post.role;
+            document.getElementById('bd-date').textContent = post.date;
+            document.getElementById('bd-read').textContent = post.read;
+            document.getElementById('bd-hero-img').src = post.img;
+            document.getElementById('bd-hero-img').alt = fullTitle;
+
+            var html = '';
+            post.blocks.forEach(function (b) {
+                if (b.t === 'dropcap') html += '<p class="mb-4 bd-dropcap">' + b.x + '</p>';
+                else if (b.t === 'p') html += '<p class="mb-4">' + b.x + '</p>';
+                else if (b.t === 'h3') html += '<h3>' + b.x + '</h3>';
+                else if (b.t === 'quote') html += '<blockquote class="bd-quote">&ldquo;' + b.x + '&rdquo;</blockquote>';
+                else if (b.t === 'takeaways') {
+                    html += '<div class="takeaways"><h4>Key Takeaways</h4><ul>' +
+                        b.items.map(function (i) { return '<li><i class="fa-solid fa-check"></i> ' + i + '</li>'; }).join('') +
+                        '</ul></div>';
+                }
+            });
+            document.getElementById('bd-article').innerHTML = html;
+
+            document.getElementById('bd-article').insertAdjacentHTML('beforeend',
+                '<div class="bd-tagsrow">' +
+                    '<div class="bd-tags">' + post.tags.map(function (t) { return '<span class="bd-tag">' + t + '</span>'; }).join('') + '</div>' +
+                    '<div class="bd-share">' +
+                        '<a href="https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href) + '" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>' +
+                        '<a href="https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(fullTitle) + '" target="_blank" rel="noopener" aria-label="Share on Twitter"><svg class="x-logo" viewBox="0 0 512 512" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>' +
+                        '<a href="#" id="bd-copy-link" aria-label="Copy link"><i class="fa-solid fa-link"></i></a>' +
+                    '</div>' +
+                '</div>');
+
+            var copyBtn = document.getElementById('bd-copy-link');
+            if (copyBtn) {
+                copyBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    var done = function () {
+                        copyBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
+                        setTimeout(function () { copyBtn.innerHTML = '<i class="fa-solid fa-link"></i>'; }, 2000);
+                    };
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(window.location.href).then(done, done);
+                    } else {
+                        var t = document.createElement('textarea');
+                        t.value = window.location.href;
+                        t.style.position = 'fixed';
+                        t.style.opacity = '0';
+                        document.body.appendChild(t);
+                        t.select();
+                        try { document.execCommand('copy'); } catch (err) {}
+                        document.body.removeChild(t);
+                        done();
+                    }
+                });
+            }
+
+            var card = document.getElementById('bd-author-card');
+            card.querySelector('.bd-avatar img').src = post.avatar;
+            card.querySelector('h3').textContent = post.author;
+            card.querySelector('p').textContent = post.bio;
+
+            var related = Object.keys(BLOG_POSTS).filter(function (k) {
+                return k !== id && BLOG_POSTS[k].category === post.category;
+            });
+            Object.keys(BLOG_POSTS).forEach(function (k) {
+                if (related.length < 3 && k !== id && related.indexOf(k) === -1) related.push(k);
+            });
+            related = related.slice(0, 3);
+
+            document.getElementById('bd-related').innerHTML = '<h3>Related Articles</h3>' +
+                related.map(function (k) {
+                    var r = BLOG_POSTS[k];
+                    return '<a href="blog-details.html?id=' + k + '">' +
+                        '<div class="bd-thumb"><img src="' + r.img + '" alt="Thumbnail"></div>' +
+                        '<div><h4>' + r.pre + r.em + r.post + '</h4><span>' + r.date + '</span></div>' +
+                    '</a>';
+                }).join('');
+        })();
+    </script>
     <script src="../js/main.js"></script>
 </body>
 </html>
-

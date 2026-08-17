@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -20,34 +20,101 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Homepage specific styles to add to style.css later or keep here for modularity */
-        /* Hero Section */
+        /* ============================================================
+           Homepage â€” Premium Edition
+           Refined, understated elegance (lighter than Home 2)
+           ============================================================ */
+
+        /* ---------- 1. Hero ---------- */
         .hero {
             height: 100vh;
-            min-height: 700px;
+            min-height: 640px;
             position: relative;
             display: flex;
             align-items: center;
-            background-color: var(--c-midnight);
+            background: linear-gradient(160deg, rgba(15, 21, 35, 0.97) 0%, rgba(31, 42, 68, 0.85) 55%, rgba(122, 40, 72, 0.72) 100%);
             color: var(--c-ivory);
             overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90vw;
+            height: 90vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(200, 169, 107, 0.16) 0%, transparent 55%);
+            pointer-events: none;
         }
         .hero-bg {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover;
-            opacity: 0.4;
+            opacity: 0.5;
             z-index: 0;
+            filter: saturate(0.85) contrast(1.05);
         }
-.hero-content {
+        .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
+            max-width: 820px;
             margin-inline: auto;
             text-align: center;
+            padding-top: 40px;
         }
-        /* Programs Grid */
-.programs-grid {
+        .hero-content .section-subtitle {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .hero-content .section-subtitle::before,
+        .hero-content .section-subtitle::after {
+            content: '';
+            width: 44px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--c-gold));
+        }
+        .hero-content .section-subtitle::after {
+            background: linear-gradient(90deg, var(--c-gold), transparent);
+        }
+        .hero-title em {
+            font-style: italic;
+            color: var(--c-gold);
+        }
+        .hero-actions {
+            display: flex;
+            gap: var(--s-4);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .hero-actions .btn-gold {
+            border-radius: 50px;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(90deg, var(--c-gold), #E0C58F);
+            box-shadow: 0 12px 30px rgba(200, 169, 107, 0.35);
+            letter-spacing: 2px;
+            transition: all var(--t-normal);
+        }
+        .hero-actions .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 36px rgba(200, 169, 107, 0.5);
+        }
+        .hero-actions .btn-outline {
+            border-color: rgba(250, 247, 242, 0.5);
+            border-radius: 50px;
+            padding: 1rem 2.5rem;
+            color: var(--c-ivory);
+            letter-spacing: 2px;
+        }
+        .hero-actions .btn-outline:hover {
+            background-color: var(--c-ivory);
+            color: var(--c-midnight);
+        }
+
+        /* ---------- 2. Programs Grid ---------- */
+        .programs-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: var(--s-6);
@@ -58,16 +125,57 @@
             overflow: hidden;
             background-color: var(--c-bg-secondary);
             border: 1px solid var(--c-border);
-            transition: transform var(--t-normal), box-shadow var(--t-normal);
+            position: relative;
+            transition: transform var(--t-normal), box-shadow var(--t-normal), border-color var(--t-normal);
+        }
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--c-gold), var(--c-burgundy));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--t-normal);
+            z-index: 3;
         }
         .program-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px var(--c-shadow);
+            box-shadow: 0 20px 40px var(--c-shadow);
+            border-color: rgba(200, 169, 107, 0.45);
+        }
+        .program-card:hover::before {
+            transform: scaleX(1);
         }
         .program-img-wrapper {
             position: relative;
             height: 200px;
             overflow: hidden;
+        }
+        .program-num {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(15, 21, 35, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(200, 169, 107, 0.5);
+            color: var(--c-gold);
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: all var(--t-normal);
+        }
+        .program-card:hover .program-num {
+            background: var(--c-gold);
+            color: var(--c-midnight);
         }
         .program-img {
             width: 100%;
@@ -80,24 +188,76 @@
         }
         .program-content {
             padding: var(--s-5);
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
         .program-title {
             font-size: 1.5rem;
             margin-bottom: var(--s-2);
         }
-        
-        /* Stats Section */
+        .program-content .btn-primary {
+            margin-top: auto;
+            padding: 0;
+            background: transparent;
+            color: var(--c-burgundy);
+            font-size: 0.78rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            border-radius: 0;
+            justify-content: flex-start;
+            gap: 0.6rem;
+            transition: color var(--t-normal), gap var(--t-normal);
+        }
+        .program-content .btn-primary::before {
+            display: none;
+        }
+        .program-content .btn-primary i {
+            font-size: 0.8rem;
+            transition: transform var(--t-normal);
+        }
+        .program-card:hover .btn-primary {
+            color: var(--c-gold);
+            gap: 1rem;
+        }
+        .program-card:hover .btn-primary i {
+            transform: translateX(3px);
+        }
+        [data-theme="dark"] .program-content .btn-primary {
+            color: var(--c-gold);
+        }
+        [data-theme="dark"] .program-card:hover .btn-primary {
+            color: #EBD3A0;
+        }
+
+        /* ---------- 3. Stats Band ---------- */
         .stats-section {
             background-color: var(--c-midnight);
+            background-image: radial-gradient(700px 320px at 50% -10%, rgba(200, 169, 107, 0.14), transparent);
             color: var(--c-ivory);
             padding: var(--s-12) 0;
             position: relative;
+            overflow: hidden;
+        }
+        .stats-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(200, 169, 107, 0.4), transparent);
         }
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: var(--s-8);
             text-align: center;
+        }
+        .stat-item {
+            position: relative;
+            padding: var(--s-4) 0;
+        }
+        .stat-item + .stat-item {
+            border-left: 1px solid rgba(250, 247, 242, 0.1);
         }
         .stat-item .counter {
             font-size: 3.5rem;
@@ -106,9 +266,20 @@
             font-weight: 700;
             display: block;
             margin-bottom: var(--s-2);
+            line-height: 1;
+        }
+        .stat-item p {
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-size: 0.72rem;
+            color: rgba(250, 247, 242, 0.65);
+            margin: 0;
+        }
+        @media (max-width: 900px) {
+            .stat-item + .stat-item { border-left: none; }
         }
 
-        /* Courses Section */
+        /* ---------- 4. Featured Courses ---------- */
         .courses-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -116,23 +287,67 @@
         }
         .course-card {
             padding: var(--s-6);
+            position: relative;
+            transition: transform var(--t-normal), box-shadow var(--t-normal), border-color var(--t-normal);
+        }
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--c-gold), transparent);
+            opacity: 0.5;
+        }
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px var(--c-shadow);
+            border-color: rgba(200, 169, 107, 0.5);
         }
         .course-level {
             display: inline-block;
-            padding: 4px 12px;
-            background-color: rgba(122, 40, 72, 0.1);
+            padding: 5px 14px;
+            background: linear-gradient(90deg, rgba(200, 169, 107, 0.18), rgba(122, 40, 72, 0.12));
             color: var(--c-burgundy);
-            border-radius: 20px;
-            font-size: 0.8rem;
+            border: 1px solid rgba(200, 169, 107, 0.4);
+            border-radius: 50px;
+            font-size: 0.75rem;
             font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             margin-bottom: var(--s-4);
         }
         [data-theme="dark"] .course-level {
-            background-color: rgba(200, 169, 107, 0.2);
+            background: rgba(200, 169, 107, 0.15);
             color: var(--c-gold);
         }
+        .course-card ul li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.4rem 0;
+            font-size: 0.95rem;
+            color: var(--c-text-secondary);
+        }
+        .course-card ul li i {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: rgba(200, 169, 107, 0.15);
+            color: var(--c-gold);
+            font-size: 0.65rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .course-card .btn-outline {
+            border-radius: 50px;
+            font-size: 0.78rem;
+            letter-spacing: 2px;
+            padding: 0.8rem 1.75rem;
+        }
 
-        /* Testimonials */
+        /* ---------- 5. Testimonials ---------- */
         .testimonials {
             background-color: var(--c-bg-tertiary);
         }
@@ -141,45 +356,67 @@
             padding: var(--s-8);
             border-radius: var(--radius-lg);
             position: relative;
+            border: 1px solid var(--c-border);
+            transition: transform var(--t-normal), box-shadow var(--t-normal);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 36px var(--c-shadow);
         }
         .testimonial-card::before {
             content: '\201C';
             position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 5rem;
+            top: 12px;
+            left: 22px;
+            font-size: 6rem;
             color: var(--c-gold);
-            opacity: 0.2;
+            opacity: 0.18;
             font-family: var(--font-heading);
+            line-height: 1;
+        }
+        .testimonial-card > p {
+            position: relative;
+            z-index: 2;
+            font-size: 1.05rem;
+            line-height: 1.8;
         }
         .client-info {
             display: flex;
             align-items: center;
             gap: var(--s-3);
-            margin-top: var(--s-4);
+            margin-top: var(--s-5);
+            padding-top: var(--s-4);
+            border-top: 1px solid var(--c-border);
         }
         .client-avatar {
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background-color: var(--c-burgundy);
+            background: linear-gradient(135deg, var(--c-burgundy), var(--c-midnight));
+            border: 2px solid var(--c-gold);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-size: 1.5rem;
             font-family: var(--font-heading);
+            box-shadow: 0 8px 20px rgba(122, 40, 72, 0.3);
         }
 
-        /* CTA Section */
+        /* ---------- 6. CTA ---------- */
         .cta-section {
-            background: linear-gradient(135deg, var(--c-midnight) 0%, var(--c-emerald) 100%);
+            background-image: radial-gradient(600px 260px at 50% 0%, rgba(200, 169, 107, 0.12), transparent), linear-gradient(135deg, var(--c-midnight) 0%, var(--c-emerald) 100%);
             color: var(--c-ivory);
             text-align: center;
             padding: var(--s-16) 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section .section-title {
+            color: var(--c-ivory);
         }
         .cta-form {
-            max-width: 500px;
+            max-width: 520px;
             margin: var(--s-6) auto 0;
             display: flex;
             gap: var(--s-2);
@@ -187,9 +424,50 @@
         .cta-input {
             flex: 1;
             padding: var(--s-3) var(--s-4);
-            border: none;
-            border-radius: var(--radius-sm);
+            border: 1px solid rgba(250, 247, 242, 0.25);
+            border-radius: 50px;
             font-family: inherit;
+            background: rgba(250, 247, 242, 0.1);
+            color: var(--c-ivory);
+            outline: none;
+            transition: border-color var(--t-fast), box-shadow var(--t-fast);
+        }
+        .cta-input::placeholder {
+            color: rgba(250, 247, 242, 0.55);
+        }
+        .cta-input:focus {
+            border-color: var(--c-gold);
+            box-shadow: 0 0 0 3px rgba(200, 169, 107, 0.2);
+        }
+        .cta-section .btn-gold {
+            border-radius: 50px;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--c-gold), #E0C58F);
+            box-shadow: 0 8px 20px rgba(200, 169, 107, 0.35);
+            transition: all var(--t-normal);
+        }
+        .cta-section .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(200, 169, 107, 0.5);
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 992px) {
+            .programs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-actions .btn-gold,
+            .hero-actions .btn-outline {
+                width: 100%;
+            }
+            .cta-form {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -233,11 +511,11 @@
         <div class="container">
             <div class="hero-content reveal">
                 <span class="section-subtitle c-gold">Master the World</span>
-                <h1 class="hero-title">Elevate Your Global Communication</h1>
+                <h1 class="hero-title">Elevate Your Global <em>Communication</em></h1>
                 <p class="hero-subtitle">Premium language classes and communication skills workshops designed for professionals and ambitious learners.</p>
                 <div class="hero-actions">
                     <a href="pages/services.html" class="btn btn-gold">Explore Programs</a>
-                    <a href="pages/contact.html" class="btn btn-outline" style="color: white; border-color: white;">Enroll Now</a>
+                    <a href="pages/contact.html" class="btn btn-outline">Enroll Now</a>
                 </div>
             </div>
         </div>
@@ -256,41 +534,45 @@
                 <div class="program-card">
                     <div class="program-img-wrapper">
                         <img src="images/english-mastery.jpg" alt="English Program" class="program-img">
+                        <span class="program-num">01</span>
                     </div>
                     <div class="program-content">
                         <h3 class="program-title">English Mastery</h3>
                         <p class="c-text-secondary mb-4">From conversational fluency to advanced business communication and IELTS prep.</p>
-                        <a href="pages/services.html" class="btn btn-primary">Learn More</a>
+                        <a href="pages/services.html" class="btn btn-primary">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="program-card">
                     <div class="program-img-wrapper">
                         <img src="images/diplomatic-french.jpg" alt="French Program" class="program-img">
+                        <span class="program-num">02</span>
                     </div>
                     <div class="program-content">
                         <h3 class="program-title">Diplomatic French</h3>
                         <p class="c-text-secondary mb-4">Embrace the language of culture, diplomacy, and international business.</p>
-                        <a href="pages/services.html" class="btn btn-primary">Learn More</a>
+                        <a href="pages/services.html" class="btn btn-primary">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="program-card">
                     <div class="program-img-wrapper">
                         <img src="images/corporate-german.jpg" alt="German Program" class="program-img">
+                        <span class="program-num">03</span>
                     </div>
                     <div class="program-content">
                         <h3 class="program-title">Corporate German</h3>
                         <p class="c-text-secondary mb-4">Structured learning for technical, engineering, and enterprise communication.</p>
-                        <a href="pages/services.html" class="btn btn-primary">Learn More</a>
+                        <a href="pages/services.html" class="btn btn-primary">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="program-card">
                     <div class="program-img-wrapper">
                         <img src="images/global-spanish.jpg" alt="Spanish Program" class="program-img">
+                        <span class="program-num">04</span>
                     </div>
                     <div class="program-content">
                         <h3 class="program-title">Global Spanish</h3>
                         <p class="c-text-secondary mb-4">Connect with half a billion speakers worldwide through our dynamic curriculum.</p>
-                        <a href="pages/services.html" class="btn btn-primary">Learn More</a>
+                        <a href="pages/services.html" class="btn btn-primary">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -374,7 +656,7 @@
 
             <div class="courses-grid reveal">
                 <div class="testimonial-card">
-                    <p style="position:relative; z-index:2">"LingoSphere completely transformed my confidence. The executive communication training helped me secure a role at a top international firm. The faculty is truly world-class."</p>
+                    <p>"LingoSphere completely transformed my confidence. The executive communication training helped me secure a role at a top international firm. The faculty is truly world-class."</p>
                     <div class="client-info">
                         <div class="client-avatar">E</div>
                         <div>
@@ -384,7 +666,7 @@
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <p style="position:relative; z-index:2">"The immersive French program was incredible. The cultural context provided alongside the language lessons made the learning experience rich and deeply engaging."</p>
+                    <p>"The immersive French program was incredible. The cultural context provided alongside the language lessons made the learning experience rich and deeply engaging."</p>
                     <div class="client-info">
                         <div class="client-avatar">M</div>
                         <div>
@@ -431,7 +713,7 @@
                     <div class="footer-socials">
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="footer-social-btn"><svg class="x-logo" viewBox="0 0 512 512" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
@@ -488,4 +770,3 @@
     <script src="js/main.js"></script>
 </body>
 </html>
-

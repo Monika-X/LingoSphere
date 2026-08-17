@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,196 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* ============================================================
+           Legal â€” Premium Edition
+           Refined, understated elegance (lighter than Home 2)
+           ============================================================ */
+
+        /* ---------- 1. Hero ---------- */
+        .legal-hero {
+            background-color: var(--c-midnight);
+            padding: 180px 0 110px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .legal-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(800px 360px at 50% 100%, rgba(200, 169, 107, 0.15), transparent);
+            pointer-events: none;
+        }
+        .legal-hero::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 5rem;
+            background: linear-gradient(to top, var(--c-bg-primary), transparent);
+            pointer-events: none;
+        }
+        .legal-hero .hero-title em {
+            font-style: italic;
+            color: var(--c-gold);
+        }
+        .legal-hero p {
+            color: rgba(250, 247, 242, 0.85);
+        }
+
+        /* ---------- 2. Document Layout ---------- */
+        .legal-wrap {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: var(--s-12);
+            align-items: start;
+        }
+        @media (max-width: 992px) {
+            .legal-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+        .legal-toc {
+            position: sticky;
+            top: calc(var(--header-height) + 2rem);
+        }
+        @media (max-width: 992px) {
+            .legal-toc {
+                position: static;
+                order: -1;
+            }
+        }
+        .legal-toc-card {
+            background-color: var(--c-bg-secondary);
+            border: 1px solid var(--c-border);
+            border-radius: var(--radius-lg);
+            padding: var(--s-6);
+            position: relative;
+            overflow: hidden;
+        }
+        .legal-toc-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--c-gold), var(--c-burgundy));
+        }
+        .legal-toc-card h4 {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--c-gold);
+            margin-bottom: var(--s-4);
+        }
+        .legal-toc-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.55rem 0.75rem;
+            border-radius: var(--radius-md);
+            color: var(--c-text-secondary);
+            font-size: 0.92rem;
+            transition: all var(--t-fast);
+        }
+        .legal-toc-link i {
+            color: var(--c-gold);
+            font-size: 0.65rem;
+            opacity: 0.65;
+            transition: opacity var(--t-fast), transform var(--t-fast);
+        }
+        .legal-toc-link:hover {
+            background: rgba(200, 169, 107, 0.08);
+            color: var(--c-gold);
+        }
+        .legal-toc-link:hover i {
+            opacity: 1;
+            transform: translateX(3px);
+        }
+
+        /* ---------- 3. Document ---------- */
+        .legal-doc {
+            max-width: 760px;
+        }
+        .legal-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.45rem 1.15rem;
+            border: 1px solid var(--c-border);
+            background-color: var(--c-bg-secondary);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            color: var(--c-text-secondary);
+            margin-bottom: var(--s-8);
+        }
+        .legal-meta i {
+            color: var(--c-gold);
+            font-size: 0.75rem;
+        }
+        .legal-section {
+            margin-bottom: var(--s-12);
+        }
+        .legal-section h3 {
+            font-family: var(--font-heading);
+            font-size: 1.65rem;
+            color: var(--c-text-primary);
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .legal-num {
+            font-family: var(--font-heading);
+            font-style: italic;
+            color: var(--c-gold);
+            font-size: 1.15rem;
+        }
+        .legal-section p {
+            color: var(--c-text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .legal-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem;
+        }
+        .legal-section li {
+            position: relative;
+            padding-left: 1.9rem;
+            margin-bottom: 0.8rem;
+            color: var(--c-text-secondary);
+            line-height: 1.7;
+        }
+        .legal-section li::before {
+            content: '';
+            position: absolute;
+            left: 0.15rem;
+            top: 0.62em;
+            width: 7px;
+            height: 7px;
+            background: linear-gradient(135deg, var(--c-gold), #E0C58F);
+            transform: rotate(45deg);
+        }
+        .legal-highlight {
+            background-color: var(--c-bg-tertiary);
+            border-left: 3px solid var(--c-gold);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--c-text-secondary);
+            line-height: 1.7;
+        }
+        .legal-highlight strong {
+            color: var(--c-text-primary);
+        }
+        .legal-doc .section-subtitle {
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 <body>
     <header class="header header-inverse">
@@ -39,41 +229,62 @@
     </header>
 
     <!-- 1. Hero Section -->
-    <section class="page-header" style="background-color: var(--c-midnight); padding: 180px 0 100px; text-align: center; color: white;">
+    <section class="legal-hero">
         <div class="container reveal">
             <span class="section-subtitle" style="color: var(--c-gold); border-color: var(--c-gold);">Legal</span>
-            <h1 class="hero-title" style="color: white; margin-bottom: 1.5rem;">Terms & Conditions</h1>
-            <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem; opacity: 0.9;">Rules, guidelines, and agreements for using our services.</p>
+            <h1 class="hero-title" style="color: white; margin-bottom: 1.5rem;">Terms & <em>Conditions</em></h1>
+            <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem;">Rules, guidelines, and agreements for using our services.</p>
         </div>
     </section>
 
     <!-- 2. Content -->
     <section class="section">
         <div class="container reveal">
-            <div class="glass-card" style="max-width: 900px; margin: 0 auto; padding: 4rem; background-color: var(--c-bg-secondary);">
-                <div style="font-family: var(--font-body); color: var(--c-text-secondary); line-height: 1.8;">
-                    <p style="font-size: 0.9rem; margin-bottom: 2rem;"><strong>Last Updated: August 17, 2026</strong></p>
-                    
-                    <h3 style="color: var(--c-text-primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem;">1. Agreement to Terms</h3>
-                    <p style="margin-bottom: 1.5rem;">These Terms and Conditions constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you") and LingoSphere ("we," "us" or "our"), concerning your access to and use of the lingosphere.edu website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto.</p>
-                    
-                    <h3 style="color: var(--c-text-primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem;">2. Intellectual Property Rights</h3>
-                    <p style="margin-bottom: 1.5rem;">Unless otherwise indicated, the Site is our proprietary property and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the Site (collectively, the "Content") and the trademarks, service marks, and logos contained therein (the "Marks") are owned or controlled by us or licensed to us, and are protected by copyright and trademark laws and various other intellectual property rights and unfair competition laws.</p>
+            <div class="legal-wrap">
+                <aside class="legal-toc">
+                    <div class="legal-toc-card">
+                        <h4>In This Document</h4>
+                        <a href="#s1" class="legal-toc-link"><i class="fa-solid fa-angle-right"></i> Agreement to Terms</a>
+                        <a href="#s2" class="legal-toc-link"><i class="fa-solid fa-angle-right"></i> Intellectual Property</a>
+                        <a href="#s3" class="legal-toc-link"><i class="fa-solid fa-angle-right"></i> User Representations</a>
+                        <a href="#s4" class="legal-toc-link"><i class="fa-solid fa-angle-right"></i> Enrollment & Payments</a>
+                        <a href="#s5" class="legal-toc-link"><i class="fa-solid fa-angle-right"></i> Governing Law</a>
+                    </div>
+                </aside>
+                <div class="legal-doc">
+                    <span class="legal-meta"><i class="fa-solid fa-calendar-check"></i> Last Updated: August 17, 2026</span>
 
-                    <h3 style="color: var(--c-text-primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem;">3. User Representations</h3>
-                    <p style="margin-bottom: 1.5rem;">By using the Site, you represent and warrant that:</p>
-                    <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem;">
-                        <li style="margin-bottom: 0.5rem;">All registration information you submit will be true, accurate, current, and complete.</li>
-                        <li style="margin-bottom: 0.5rem;">You will maintain the accuracy of such information and promptly update such registration information as necessary.</li>
-                        <li style="margin-bottom: 0.5rem;">You have the legal capacity and you agree to comply with these Terms and Conditions.</li>
-                        <li style="margin-bottom: 0.5rem;">You are not under the age of 13.</li>
-                    </ul>
+                    <div id="s1" class="legal-section">
+                        <h3><span class="legal-num">01</span> Agreement to Terms</h3>
+                        <p>These Terms and Conditions constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you") and LingoSphere ("we," "us" or "our"), concerning your access to and use of the lingosphere.edu website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto.</p>
+                    </div>
 
-                    <h3 style="color: var(--c-text-primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem;">4. Course Enrollment and Payments</h3>
-                    <p style="margin-bottom: 1.5rem;">Enrollment in any LingoSphere course requires full payment upfront unless a payment plan is explicitly agreed upon in writing. All fees are non-refundable after the first 14 days of the course start date. We reserve the right to modify our course offerings, pricing, and schedules at our discretion without prior notice.</p>
+                    <div id="s2" class="legal-section">
+                        <h3><span class="legal-num">02</span> Intellectual Property Rights</h3>
+                        <p>Unless otherwise indicated, the Site is our proprietary property and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the Site (collectively, the "Content") and the trademarks, service marks, and logos contained therein (the "Marks") are owned or controlled by us or licensed to us, and are protected by copyright and trademark laws and various other intellectual property rights and unfair competition laws.</p>
+                    </div>
 
-                    <h3 style="color: var(--c-text-primary); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem;">5. Governing Law</h3>
-                    <p style="margin-bottom: 1.5rem;">These Terms shall be governed by and defined following the laws of the State of New York. LingoSphere and yourself irrevocably consent that the courts of New York shall have exclusive jurisdiction to resolve any dispute which may arise in connection with these terms.</p>
+                    <div id="s3" class="legal-section">
+                        <h3><span class="legal-num">03</span> User Representations</h3>
+                        <p>By using the Site, you represent and warrant that:</p>
+                        <ul>
+                            <li>All registration information you submit will be true, accurate, current, and complete.</li>
+                            <li>You will maintain the accuracy of such information and promptly update such registration information as necessary.</li>
+                            <li>You have the legal capacity and you agree to comply with these Terms and Conditions.</li>
+                            <li>You are not under the age of 13.</li>
+                        </ul>
+                    </div>
+
+                    <div id="s4" class="legal-section">
+                        <h3><span class="legal-num">04</span> Course Enrollment and Payments</h3>
+                        <p>Enrollment in any LingoSphere course requires full payment upfront unless a payment plan is explicitly agreed upon in writing. All fees are non-refundable after the first 14 days of the course start date. We reserve the right to modify our course offerings, pricing, and schedules at our discretion without prior notice.</p>
+                        <div class="legal-highlight"><strong>Please note:</strong> placement tests are complimentary; course materials remain LingoSphere property and may not be redistributed.</div>
+                    </div>
+
+                    <div id="s5" class="legal-section">
+                        <h3><span class="legal-num">05</span> Governing Law</h3>
+                        <p>These Terms shall be governed by and defined following the laws of the State of New York. LingoSphere and yourself irrevocably consent that the courts of New York shall have exclusive jurisdiction to resolve any dispute which may arise in connection with these terms.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -100,7 +311,7 @@
                     <div class="footer-socials">
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="footer-social-btn"><svg class="x-logo" viewBox="0 0 512 512" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
@@ -157,3 +368,4 @@
     <script src="../js/main.js"></script>
 </body>
 </html>
+

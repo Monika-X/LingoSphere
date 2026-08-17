@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,109 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* ============================================================
+           404 â€” Premium Edition
+           Refined, understated elegance (lighter than Home 2)
+           ============================================================ */
+        html, body {
+            min-height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        .e404 {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(900px 420px at 50% 0%, rgba(200, 169, 107, 0.16), transparent),
+                var(--c-midnight);
+            color: var(--c-ivory);
+            padding: 150px 0 190px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+        .e404::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 7rem;
+            background: linear-gradient(to top, var(--c-bg-primary), transparent);
+            pointer-events: none;
+        }
+        .e404-num {
+            font-family: var(--font-heading);
+            font-size: clamp(7rem, 18vw, 13rem);
+            line-height: 1;
+            margin: 0 0 1.5rem;
+            background: linear-gradient(135deg, var(--c-gold) 15%, #E0C58F 55%, rgba(212, 175, 115, 0.35));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .e404-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.9rem, 4vw, 2.6rem);
+            color: var(--c-ivory);
+            margin: 0 0 1rem;
+        }
+        .e404-title em {
+            font-style: italic;
+            color: var(--c-gold);
+        }
+        .e404 p {
+            max-width: 520px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+            color: rgba(250, 247, 242, 0.8);
+        }
+        .e404 .btn {
+            border-radius: 50px;
+            letter-spacing: 2px;
+        }
+        .e404 .btn + .btn {
+            margin-left: 1rem;
+        }
+        .e404 .btn-outline {
+            border-color: rgba(250, 247, 242, 0.3);
+            color: var(--c-ivory);
+        }
+        .e404 .btn-outline:hover {
+            border-color: var(--c-gold);
+            color: var(--c-gold);
+            background: transparent;
+        }
+        .e404-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2.5rem;
+            font-size: 0.9rem;
+        }
+        .e404-links a {
+            color: rgba(250, 247, 242, 0.65);
+            border-bottom: 1px solid rgba(200, 169, 107, 0.4);
+            padding-bottom: 2px;
+            transition: color var(--t-fast), border-color var(--t-fast);
+        }
+        .e404-links a:hover {
+            color: var(--c-gold);
+            border-color: var(--c-gold);
+        }
+        @media (max-width: 520px) {
+            .e404 .btn + .btn {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+            .e404-links {
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
 <body style="display: flex; flex-direction: column; min-height: 100vh;">
     <header class="header header-inverse">
@@ -39,12 +142,19 @@
     </header>
 
     <!-- 404 Content -->
-    <section class="page-header" style="background-color: var(--c-midnight); padding: 220px 0 150px; text-align: center; color: white; flex-grow: 1; display: flex; align-items: center;">
+    <section class="e404">
         <div class="container reveal">
-            <h1 class="hero-title" style="color: var(--c-gold); font-size: clamp(6rem, 15vw, 12rem); line-height: 1; margin-bottom: 0;">404</h1>
-            <h2 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1.5rem; color: white;">Lost in Translation?</h2>
-            <p style="max-width: 500px; margin: 0 auto 3rem; font-size: 1.2rem; opacity: 0.8;">We couldn't find the page you're looking for. It might have been moved, deleted, or perhaps it never existed.</p>
+            <span class="section-subtitle" style="color: var(--c-gold); border-color: var(--c-gold);">Error 404</span>
+            <h1 class="e404-num">404</h1>
+            <h2 class="e404-title">Lost in <em>Translation</em>?</h2>
+            <p>We couldn't find the page you're looking for. It might have been moved, deleted, or perhaps it never existed.</p>
             <a href="../index.html" class="btn btn-gold">Return to Homepage</a>
+            <a href="contact.html" class="btn btn-outline">Contact Support</a>
+            <div class="e404-links">
+                <a href="services.html">Programs</a>
+                <a href="blog.html">The Journal</a>
+                <a href="sitemap.html">Sitemap</a>
+            </div>
         </div>
     </section>
 
@@ -69,7 +179,7 @@
                     <div class="footer-socials">
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="footer-social-btn"><svg class="x-logo" viewBox="0 0 512 512" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
@@ -124,3 +234,4 @@
     <script src="../js/main.js"></script>
 </body>
 </html>
+

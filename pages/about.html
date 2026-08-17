@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -15,12 +15,19 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        /* About Page Specific Styles */
-        /* 1. Page Header */
-.page-header {
-            padding: 150px 0 100px;
-            background-image: linear-gradient(rgba(31, 42, 68, 0.88), rgba(122, 40, 72, 0.88)), url('../images/about-hero.jpg');
+<style>
+        /* ============================================================
+           About â€” Premium Edition
+           Refined, understated elegance (lighter than Home 2)
+           ============================================================ */
+
+        /* ---------- 1. Page Header ---------- */
+        .page-header {
+            padding: 175px 0 115px;
+            background-image:
+                radial-gradient(700px 320px at 50% -20%, rgba(200, 169, 107, 0.18), transparent),
+                linear-gradient(rgba(31, 42, 68, 0.9), rgba(122, 40, 72, 0.88)),
+                url('../images/about-hero.jpg');
             background-size: cover;
             background-position: center;
             color: var(--c-ivory);
@@ -33,24 +40,120 @@
             bottom: 0; left: 0; width: 100%; height: 50px;
             background: linear-gradient(to top, var(--c-bg-primary), transparent);
         }
+        .page-header .section-title {
+            color: var(--c-ivory);
+            border: none;
+        }
+        .page-header .section-title em {
+            font-style: italic;
+            color: var(--c-gold);
+        }
+        .page-header p {
+            color: rgba(250, 247, 242, 0.85);
+        }
 
-        /* 2. Mission Split Section */
+        /* ---------- 2. Mission Split ---------- */
         .mission-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--s-8);
+            gap: var(--s-10);
             align-items: center;
         }
+        .mission-visual {
+            position: relative;
+        }
+        .mission-frame {
+            position: relative;
+        }
+        .mission-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid var(--c-gold);
+            border-radius: var(--radius-xl);
+            transform: translate(18px, 18px);
+            z-index: -1;
+        }
         .mission-img {
-            border-radius: var(--radius-xl) 0 var(--radius-xl) 0;
-            box-shadow: 20px 20px 0 var(--c-gold);
+            border-radius: var(--radius-xl);
             width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            box-shadow: 0 24px 50px var(--c-shadow);
+        }
+        .mission-badge {
+            position: absolute;
+            bottom: -22px;
+            right: -16px;
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            padding: 1.1rem 1.4rem;
+            background-color: var(--c-bg-secondary);
+            border: 1px solid rgba(200, 169, 107, 0.45);
+            border-radius: var(--radius-md);
+            box-shadow: 0 16px 36px var(--c-shadow);
+        }
+        .mission-badge i {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--c-burgundy), var(--c-midnight));
+            color: var(--c-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .mission-badge strong {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            display: block;
+            color: var(--c-text-primary);
+            line-height: 1.1;
+        }
+        .mission-badge small {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--c-slate);
+        }
+        .mission-feature li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.9rem 0;
+            border-bottom: 1px solid var(--c-border);
+            font-weight: 600;
+        }
+        .mission-feature li:last-child {
+            border-bottom: none;
+        }
+        .mission-feature i {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(200, 169, 107, 0.12);
+            border: 1px solid rgba(200, 169, 107, 0.4);
+            color: var(--c-gold);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+            transition: all var(--t-normal);
+        }
+        .mission-feature li:hover i {
+            background-color: var(--c-gold);
+            color: var(--c-midnight);
         }
         @media (max-width: 768px) {
             .mission-section { grid-template-columns: 1fr; }
+            .mission-badge { right: 0; }
         }
 
-        /* 3. Leadership Team */
+        /* ---------- 3. Leadership Team ---------- */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -58,30 +161,64 @@
         }
         .team-card {
             background-color: var(--c-bg-secondary);
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-lg);
             overflow: hidden;
             text-align: center;
             border: 1px solid var(--c-border);
+            position: relative;
+            transition: transform var(--t-normal), box-shadow var(--t-normal), border-color var(--t-normal);
+        }
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--c-gold), var(--c-burgundy));
+            transform: scaleX(0);
+            transform-origin: left;
             transition: transform var(--t-normal);
+            z-index: 2;
         }
         .team-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px var(--c-shadow);
+            border-color: rgba(200, 169, 107, 0.45);
+        }
+        .team-card:hover::before {
+            transform: scaleX(1);
         }
         .team-img {
             width: 100%;
             height: 300px;
             object-fit: cover;
-            filter: grayscale(20%);
-            transition: filter var(--t-normal);
+            filter: grayscale(40%);
+            transition: filter var(--t-normal), transform var(--t-slow);
         }
         .team-card:hover .team-img {
             filter: grayscale(0);
+            transform: scale(1.05);
         }
         .team-info {
-            padding: var(--s-4);
+            padding: var(--s-5);
+        }
+        .team-info h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.4rem;
+        }
+        .team-role {
+            display: block;
+            color: var(--c-gold);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.75rem;
+        }
+        .team-info p {
+            font-size: 0.85rem;
         }
 
-        /* 4. Awards & Accreditations */
+        /* ---------- 4. Awards & Accreditations ---------- */
         .awards-section {
             background-color: var(--c-bg-tertiary);
             padding: var(--s-10) 0;
@@ -92,17 +229,34 @@
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
-            gap: var(--s-6);
+            gap: var(--s-8);
             align-items: center;
         }
         .award-item {
             text-align: center;
             color: var(--c-slate);
-            font-size: 3rem;
-            transition: color var(--t-fast);
         }
-        .award-item:hover {
+        .award-item i {
+            font-size: 1.9rem;
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            background-color: var(--c-bg-secondary);
+            border: 1px solid var(--c-border);
             color: var(--c-gold);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+            box-shadow: 0 10px 24px var(--c-shadow);
+            transition: all var(--t-normal);
+        }
+        .award-item:hover i {
+            background-color: var(--c-gold);
+            border-color: var(--c-gold);
+            color: var(--c-midnight);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(200, 169, 107, 0.4);
         }
         .award-item p {
             font-size: 1rem;
@@ -111,7 +265,7 @@
             color: var(--c-text-primary);
         }
 
-        /* 5. Timeline */
+        /* ---------- 5. Timeline ---------- */
         .timeline {
             position: relative;
             max-width: 900px;
@@ -159,7 +313,7 @@
             border: 1px solid var(--c-border);
             position: relative;
             overflow: hidden;
-            transition: transform var(--t-normal), box-shadow var(--t-normal);
+            transition: transform var(--t-normal), box-shadow var(--t-normal), border-color var(--t-normal);
         }
         .timeline-content::before {
             content: '';
@@ -171,6 +325,7 @@
         .timeline-item:hover .timeline-content {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px var(--c-shadow);
+            border-color: rgba(200, 169, 107, 0.45);
         }
         .timeline-icon {
             position: absolute;
@@ -198,7 +353,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             color: var(--c-burgundy);
-            background: rgba(200, 169, 107, 0.15);
+            background: linear-gradient(90deg, rgba(200, 169, 107, 0.2), rgba(200, 169, 107, 0.08));
             border: 1px solid rgba(200, 169, 107, 0.4);
             padding: 0.3rem 0.9rem;
             border-radius: 50px;
@@ -214,17 +369,40 @@
             .timeline-content { width: 100%; }
         }
 
-        /* 6. CTA Panel */
+        /* ---------- 6. CTA Panel ---------- */
         .cta-panel {
-            background-image: linear-gradient(rgba(31, 42, 68, 0.9), rgba(122, 40, 72, 0.9)), url('../images/about_hero.png');
+            background-image:
+                radial-gradient(600px 280px at 50% -10%, rgba(200, 169, 107, 0.14), transparent),
+                linear-gradient(rgba(31, 42, 68, 0.92), rgba(122, 40, 72, 0.88)),
+                url('../images/about_hero.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: var(--c-ivory);
             text-align: center;
             padding: var(--s-16) 0;
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-xl);
             margin-bottom: var(--s-8);
+            border: 1px solid rgba(200, 169, 107, 0.3);
+            overflow: hidden;
+        }
+        .cta-panel h2 {
+            color: var(--c-ivory);
+        }
+        .cta-panel h2 em {
+            font-style: italic;
+            color: var(--c-gold);
+        }
+        .cta-panel .btn-gold {
+            border-radius: 50px;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--c-gold), #E0C58F);
+            box-shadow: 0 10px 24px rgba(200, 169, 107, 0.4);
+            transition: all var(--t-normal);
+        }
+        .cta-panel .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 36px rgba(200, 169, 107, 0.55);
         }
     </style>
 </head>
@@ -261,28 +439,38 @@
     </header>
 
     <!-- 1. Page Header -->
-    <section class="page-header">
+<section class="page-header">
         <div class="container reveal">
-            <h1 class="section-title" style="color: white; border: none;">Our Heritage</h1>
-            <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem; opacity: 0.9;">Discover the story behind LingoSphere and our commitment to breaking down global communication barriers since 2011.</p>
+            <span class="section-subtitle" style="color: var(--c-gold);">Our Heritage Â· Est. 2011</span>
+            <h1 class="section-title">The Story Behind <em>Global Voices</em></h1>
+            <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem;">Discover the story behind LingoSphere and our commitment to breaking down global communication barriers since 2011.</p>
         </div>
     </section>
 
     <!-- 2. Mission Split Section -->
     <section class="section">
         <div class="container mission-section">
-            <div class="reveal">
-                <img src="../images/about_hero.png" alt="LingoSphere Campus" class="mission-img">
+<div class="mission-visual reveal">
+                <figure class="mission-frame">
+                    <img src="../images/about_hero.png" alt="LingoSphere Campus" class="mission-img">
+                </figure>
+                <div class="mission-badge">
+                    <i class="fa-solid fa-award"></i>
+                    <div>
+                        <strong>15 Years</strong>
+                        <small>of Excellence</small>
+                    </div>
+                </div>
             </div>
             <div class="reveal">
                 <span class="section-subtitle">Our Mission</span>
                 <h2 class="section-title">Bridging Cultures Through Language</h2>
                 <p class="mb-4 text-secondary">At LingoSphere, we believe that language is more than just grammar and vocabulary. It is the key to understanding cultures, forming deep connections, and unlocking global opportunities.</p>
                 <p class="mb-6 text-secondary">Our curriculum is designed not just to teach you how to speak, but how to truly communicate. We integrate cultural nuances, professional etiquette, and practical scenarios into every lesson.</p>
-                <ul style="list-style: none;">
-                    <li class="mb-2"><i class="fa-solid fa-certificate c-gold" style="margin-right: 10px;"></i> CEFR Aligned Curriculum</li>
-                    <li class="mb-2"><i class="fa-solid fa-user-tie c-gold" style="margin-right: 10px;"></i> Native-Level Instructors</li>
-                    <li class="mb-2"><i class="fa-solid fa-building c-gold" style="margin-right: 10px;"></i> State-of-the-Art Facilities</li>
+                <ul class="mission-feature" style="list-style: none;">
+                    <li><i class="fa-solid fa-certificate"></i> CEFR Aligned Curriculum</li>
+                    <li><i class="fa-solid fa-user-tie"></i> Native-Level Instructors</li>
+                    <li><i class="fa-solid fa-building"></i> State-of-the-Art Facilities</li>
                 </ul>
             </div>
         </div>
@@ -296,12 +484,12 @@
                 <h2 class="section-title">Academic Leadership</h2>
             </div>
             <div class="team-grid reveal">
-                <div class="team-card">
+<div class="team-card">
                     <img src="../images/team_leader.png" alt="Dr. Julian Reed" class="team-img">
                     <div class="team-info">
                         <h3 class="mb-1">Dr. Julian Reed</h3>
-                        <p class="c-gold mb-2" style="font-size: 0.9rem;">Dean of Linguistics</p>
-                        <p class="text-secondary" style="font-size: 0.85rem;">Ph.D. in Applied Linguistics, Oxford. 20+ years of language education experience.</p>
+                        <span class="team-role">Dean of Linguistics</span>
+                        <p class="text-secondary">Ph.D. in Applied Linguistics, Oxford. 20+ years of language education experience.</p>
                     </div>
                 </div>
                 <!-- Duplicate cards for layout demo -->
@@ -309,16 +497,16 @@
                     <img src="../images/clara-vance.jpg" alt="Prof. Clara Vance" class="team-img" style="object-position: top center;">
                     <div class="team-info">
                         <h3 class="mb-1">Prof. Clara Vance</h3>
-                        <p class="c-gold mb-2" style="font-size: 0.9rem;">Head of European Languages</p>
-                        <p class="text-secondary" style="font-size: 0.85rem;">Former diplomat. Specializes in advanced French and Spanish curricula.</p>
+                        <span class="team-role">Head of European Languages</span>
+                        <p class="text-secondary">Former diplomat. Specializes in advanced French and Spanish curricula.</p>
                     </div>
                 </div>
                 <div class="team-card">
                     <img src="../images/marcus-wei.jpg" alt="Dr. Marcus Wei" class="team-img" style="object-position: top center;">
                     <div class="team-info">
                         <h3 class="mb-1">Dr. Marcus Wei</h3>
-                        <p class="c-gold mb-2" style="font-size: 0.9rem;">Director of Corporate Training</p>
-                        <p class="text-secondary" style="font-size: 0.85rem;">Specialist in cross-cultural business communication and negotiation.</p>
+                        <span class="team-role">Director of Corporate Training</span>
+                        <p class="text-secondary">Specialist in cross-cultural business communication and negotiation.</p>
                     </div>
                 </div>
             </div>
@@ -401,9 +589,10 @@
     <!-- 6. Partnerships / Corporate Training CTA -->
     <section class="section" style="padding-top: 0;">
         <div class="container">
-            <div class="cta-panel reveal">
-                <h2 style="font-family: var(--font-heading); font-size: 3rem; margin-bottom: var(--s-4);">Corporate Training & Partnerships</h2>
-                <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto var(--s-6);">Empower your workforce with custom communication workshops and language training tailored for global business.</p>
+<div class="cta-panel reveal">
+                <span class="section-subtitle" style="color: var(--c-gold);">Partnerships</span>
+                <h2 style="font-family: var(--font-heading); font-size: 3rem; margin-bottom: var(--s-4);">Corporate Training & <em>Partnerships</em></h2>
+                <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto var(--s-6); color: rgba(250, 247, 242, 0.85);">Empower your workforce with custom communication workshops and language training tailored for global business.</p>
                 <a href="contact.html" class="btn btn-gold">Request Corporate Brochure</a>
             </div>
         </div>
@@ -430,7 +619,7 @@
                     <div class="footer-socials">
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="footer-social-btn"><svg class="x-logo" viewBox="0 0 512 512" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
@@ -487,4 +676,5 @@
     <script src="../js/main.js"></script>
 </body>
 </html>
+
 

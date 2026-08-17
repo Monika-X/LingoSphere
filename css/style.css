@@ -669,20 +669,6 @@ body.menu-open {
   border-top: 1px solid rgba(200, 169, 107, 0.3);
   overflow: hidden;
 }
-.footer::before {
-  content: 'LingoSphere';
-  position: absolute;
-  top: -40px;
-  right: -30px;
-  font-family: var(--font-heading);
-  font-style: italic;
-  font-size: clamp(10rem, 24vw, 22rem);
-  line-height: 1;
-  color: rgba(250, 247, 242, 0.025);
-  pointer-events: none;
-  transform: rotate(-6deg);
-  white-space: nowrap;
-}
 .footer-grid {
   display: grid;
   grid-template-columns: 3fr 2fr 2fr 3fr;
@@ -760,6 +746,11 @@ body.menu-open {
   font-size: 0.9rem;
   transition: all var(--t-normal);
 }
+.footer-social-btn svg {
+  width: 13px;
+  height: 13px;
+  display: block;
+}
 .footer-social-btn:hover {
   border-color: var(--c-gold);
   background-color: var(--c-gold);
@@ -801,6 +792,41 @@ body.menu-open {
 .footer-newsletter button:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 22px rgba(200, 169, 107, 0.45);
+}
+
+/* Newsletter Success Message */
+.newsletter-success {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid rgba(200, 169, 107, 0.5);
+  border-radius: var(--radius-md);
+  background: rgba(200, 169, 107, 0.08);
+  font-size: 0.9rem;
+  color: var(--c-text-secondary);
+}
+.newsletter-success i {
+  color: var(--c-gold);
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+.newsletter-success p {
+  margin: 0;
+}
+.newsletter-success.success-visible {
+  animation: fadeIn 0.4s ease;
+}
+.footer-newsletter + .newsletter-success {
+  margin-top: var(--s-4);
+}
+.newsletter-panel .newsletter-success {
+  justify-content: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.cta-form + .newsletter-success {
+  margin-top: var(--s-4);
 }
 .footer-bottom {
   display: flex;

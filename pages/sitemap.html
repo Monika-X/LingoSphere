@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,166 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* ============================================================
+           Sitemap â€” Premium Edition
+           Refined, understated elegance (lighter than Home 2)
+           ============================================================ */
+
+        /* ---------- 1. Hero ---------- */
+        .legal-hero {
+            background-color: var(--c-midnight);
+            padding: 180px 0 110px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .legal-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(800px 360px at 50% 100%, rgba(200, 169, 107, 0.15), transparent);
+            pointer-events: none;
+        }
+        .legal-hero::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 5rem;
+            background: linear-gradient(to top, var(--c-bg-primary), transparent);
+            pointer-events: none;
+        }
+        .legal-hero .hero-title em {
+            font-style: italic;
+            color: var(--c-gold);
+        }
+        .legal-hero p {
+            color: rgba(250, 247, 242, 0.85);
+        }
+
+        /* ---------- 2. Directory Cards ---------- */
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        @media (max-width: 992px) {
+            .map-grid {
+                grid-template-columns: 1fr;
+                max-width: 560px;
+                margin: 0 auto;
+            }
+        }
+        .map-card {
+            background-color: var(--c-bg-secondary);
+            border: 1px solid var(--c-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform var(--t-normal), box-shadow var(--t-normal), border-color var(--t-normal);
+        }
+        .map-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--c-gold), var(--c-burgundy));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--t-normal);
+        }
+        .map-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 36px var(--c-shadow);
+            border-color: rgba(200, 169, 107, 0.4);
+        }
+        .map-card:hover::before {
+            transform: scaleX(1);
+        }
+        .map-card-head {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            margin-bottom: 1.75rem;
+        }
+        .map-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(200, 169, 107, 0.1);
+            border: 1px solid rgba(200, 169, 107, 0.35);
+            color: var(--c-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .map-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--c-text-primary);
+            margin: 0;
+        }
+        .map-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .map-links li + li {
+            border-top: 1px dashed var(--c-border);
+        }
+        .map-links a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.9rem 0.25rem;
+            color: var(--c-text-secondary);
+            font-size: 0.95rem;
+            transition: color var(--t-fast), padding-left var(--t-fast);
+        }
+        .map-links a i {
+            color: var(--c-gold);
+            font-size: 0.75rem;
+            opacity: 0;
+            transform: translateX(-6px);
+            transition: all var(--t-fast);
+        }
+        .map-links a:hover {
+            color: var(--c-gold);
+            padding-left: 0.6rem;
+        }
+        .map-links a:hover i {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ---------- 3. CTA Row ---------- */
+        .map-cta {
+            margin-top: var(--s-12);
+            text-align: center;
+        }
+        .map-cta p {
+            color: var(--c-text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        .map-cta .btn {
+            border-radius: 50px;
+            letter-spacing: 2px;
+        }
+        .map-cta .btn + .btn {
+            margin-left: 1rem;
+        }
+        @media (max-width: 520px) {
+            .map-cta .btn + .btn {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header header-inverse">
@@ -39,50 +199,66 @@
     </header>
 
     <!-- 1. Hero Section -->
-    <section class="page-header" style="background-color: var(--c-midnight); padding: 180px 0 100px; text-align: center; color: white;">
+    <section class="legal-hero">
         <div class="container reveal">
             <span class="section-subtitle" style="color: var(--c-gold); border-color: var(--c-gold);">Directory</span>
-            <h1 class="hero-title" style="color: white; margin-bottom: 1.5rem;">Sitemap</h1>
-            <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem; opacity: 0.9;">Navigate through our digital campus.</p>
+            <h1 class="hero-title" style="color: white; margin-bottom: 1.5rem;">Site <em>Map</em></h1>
+            <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem;">Navigate through our digital campus.</p>
         </div>
     </section>
 
     <!-- 2. Content -->
     <section class="section">
         <div class="container reveal">
-            <div class="glass-card" style="max-width: 900px; margin: 0 auto; padding: 4rem; background-color: var(--c-bg-secondary);">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem;">
-                    
-                    <div>
-                        <h3 style="color: var(--c-text-primary); margin-bottom: 1.5rem; font-size: 1.25rem; border-bottom: 1px solid var(--c-border); padding-bottom: 0.5rem;">Main Navigation</h3>
-                        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.8rem;">
-                            <li><a href="../index.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">Home (General)</a></li>
-                            <li><a href="home-2.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">Home (Corporate)</a></li>
-                            <li><a href="about.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">Our Heritage</a></li>
-                            <li><a href="services.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">Programs & Services</a></li>
-                            <li><a href="contact.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">Contact Us</a></li>
-                        </ul>
-                    </div>
+            <div class="map-grid">
 
-                    <div>
-                        <h3 style="color: var(--c-text-primary); margin-bottom: 1.5rem; font-size: 1.25rem; border-bottom: 1px solid var(--c-border); padding-bottom: 0.5rem;">The Journal</h3>
-                        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.8rem;">
-                            <li><a href="blog.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">All Articles</a></li>
-                            <li><a href="blog-details.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">Sample Article</a></li>
-                        </ul>
+                <div class="map-card">
+                    <div class="map-card-head">
+                        <span class="map-icon"><i class="fa-solid fa-compass"></i></span>
+                        <h3>Main Navigation</h3>
                     </div>
-
-                    <div>
-                        <h3 style="color: var(--c-text-primary); margin-bottom: 1.5rem; font-size: 1.25rem; border-bottom: 1px solid var(--c-border); padding-bottom: 0.5rem;">Legal & Utility</h3>
-                        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.8rem;">
-                            <li><a href="privacy-policy.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">Privacy Policy</a></li>
-                            <li><a href="terms-conditions.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">Terms of Service</a></li>
-                            <li><a href="404.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">404 Error Page</a></li>
-                            <li><a href="maintenance.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">Maintenance Page</a></li>
-                        </ul>
-                    </div>
-
+                    <ul class="map-links">
+                        <li><a href="../index.html">Home (General) <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="home-2.html">Home (Corporate) <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="about.html">Our Heritage <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="services.html">Programs & Services <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="contact.html">Contact Us <i class="fa-solid fa-arrow-right"></i></a></li>
+                    </ul>
                 </div>
+
+                <div class="map-card">
+                    <div class="map-card-head">
+                        <span class="map-icon"><i class="fa-regular fa-newspaper"></i></span>
+                        <h3>The Journal</h3>
+                    </div>
+                    <ul class="map-links">
+                        <li><a href="blog.html">All Articles <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="blog-details.html">Featured Article <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="blog.html">Language Tips <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="blog.html">Cultural Insights <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="blog.html">Corporate <i class="fa-solid fa-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="map-card">
+                    <div class="map-card-head">
+                        <span class="map-icon"><i class="fa-solid fa-scale-balanced"></i></span>
+                        <h3>Legal & Utility</h3>
+                    </div>
+                    <ul class="map-links">
+                        <li><a href="privacy-policy.html">Privacy Policy <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="terms-conditions.html">Terms of Service <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="404.html">404 Error Page <i class="fa-solid fa-arrow-right"></i></a></li>
+                        <li><a href="maintenance.html">Maintenance Page <i class="fa-solid fa-arrow-right"></i></a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="map-cta">
+                <p>Can't find what you're looking for? Our team is one message away.</p>
+                <a href="services.html" class="btn btn-gold">Explore Programs</a>
+                <a href="contact.html" class="btn btn-outline">Contact Us</a>
             </div>
         </div>
     </section>
@@ -108,7 +284,7 @@
                     <div class="footer-socials">
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="footer-social-btn"><svg class="x-logo" viewBox="0 0 512 512" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
@@ -165,3 +341,4 @@
     <script src="../js/main.js"></script>
 </body>
 </html>
+
