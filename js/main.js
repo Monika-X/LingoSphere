@@ -270,4 +270,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 6. Campus Branch Tab Switching
+    const branchTabs = document.querySelectorAll('.branch-tab');
+    const branchContents = document.querySelectorAll('.branch-content');
+
+    if (branchTabs.length) {
+        branchTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                branchTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                branchContents.forEach(content => {
+                    content.classList.toggle('active', content.id === tab.dataset.target);
+                });
+            });
+        });
+    }
+
 });

@@ -218,6 +218,74 @@ button {
   color: var(--c-ivory);
 }
 
+/* Campus Branch Selector */
+.branch-tabs {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+.branch-tab {
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  border: 1px solid var(--c-gold);
+  background: transparent;
+  color: var(--c-text-primary);
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--t-normal);
+}
+.branch-tab:hover {
+  background-color: var(--c-gold);
+  color: var(--c-midnight);
+}
+.branch-tab.active,
+.branch-tab.active:hover {
+  background-color: var(--c-burgundy);
+  border-color: var(--c-burgundy);
+  color: var(--c-ivory);
+}
+.branch-content {
+  display: none;
+  min-height: 420px;
+  border-radius: var(--radius-xl);
+  padding: 3rem;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  overflow: hidden;
+  border: 1px solid var(--c-border);
+  position: relative;
+}
+.branch-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(31, 42, 68, 0.92), rgba(122, 40, 72, 0.72) 45%, rgba(31, 42, 68, 0.25));
+}
+.branch-content.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.branch-content > * {
+  position: relative;
+  z-index: 1;
+}
+.branch-content h3 {
+  color: white;
+}
+.branch-content .btn-outline {
+  color: white;
+  background-color: rgba(250, 247, 242, 0.15);
+}
+.branch-content .btn-outline:hover {
+  background-color: var(--c-gold);
+  color: var(--c-midnight);
+}
+
 /* Glassmorphism Card */
 .glass-card {
   background: rgba(255, 255, 255, 0.05);
