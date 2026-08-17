@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | LingoSphere International Academy</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Services Page Styles */
+        
+        /* 1. Services Header */
+        .services-header {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, var(--c-midnight) 0%, var(--c-emerald) 100%);
+            color: var(--c-ivory);
+            text-align: center;
+        }
+
+        /* 2. Spoken Language Breakdown */
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--s-6);
+        }
+        .lang-card {
+            background: var(--c-bg-secondary);
+            border: 1px solid var(--c-border);
+            padding: var(--s-6);
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+            transition: all var(--t-normal);
+        }
+        .lang-card:hover {
+            box-shadow: 0 10px 30px var(--c-shadow);
+            transform: translateY(-5px);
+        }
+        .lang-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--c-gold);
+            transition: height var(--t-fast);
+        }
+        .lang-icon {
+            font-size: 2.5rem;
+            color: var(--c-burgundy);
+            margin-bottom: var(--s-4);
+        }
+
+        /* 3. Communication Skills */
+        .skills-section {
+            background-color: var(--c-bg-tertiary);
+        }
+        .skills-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--s-4);
+        }
+        .skill-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--s-4);
+            background: var(--c-bg-secondary);
+            padding: var(--s-4);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--c-border);
+        }
+        .skill-icon-wrap {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(200, 169, 107, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--c-gold);
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        /* 4. Corporate Split */
+        .corporate-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--s-8);
+            align-items: center;
+        }
+        .corporate-img-box {
+            position: relative;
+            padding: var(--s-4);
+        }
+        .corporate-img-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 80%; height: 80%;
+            border: 2px solid var(--c-gold);
+            border-radius: var(--radius-lg);
+            z-index: -1;
+        }
+        .corporate-img {
+            border-radius: var(--radius-lg);
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        @media (max-width: 768px) {
+            .corporate-split { grid-template-columns: 1fr; }
+        }
+
+        /* 5. Exam Prep Grid */
+        .exam-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--s-4);
+        }
+        .exam-badge {
+            background: var(--c-midnight);
+            color: var(--c-ivory);
+            padding: var(--s-6);
+            text-align: center;
+            border-radius: var(--radius-md);
+            transition: background var(--t-fast);
+        }
+        .exam-badge:hover {
+            background: var(--c-burgundy);
+        }
+        .exam-badge h3 { color: var(--c-gold); margin-bottom: var(--s-2); font-size: 2rem;}
+
+        /* 6. Pricing Tables */
+        .pricing-section {
+            background: var(--c-bg-tertiary);
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--s-6);
+        }
+        .pricing-card {
+            background: var(--c-bg-secondary);
+            border: 1px solid var(--c-border);
+            border-radius: var(--radius-lg);
+            padding: var(--s-8);
+            text-align: center;
+            position: relative;
+            transition: transform var(--t-normal);
+        }
+        .pricing-card.premium {
+            border-color: var(--c-gold);
+            box-shadow: 0 15px 35px var(--c-shadow);
+            transform: scale(1.05);
+        }
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+        .pricing-card.premium:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+        .price {
+            font-size: 3rem;
+            font-family: var(--font-heading);
+            color: var(--c-burgundy);
+            margin: var(--s-4) 0;
+            font-weight: 700;
+        }
+        .price span { font-size: 1rem; color: var(--c-text-secondary); font-family: var(--font-body); }
+        .pricing-features {
+            list-style: none;
+            margin-bottom: var(--s-6);
+            text-align: left;
+        }
+        .pricing-features li {
+            padding: var(--s-2) 0;
+            border-bottom: 1px solid var(--c-border);
+        }
+        .pricing-features i { color: var(--c-gold); margin-right: 10px; }
+        
+        .premium-label {
+            position: absolute;
+            top: 0; right: 20px;
+            background: var(--c-gold);
+            color: var(--c-midnight);
+            padding: 5px 15px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            border-radius: 0 0 5px 5px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="floating-controls">
+        <button id="theme-toggle" class="control-btn" aria-label="Toggle Theme"></button>
+        <button id="dir-toggle" class="control-btn" aria-label="Toggle Direction"></button>
+    </div>
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-globe"></i> LingoSphere
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="home-2.html" class="nav-link">Home 2</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link active">Services</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- 1. Header -->
+    <section class="services-header">
+        <div class="container reveal">
+            <h1 class="section-title" style="color: white; border: none;">Our Programs</h1>
+            <p style="max-width: 700px; margin: 0 auto; font-size: 1.2rem; opacity: 0.9;">Comprehensive language training and communication workshops tailored for distinct goals and proficiency levels.</p>
+        </div>
+    </section>
+
+    <!-- 2. Spoken Language Breakdown -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center reveal mb-8">
+                <span class="section-subtitle">Core Offerings</span>
+                <h2 class="section-title">Language Training</h2>
+            </div>
+            
+            <div class="language-grid reveal">
+                <div class="lang-card">
+                    <i class="fa-solid fa-comments lang-icon"></i>
+                    <h3>Conversational Fluency</h3>
+                    <p class="text-secondary mt-2">Break the barrier of hesitation. Focus on speaking, listening, and real-world interactions without getting bogged down by heavy grammar rules.</p>
+                </div>
+                <div class="lang-card">
+                    <i class="fa-solid fa-book-open-reader lang-icon"></i>
+                    <h3>Intensive Grammar</h3>
+                    <p class="text-secondary mt-2">Master the mechanics of language. Ideal for students aiming for flawless academic writing or deep structural understanding.</p>
+                </div>
+                <div class="lang-card">
+                    <i class="fa-solid fa-plane-departure lang-icon"></i>
+                    <h3>Travel & Survival</h3>
+                    <p class="text-secondary mt-2">Short-term crash courses focusing on vocabulary for travel, dining, directions, and emergency situations abroad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Communication Skills -->
+    <section class="section skills-section">
+        <div class="container">
+            <div class="text-center reveal mb-8">
+                <span class="section-subtitle">Beyond Words</span>
+                <h2 class="section-title">Communication Mastery</h2>
+            </div>
+            
+            <div class="skills-list reveal" style="max-width: 800px; margin: 0 auto;">
+                <div class="skill-item">
+                    <div class="skill-icon-wrap"><i class="fa-solid fa-microphone"></i></div>
+                    <div>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Public Speaking & Presentation</h4>
+                        <p class="text-secondary">Conquer stage fright. Learn structuring, voice modulation, body language, and audience engagement techniques for impactful presentations.</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon-wrap"><i class="fa-solid fa-pen-nib"></i></div>
+                    <div>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Business Writing</h4>
+                        <p class="text-secondary">Craft compelling emails, reports, and proposals. Focus on tone, clarity, and persuasive corporate communication.</p>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon-wrap"><i class="fa-solid fa-handshake-angle"></i></div>
+                    <div>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Interview Preparation</h4>
+                        <p class="text-secondary">Mock interviews, resume building vocabulary, and techniques to answer behavioral questions confidently.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Corporate Training Split -->
+    <section class="section">
+        <div class="container corporate-split">
+            <div class="reveal">
+                <span class="section-subtitle">B2B Solutions</span>
+                <h2 class="section-title">Corporate Training</h2>
+                <p class="mb-4 text-secondary">Equip your workforce with the communication tools needed to succeed in a globalized market. We offer bespoke training modules designed around your company's specific industry and objectives.</p>
+                <ul style="list-style: none; margin-bottom: var(--s-6);">
+                    <li class="mb-2"><i class="fa-solid fa-check c-gold" style="margin-right: 10px;"></i> Needs Assessment & Skill Audits</li>
+                    <li class="mb-2"><i class="fa-solid fa-check c-gold" style="margin-right: 10px;"></i> Cross-Cultural Etiquette Workshops</li>
+                    <li class="mb-2"><i class="fa-solid fa-check c-gold" style="margin-right: 10px;"></i> On-site & Virtual Delivery</li>
+                </ul>
+                <a href="contact.html" class="btn btn-primary">Request Corporate Proposal</a>
+            </div>
+            <div class="corporate-img-box reveal">
+                <!-- Using the previously generated image or placeholder style -->
+                <img src="images/team_leader.png" alt="Corporate Training" class="corporate-img" style="object-position: top;">
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Exam Preparation -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center reveal mb-8">
+                <span class="section-subtitle">Certification</span>
+                <h2 class="section-title">Exam Preparation</h2>
+                <p style="max-width: 600px; margin: 0 auto;" class="text-secondary">Targeted coaching with official practice materials to guarantee your desired band or score.</p>
+            </div>
+            
+            <div class="exam-grid reveal">
+                <div class="exam-badge">
+                    <h3>IELTS</h3>
+                    <p>Academic & General</p>
+                </div>
+                <div class="exam-badge">
+                    <h3>TOEFL</h3>
+                    <p>iBT Certification</p>
+                </div>
+                <div class="exam-badge">
+                    <h3>DELF/DALF</h3>
+                    <p>French Proficiency</p>
+                </div>
+                <div class="exam-badge">
+                    <h3>DELE</h3>
+                    <p>Spanish Certification</p>
+                </div>
+                <div class="exam-badge">
+                    <h3>Goethe</h3>
+                    <p>Zertifikat A1-C2</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Pricing & Packages -->
+    <section class="section pricing-section">
+        <div class="container">
+            <div class="text-center reveal mb-8">
+                <span class="section-subtitle">Investment</span>
+                <h2 class="section-title">Tuition Packages</h2>
+            </div>
+            
+            <div class="pricing-grid reveal">
+                <div class="pricing-card">
+                    <h3>Group Batches</h3>
+                    <div class="price">$299 <span>/ course</span></div>
+                    <p class="text-secondary mb-4">Perfect for conversational practice and interactive learning.</p>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> 8-12 Students per class</li>
+                        <li><i class="fa-solid fa-check"></i> 24 Hours Total Instruction</li>
+                        <li><i class="fa-solid fa-check"></i> Standard Materials Provided</li>
+                        <li><i class="fa-solid fa-xmark" style="color: #ccc;"></i> 1-on-1 Mentorship</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline" style="width: 100%;">Enroll Now</a>
+                </div>
+                
+                <div class="pricing-card premium">
+                    <div class="premium-label">Most Popular</div>
+                    <h3>Intensive Focus</h3>
+                    <div class="price">$499 <span>/ course</span></div>
+                    <p class="text-secondary mb-4">Accelerated learning with personalized attention.</p>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> 4-6 Students per class</li>
+                        <li><i class="fa-solid fa-check"></i> 36 Hours Total Instruction</li>
+                        <li><i class="fa-solid fa-check"></i> Premium Materials & Access</li>
+                        <li><i class="fa-solid fa-check"></i> Bi-weekly 1-on-1 Feedback</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary" style="width: 100%;">Enroll Now</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Private Coaching</h3>
+                    <div class="price">$85 <span>/ hour</span></div>
+                    <p class="text-secondary mb-4">Bespoke curriculum tailored exactly to your pace and goals.</p>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> 1-on-1 Private Sessions</li>
+                        <li><i class="fa-solid fa-check"></i> Flexible Scheduling</li>
+                        <li><i class="fa-solid fa-check"></i> Custom Curriculum Design</li>
+                        <li><i class="fa-solid fa-check"></i> Executive Level Tutors</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline" style="width: 100%;">Book Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 1rem; color: var(--c-gold);">
+                        <i class="fa-solid fa-globe"></i> LingoSphere
+                    </a>
+                    <p style="opacity: 0.8; margin-bottom: 1rem;">Empowering global voices through premium language education and communication mastery.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="about.html">About Us</a>
+                        <a href="services.html">Our Programs</a>
+                        <a href="contact.html">Contact & Enroll</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 LingoSphere International Academy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" id="back-to-top" class="back-to-top" aria-label="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+    <script src="js/main.js"></script>
+</body>
+</html>
