@@ -75,6 +75,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -92,6 +93,8 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
   color: var(--c-text-primary);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 a {
@@ -373,24 +376,7 @@ button {
    5. Global Elements (Header, Footer, Controls)
    ========================================================================== */
 
-/* Header Inverse (for dark backgrounds) */
-.header.header-inverse:not(.scrolled) .nav-link,
-.header.header-inverse:not(.scrolled) .logo,
-.header.header-inverse:not(.scrolled) .nav-link,
-.header.header-inverse:not(.scrolled) .logo,
-.header.header-inverse:not(.scrolled) .mobile-menu-btn,
-.header.header-inverse:not(.scrolled) .mobile-menu-btn span,
-.header.header-inverse:not(.scrolled) #theme-toggle i,
-.header.header-inverse:not(.scrolled) #dir-toggle {
-    color: var(--c-ivory);
-}
-.header.header-inverse:not(.scrolled) .mobile-menu-btn span {
-    background-color: var(--c-ivory);
-}
-.header.header-inverse:not(.scrolled) .tagline {
-    color: rgba(255, 255, 255, 0.7) !important;
-}
-
+/* Header Inverse (removed for solid header) */
 /* Header Actions */
 .header-actions {
   display: flex;
@@ -433,7 +419,7 @@ button {
   top: 0;
   width: 100%;
   height: var(--header-height);
-  background-color: transparent;
+  background-color: var(--c-bg-primary);
   z-index: 999;
   transition: all var(--t-normal);
   display: flex;
@@ -479,11 +465,7 @@ button {
   -webkit-background-clip: text;
   background-clip: text;
 }
-.header.header-inverse:not(.scrolled) .logo > div > span:first-child {
-  background: linear-gradient(120deg, var(--c-ivory) 25%, var(--c-gold) 90%);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
+
 .footer-col .logo > div > span:first-child {
   background: linear-gradient(120deg, var(--c-gold), #F0E2C0);
   -webkit-background-clip: text;
