@@ -1,23 +1,154 @@
 <!DOCTYPE html>
-<html lang='en' dir='ltr' data-theme='light'>
+<html lang="en" dir="ltr" data-theme="light">
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>sitemap.html | LingoSphere</title>
-    <link href='https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap' rel='stylesheet'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'>
-    <link rel='stylesheet' href='css/style.css'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap | LingoSphere</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header class='header'><div class='container nav-container'><a href='index.html' class='logo'>LingoSphere</a></div></header>
-    <section class='section text-center' style='padding-top:150px;'><div class='container'><h1>sitemap.html</h1><p>Premium Section 1</p></div></section>
-    <section class='section'><div class='container'><h2>Premium Section 2</h2></div></section>
-    <section class='section'><div class='container'><h2>Premium Section 3</h2></div></section>
-    <section class='section'><div class='container'><h2>Premium Section 4</h2></div></section>
-    <section class='section'><div class='container'><h2>Premium Section 5</h2></div></section>
-    <section class='section'><div class='container'><h2>Premium Section 6</h2></div></section>
-    <footer class='footer'><div class='container text-center'>&copy; 2026 LingoSphere</div></footer>
-    <script src='js/main.js'></script>
+    <header class="header header-inverse">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
+                    <path d="M85 50C85 69.33 69.33 85 50 85C43.5 85 37.4 83.2 32.2 80.2L15 85L19.8 67.8C16.8 62.6 15 56.5 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="var(--c-gold)" stroke-width="8" stroke-linejoin="round"/>
+                    <path d="M40 35V60H60" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+                </svg>
+                <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
+                    <span style="line-height: 1.1;">LingoSphere</span>
+                    <span class="tagline" style="font-size: 0.75rem; margin-bottom: 0; letter-spacing: 0; color: var(--c-text-secondary); font-style: normal; font-family: var(--font-body);">Empowering Global Voices</span>
+                </div>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="home-2.html" class="nav-link">Home 2</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="header-action-btn" aria-label="Toggle Theme"></button>
+                <button id="dir-toggle" class="header-action-btn" aria-label="Toggle Direction"></button>
+                <a href="contact.html" class="btn btn-gold" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;">Enroll</a>
+            </div>
+            <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section class="page-header" style="background-color: var(--c-midnight); padding: 180px 0 100px; text-align: center; color: white;">
+        <div class="container reveal">
+            <span class="section-subtitle" style="color: var(--c-gold); border-color: var(--c-gold);">Directory</span>
+            <h1 class="hero-title" style="color: white; margin-bottom: 1.5rem;">Sitemap</h1>
+            <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem; opacity: 0.9;">Navigate through our digital campus.</p>
+        </div>
+    </section>
+
+    <!-- 2. Content -->
+    <section class="section">
+        <div class="container reveal">
+            <div class="glass-card" style="max-width: 900px; margin: 0 auto; padding: 4rem; background-color: var(--c-bg-secondary);">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem;">
+                    
+                    <div>
+                        <h3 style="color: var(--c-text-primary); margin-bottom: 1.5rem; font-size: 1.25rem; border-bottom: 1px solid var(--c-border); padding-bottom: 0.5rem;">Main Navigation</h3>
+                        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.8rem;">
+                            <li><a href="../index.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">Home (General)</a></li>
+                            <li><a href="home-2.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">Home (Corporate)</a></li>
+                            <li><a href="about.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">Our Heritage</a></li>
+                            <li><a href="services.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">Programs & Services</a></li>
+                            <li><a href="contact.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 style="color: var(--c-text-primary); margin-bottom: 1.5rem; font-size: 1.25rem; border-bottom: 1px solid var(--c-border); padding-bottom: 0.5rem;">The Journal</h3>
+                        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.8rem;">
+                            <li><a href="blog.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">All Articles</a></li>
+                            <li><a href="blog-details.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">Sample Article</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 style="color: var(--c-text-primary); margin-bottom: 1.5rem; font-size: 1.25rem; border-bottom: 1px solid var(--c-border); padding-bottom: 0.5rem;">Legal & Utility</h3>
+                        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.8rem;">
+                            <li><a href="privacy-policy.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">Privacy Policy</a></li>
+                            <li><a href="terms-conditions.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">Terms of Service</a></li>
+                            <li><a href="404.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">404 Error Page</a></li>
+                            <li><a href="maintenance.html" style="color: var(--c-text-secondary); text-decoration: none; transition: color 0.3s;">Maintenance Page</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" style="background-color: var(--c-midnight); color: var(--c-ivory); padding: 80px 0 30px;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                <div>
+                    <a href="../index.html" class="logo mb-4" style="color: white; text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                        <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M85 50C85 69.33 69.33 85 50 85C43.5 85 37.4 83.2 32.2 80.2L15 85L19.8 67.8C16.8 62.6 15 56.5 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="var(--c-gold)" stroke-width="8" stroke-linejoin="round"/>
+                            <path d="M40 35V60H60" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+                        </svg>
+                        <span style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700;">LingoSphere</span>
+                    </a>
+                    <p style="opacity: 0.7; font-size: 0.9rem; line-height: 1.8;">Empowering global voices since 2011. Premium language education for a connected world.</p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="#" style="color: white; opacity: 0.7; transition: all 0.3s;"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                        <a href="#" style="color: white; opacity: 0.7; transition: all 0.3s;"><i class="fa-brands fa-twitter text-xl"></i></a>
+                        <a href="#" style="color: white; opacity: 0.7; transition: all 0.3s;"><i class="fa-brands fa-instagram text-xl"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 1.5rem;">Programs</h4>
+                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.8rem;">
+                        <li><a href="services.html" style="color: white; opacity: 0.7; text-decoration: none; transition: opacity 0.3s;">Corporate Training</a></li>
+                        <li><a href="services.html" style="color: white; opacity: 0.7; text-decoration: none; transition: opacity 0.3s;">Private Coaching</a></li>
+                        <li><a href="services.html" style="color: white; opacity: 0.7; text-decoration: none; transition: opacity 0.3s;">Intensive Bootcamps</a></li>
+                        <li><a href="services.html" style="color: white; opacity: 0.7; text-decoration: none; transition: opacity 0.3s;">Online Seminars</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 1.5rem;">Company</h4>
+                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.8rem;">
+                        <li><a href="about.html" style="color: white; opacity: 0.7; text-decoration: none; transition: opacity 0.3s;">Our Heritage</a></li>
+                        <li><a href="blog.html" style="color: white; opacity: 0.7; text-decoration: none; transition: opacity 0.3s;">The Journal</a></li>
+                        <li><a href="contact.html" style="color: white; opacity: 0.7; text-decoration: none; transition: opacity 0.3s;">Careers</a></li>
+                        <li><a href="contact.html" style="color: white; opacity: 0.7; text-decoration: none; transition: opacity 0.3s;">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 1.5rem;">Contact</h4>
+                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.8rem;">
+                        <li style="opacity: 0.7; font-size: 0.9rem;"><i class="fa-solid fa-map-pin" style="margin-right: 10px; color: var(--c-gold);"></i> 123 Global Avenue, NY 10001</li>
+                        <li style="opacity: 0.7; font-size: 0.9rem;"><i class="fa-solid fa-phone" style="margin-right: 10px; color: var(--c-gold);"></i> +1 (555) 123-4567</li>
+                        <li style="opacity: 0.7; font-size: 0.9rem;"><i class="fa-solid fa-envelope" style="margin-right: 10px; color: var(--c-gold);"></i> info@lingosphere.edu</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; opacity: 0.6;">
+                <p>&copy; 2026 LingoSphere Academy. All rights reserved.</p>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="privacy-policy.html" style="color: white; text-decoration: none;">Privacy Policy</a>
+                    <a href="terms-conditions.html" style="color: white; text-decoration: none;">Terms of Service</a>
+                    <a href="sitemap.html" style="color: white; text-decoration: none;">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#" id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <script src="../js/main.js"></script>
 </body>
 </html>
-

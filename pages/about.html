@@ -192,26 +192,32 @@
 </head>
 <body>
 
-    <!-- Floating Controls -->
-    <div class="floating-controls">
-        <button id="theme-toggle" class="control-btn" aria-label="Toggle Theme"></button>
-        <button id="dir-toggle" class="control-btn" aria-label="Toggle Direction"></button>
-    </div>
-
     <!-- Header -->
-    <header class="header">
+    <header class="header header-inverse">
         <div class="container nav-container">
             <a href="../index.html" class="logo">
-                <i class="fa-solid fa-globe"></i> LingoSphere
+                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
+                    <path d="M85 50C85 69.33 69.33 85 50 85C43.5 85 37.4 83.2 32.2 80.2L15 85L19.8 67.8C16.8 62.6 15 56.5 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="var(--c-gold)" stroke-width="8" stroke-linejoin="round"/>
+                    <path d="M40 35V60H60" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+                </svg>
+                <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
+                    <span style="line-height: 1.1;">LingoSphere</span>
+                    <span class="tagline" style="font-size: 0.75rem; margin-bottom: 0; letter-spacing: 0; color: var(--c-text-secondary); font-style: normal; font-family: var(--font-body);">Empowering Global Voices</span>
+                </div>
             </a>
             <nav class="nav-links">
                 <a href="../index.html" class="nav-link">Home</a>
                 <a href="home-2.html" class="nav-link">Home 2</a>
-                <a href="about.html" class="nav-link active">About</a>
+                <a href="about.html" class="nav-link">About</a>
                 <a href="services.html" class="nav-link">Services</a>
                 <a href="blog.html" class="nav-link">Blog</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="header-action-btn" aria-label="Toggle Theme"></button>
+                <button id="dir-toggle" class="header-action-btn" aria-label="Toggle Direction"></button>
+                <a href="contact.html" class="btn btn-gold" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;">Enroll</a>
+            </div>
             <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
         </div>
     </header>
@@ -362,44 +368,62 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a href="../index.html" class="logo" style="margin-bottom: 1rem; color: var(--c-gold);">
-                        <i class="fa-solid fa-globe"></i> LingoSphere
+                    <a href="../index.html" class="logo">
+                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon" style="margin-right: 0.5rem;">
+                            <path d="M85 50C85 69.33 69.33 85 50 85C43.5 85 37.4 83.2 32.2 80.2L15 85L19.8 67.8C16.8 62.6 15 56.5 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="var(--c-gold)" stroke-width="8" stroke-linejoin="round"/>
+                            <path d="M40 35V60H60" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+                        </svg>
+                        LingoSphere
                     </a>
-                    <p style="opacity: 0.8; margin-bottom: 1rem;">Empowering global voices through premium language education and communication mastery.</p>
-                    <div style="display: flex; gap: 1rem; font-size: 1.2rem;">
-                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <span class="tagline">Empowering Global Voices</span>
+                    <p class="footer-desc">Empowering global voices through premium language education and communication mastery. A curated sanctuary where every language tells an extraordinary story.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h4>Quick Links</h4>
+                    <h4>Programs</h4>
                     <div class="footer-links">
-                        <a href="about.html">About Us</a>
-                        <a href="services.html">Our Programs</a>
-                        <a href="blog.html">Language Blog</a>
-                        <a href="contact.html">Contact & Enroll</a>
+                        <a href="services.html">English Mastery</a>
+                        <a href="services.html">Diplomatic French</a>
+                        <a href="services.html">Corporate German</a>
+                        <a href="services.html">Global Spanish</a>
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h4>Legal</h4>
+                    <h4>Company</h4>
                     <div class="footer-links">
-                        <a href="privacy-policy.html">Privacy Policy</a>
-                        <a href="terms-conditions.html">Terms & Conditions</a>
-                        <a href="sitemap.html">Sitemap</a>
+                        <a href="../index.html">Home</a>
+                        <a href="about.html">About</a>
+                        <a href="services.html">Services</a>
+                        <a href="blog.html">Blog</a>
+                        <a href="contact.html">Contact</a>
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h4>Contact</h4>
-                    <div class="footer-links" style="color: rgba(255,255,255,0.8);">
-                        <p><i class="fa-solid fa-location-dot"></i> 123 Global Avenue, NY 10001</p>
-                        <p><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</p>
-                        <p><i class="fa-solid fa-envelope"></i> admissions@lingosphere.edu</p>
-                    </div>
+                    <h4>The Private List</h4>
+                    <p class="footer-desc">Receive exclusive previews, language insights, and early registration access before anyone else.</p>
+                    <form class="footer-newsletter">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit">JOIN</button>
+                    </form>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 LingoSphere International Academy. All rights reserved.</p>
+                <div class="footer-decorative-dot">
+                    <div class="dot"></div>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2026 LingoSphere. All rights reserved. Established 2011, NY.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-conditions.html">Terms & Conditions</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
             </div>
         </div>
     </footer>

@@ -1,23 +1,29 @@
 <!DOCTYPE html>
-<html lang='en' dir='ltr' data-theme='light'>
+<html lang="en" dir="ltr" data-theme="light">
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>maintenance.html | LingoSphere</title>
-    <link href='https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap' rel='stylesheet'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'>
-    <link rel='stylesheet' href='css/style.css'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Maintenance | LingoSphere</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
-    <header class='header'><div class='container nav-container'><a href='index.html' class='logo'>LingoSphere</a></div></header>
-    <section class='section text-center' style='padding-top:150px;'><div class='container'><h1>maintenance.html</h1><p>Premium Section 1</p></div></section>
-    <section class='section'><div class='container'><h2>Premium Section 2</h2></div></section>
-    <section class='section'><div class='container'><h2>Premium Section 3</h2></div></section>
-    <section class='section'><div class='container'><h2>Premium Section 4</h2></div></section>
-    <section class='section'><div class='container'><h2>Premium Section 5</h2></div></section>
-    <section class='section'><div class='container'><h2>Premium Section 6</h2></div></section>
-    <footer class='footer'><div class='container text-center'>&copy; 2026 LingoSphere</div></footer>
-    <script src='js/main.js'></script>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+    <!-- Maintenance Content -->
+    <section class="page-header" style="background-color: var(--c-midnight); padding: 0; text-align: center; color: white; flex-grow: 1; display: flex; align-items: center; justify-content: center;">
+        <div class="container reveal" style="max-width: 800px;">
+            <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 2rem;">
+                <path d="M85 50C85 69.33 69.33 85 50 85C43.5 85 37.4 83.2 32.2 80.2L15 85L19.8 67.8C16.8 62.6 15 56.5 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="var(--c-gold)" stroke-width="8" stroke-linejoin="round"/>
+                <path d="M40 35V60H60" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+            </svg>
+            <h1 class="hero-title" style="color: white; font-size: clamp(3rem, 5vw, 4.5rem); margin-bottom: 1.5rem;">We'll Be Back Shortly.</h1>
+            <p style="font-size: 1.25rem; opacity: 0.8; margin-bottom: 3rem; line-height: 1.8;">Our digital campus is currently undergoing scheduled maintenance to improve your learning experience. We appreciate your patience and look forward to welcoming you back soon.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <a href="mailto:support@lingosphere.edu" class="btn btn-gold">Contact Support</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/main.js"></script>
 </body>
 </html>
-

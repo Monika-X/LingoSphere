@@ -48,9 +48,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateDirIcon(dir) {
         if(!dirBtn) return;
-        dirBtn.innerHTML = dir === 'ltr' 
-            ? '<i class="fa-solid fa-left-long"></i>' 
-            : '<i class="fa-solid fa-right-long"></i>';
+        dirBtn.innerHTML = dir === 'ltr' ? 'RTL' : 'LTR';
+    }
+
+    // 2. Active Nav Link Indication
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-links .nav-link').forEach(link => {
+        const linkPage = link.getAttribute('href').split('/').pop();
+        if (linkPage === currentPage) {
+            link.classList.add('active');
+        }
+    });
+
+    // Mobile Menu Toggle
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    if (mobileBtn && navLinks) {
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
     }
 
     // 2. Sticky Header & Back to Top
@@ -120,14 +136,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     counters.forEach(counter => counterObserver.observe(counter));
 
-    // 5. Mobile Menu Toggle (Basic setup)
-    const mobileBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if(mobileBtn && navLinks) {
-        mobileBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            // Additional logic for mobile menu styling needed in CSS
-        });
-    }
 });

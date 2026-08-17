@@ -6,18 +6,246 @@
     <title>home-2.html | LingoSphere</title>
     <link href='https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap' rel='stylesheet'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'>
-    <link rel='stylesheet' href='css/style.css'>
+    <link rel='stylesheet' href="../css/style.css">
 </head>
 <body>
-    <header class='header'><div class='container nav-container'><a href='index.html' class='logo'>LingoSphere</a></div></header>
-    <section class='section text-center' style='padding-top:150px;'><div class='container'><h1>home-2.html</h1><p>Premium Section 1</p></div></section>
-    <section class='section'><div class='container'><h2>Premium Section 2</h2></div></section>
-    <section class='section'><div class='container'><h2>Premium Section 3</h2></div></section>
-    <section class='section'><div class='container'><h2>Premium Section 4</h2></div></section>
-    <section class='section'><div class='container'><h2>Premium Section 5</h2></div></section>
-    <section class='section'><div class='container'><h2>Premium Section 6</h2></div></section>
-    <footer class='footer'><div class='container text-center'>&copy; 2026 LingoSphere</div></footer>
-    <script src='js/main.js'></script>
+    <header class="header header-inverse">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
+                    <path d="M85 50C85 69.33 69.33 85 50 85C43.5 85 37.4 83.2 32.2 80.2L15 85L19.8 67.8C16.8 62.6 15 56.5 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="var(--c-gold)" stroke-width="8" stroke-linejoin="round"/>
+                    <path d="M40 35V60H60" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+                </svg>
+                <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
+                    <span style="line-height: 1.1;">LingoSphere</span>
+                    <span class="tagline" style="font-size: 0.75rem; margin-bottom: 0; letter-spacing: 0; color: var(--c-text-secondary); font-style: normal; font-family: var(--font-body);">Empowering Global Voices</span>
+                </div>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="home-2.html" class="nav-link">Home 2</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="header-action-btn" aria-label="Toggle Theme"></button>
+                <button id="dir-toggle" class="header-action-btn" aria-label="Toggle Direction"></button>
+                <a href="contact.html" class="btn btn-gold" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;">Enroll</a>
+            </div>
+            <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
+    <!-- 1. Corporate Hero Section -->
+    <section class="hero" style="background-color: var(--c-midnight); padding-top: 180px; padding-bottom: 120px;">
+        <div class="container">
+            <div class="hero-content reveal" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <span class="section-subtitle" style="color: var(--c-gold); border-color: var(--c-gold);">Enterprise Solutions</span>
+                <h1 class="hero-title" style="color: white;">Empower Your Global Workforce.</h1>
+                <p class="hero-subtitle" style="opacity: 0.9; color: var(--c-ivory);">Bespoke language training and cross-cultural communication strategies designed exclusively for Fortune 500 companies and visionary enterprises.</p>
+                <div class="hero-actions" style="justify-content: center; margin-top: 2rem;">
+                    <a href="contact.html" class="btn btn-gold">Request Corporate Consultation</a>
+                    <a href="about.html" class="btn btn-outline" style="color: white; border-color: white;">Our Methodology</a>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div style="display: flex; justify-content: center; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <div>
+                        <h3 style="color: var(--c-gold); font-size: 2.5rem; margin-bottom: 0;">150+</h3>
+                        <p style="color: white; font-size: 0.9rem; opacity: 0.8;">Enterprise Clients</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--c-gold); font-size: 2.5rem; margin-bottom: 0;">20k+</h3>
+                        <p style="color: white; font-size: 0.9rem; opacity: 0.8;">Professionals Trained</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--c-gold); font-size: 2.5rem; margin-bottom: 0;">98%</h3>
+                        <p style="color: white; font-size: 0.9rem; opacity: 0.8;">Corporate Retention</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Trusted By -->
+    <section class="section" style="background-color: var(--c-bg-secondary); padding: var(--s-6) 0;">
+        <div class="container reveal text-center">
+            <p class="text-secondary mb-4" style="font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">Trusted by Global Leaders</p>
+            <div style="display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; opacity: 0.6; font-size: 2rem;">
+                <i class="fa-brands fa-microsoft"></i>
+                <i class="fa-brands fa-apple"></i>
+                <i class="fa-brands fa-amazon"></i>
+                <i class="fa-brands fa-google"></i>
+                <i class="fa-brands fa-stripe"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Enterprise Solutions -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center reveal mb-8">
+                <span class="section-subtitle">Our Expertise</span>
+                <h2 class="section-title">Tailored Corporate Solutions</h2>
+                <p style="max-width: 600px; margin: 0 auto;" class="text-secondary">We align our linguistic training with your strategic business objectives to ensure immediate, measurable ROI.</p>
+            </div>
+            
+            <div class="program-grid reveal">
+                <!-- Solution 1 -->
+                <div class="program-card" style="padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--c-border); background-color: var(--c-bg-secondary);">
+                    <i class="fa-solid fa-handshake c-gold" style="font-size: 2.5rem; margin-bottom: 1.5rem;"></i>
+                    <h3 class="mb-2">Executive Coaching</h3>
+                    <p class="text-secondary mb-4">One-on-one intensive language and cultural nuance training for C-suite executives preparing for international deployment or board roles.</p>
+                    <a href="services.html" class="c-gold" style="font-weight: 600; font-size: 0.9rem;">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <!-- Solution 2 -->
+                <div class="program-card" style="padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--c-border); background-color: var(--c-bg-secondary);">
+                    <i class="fa-solid fa-users-gear c-gold" style="font-size: 2.5rem; margin-bottom: 1.5rem;"></i>
+                    <h3 class="mb-2">Team Integration</h3>
+                    <p class="text-secondary mb-4">Group workshops designed to bridge communication gaps in multinational teams, fostering an inclusive and highly efficient corporate culture.</p>
+                    <a href="services.html" class="c-gold" style="font-weight: 600; font-size: 0.9rem;">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <!-- Solution 3 -->
+                <div class="program-card" style="padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--c-border); background-color: var(--c-bg-secondary);">
+                    <i class="fa-solid fa-file-contract c-gold" style="font-size: 2.5rem; margin-bottom: 1.5rem;"></i>
+                    <h3 class="mb-2">Negotiation & Diplomacy</h3>
+                    <p class="text-secondary mb-4">Specialized modules focusing on high-stakes negotiation vocabulary, international etiquette, and persuasive cross-border communication.</p>
+                    <a href="services.html" class="c-gold" style="font-weight: 600; font-size: 0.9rem;">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Methodology Split -->
+    <section class="section" style="background-color: var(--c-bg-tertiary);">
+        <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+            <div class="reveal">
+                <span class="section-subtitle">Why LingoSphere B2B</span>
+                <h2 class="section-title">Data-Driven Fluency</h2>
+                <p class="mb-4 text-secondary">Our corporate programs go beyond traditional learning. We utilize advanced linguistic analytics to track your team's progress in real-time.</p>
+                <ul style="list-style: none;">
+                    <li class="mb-3" style="display: flex; align-items: flex-start; gap: 1rem;">
+                        <i class="fa-solid fa-check c-gold" style="margin-top: 5px;"></i>
+                        <div>
+                            <h4 style="margin-bottom: 0.2rem;">Custom Industry Vocabulary</h4>
+                            <p class="text-secondary" style="font-size: 0.9rem;">We build glossaries specific to finance, tech, legal, or medical sectors.</p>
+                        </div>
+                    </li>
+                    <li class="mb-3" style="display: flex; align-items: flex-start; gap: 1rem;">
+                        <i class="fa-solid fa-check c-gold" style="margin-top: 5px;"></i>
+                        <div>
+                            <h4 style="margin-bottom: 0.2rem;">Flexible Delivery Modes</h4>
+                            <p class="text-secondary" style="font-size: 0.9rem;">In-person at your HQ, live-virtual, or self-paced digital modules.</p>
+                        </div>
+                    </li>
+                    <li class="mb-3" style="display: flex; align-items: flex-start; gap: 1rem;">
+                        <i class="fa-solid fa-check c-gold" style="margin-top: 5px;"></i>
+                        <div>
+                            <h4 style="margin-bottom: 0.2rem;">Dedicated Account Managers</h4>
+                            <p class="text-secondary" style="font-size: 0.9rem;">A single point of contact to handle scheduling, reporting, and logistics.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="reveal" style="position: relative;">
+                <!-- Placeholder for a sleek corporate image -->
+                <div style="width: 100%; height: 500px; background: linear-gradient(135deg, var(--c-midnight), var(--c-burgundy)); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+                    <i class="fa-solid fa-chart-line" style="font-size: 8rem; color: rgba(255,255,255,0.1);"></i>
+                </div>
+                <!-- Floating stat badge -->
+                <div style="position: absolute; bottom: -20px; left: -20px; background-color: var(--c-bg-primary); padding: 1.5rem; border-radius: var(--radius-md); box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid var(--c-border);">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 50px; height: 50px; background-color: rgba(197, 160, 89, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fa-solid fa-arrow-trend-up c-gold" style="font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 0;">+45%</h4>
+                            <p class="text-secondary" style="font-size: 0.8rem; margin-bottom: 0;">Faster Onboarding</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Enterprise CTA -->
+    <section class="section">
+        <div class="container">
+            <div class="reveal" style="background-color: var(--c-burgundy); color: white; padding: 4rem; border-radius: var(--radius-xl); text-align: center; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1; background-image: radial-gradient(circle at 20% 50%, var(--c-gold) 0%, transparent 50%), radial-gradient(circle at 80% 50%, var(--c-gold) 0%, transparent 50%);"></div>
+                <div style="position: relative; z-index: 1;">
+                    <h2 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem;">Ready to Transform Your Corporate Communication?</h2>
+                    <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; opacity: 0.9;">Contact our enterprise specialists today to schedule a comprehensive linguistic audit for your team.</p>
+                    <a href="contact.html" class="btn btn-gold" style="background-color: white; color: var(--c-burgundy);">Schedule an Audit</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="../index.html" class="logo">
+                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon" style="margin-right: 0.5rem;">
+                            <path d="M85 50C85 69.33 69.33 85 50 85C43.5 85 37.4 83.2 32.2 80.2L15 85L19.8 67.8C16.8 62.6 15 56.5 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="var(--c-gold)" stroke-width="8" stroke-linejoin="round"/>
+                            <path d="M40 35V60H60" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+                        </svg>
+                        LingoSphere
+                    </a>
+                    <span class="tagline">Empowering Global Voices</span>
+                    <p class="footer-desc">Empowering global voices through premium language education and communication mastery. A curated sanctuary where every language tells an extraordinary story.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Programs</h4>
+                    <div class="footer-links">
+                        <a href="services.html">English Mastery</a>
+                        <a href="services.html">Diplomatic French</a>
+                        <a href="services.html">Corporate German</a>
+                        <a href="services.html">Global Spanish</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <div class="footer-links">
+                        <a href="../index.html">Home</a>
+                        <a href="about.html">About</a>
+                        <a href="services.html">Services</a>
+                        <a href="blog.html">Blog</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>The Private List</h4>
+                    <p class="footer-desc">Receive exclusive previews, language insights, and early registration access before anyone else.</p>
+                    <form class="footer-newsletter">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit">JOIN</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-decorative-dot">
+                    <div class="dot"></div>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2026 LingoSphere. All rights reserved. Established 2011, NY.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-conditions.html">Terms & Conditions</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
 </body>
 </html>
 

@@ -9,32 +9,231 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header class="header"><div class="container nav-container"><a href="../index.html" class="logo">LingoSphere</a></div></header>
-    
-    <!-- 1. Blog Hero -->
-    <section class="section text-center"><div class="container"><h1>LingoSphere Journal</h1><p>Insights on language, culture, and communication.</p></div></section>
-    
-    <!-- 2. Categories -->
-    <section class="section"><div class="container"><div style="display:flex;gap:1rem;justify-content:center;"><button class="btn btn-outline">Grammar</button><button class="btn btn-outline">Culture</button></div></div></section>
-
-    <!-- 3. Blog Grid -->
-    <section class="section"><div class="container">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;">
-            <div class="glass-card" style="padding:2rem;"><h3>Mastering French Verbs</h3><p>A comprehensive guide...</p><a href="blog-details.html">Read More</a></div>
-            <div class="glass-card" style="padding:2rem;"><h3>Business Etiquette in Japan</h3><p>Understanding cultural nuances...</p><a href="blog-details.html">Read More</a></div>
+    <header class="header header-inverse">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
+                    <path d="M85 50C85 69.33 69.33 85 50 85C43.5 85 37.4 83.2 32.2 80.2L15 85L19.8 67.8C16.8 62.6 15 56.5 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="var(--c-gold)" stroke-width="8" stroke-linejoin="round"/>
+                    <path d="M40 35V60H60" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+                </svg>
+                <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
+                    <span style="line-height: 1.1;">LingoSphere</span>
+                    <span class="tagline" style="font-size: 0.75rem; margin-bottom: 0; letter-spacing: 0; color: var(--c-text-secondary); font-style: normal; font-family: var(--font-body);">Empowering Global Voices</span>
+                </div>
+            </a>
+            <nav class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="home-2.html" class="nav-link">Home 2</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="header-action-btn" aria-label="Toggle Theme"></button>
+                <button id="dir-toggle" class="header-action-btn" aria-label="Toggle Direction"></button>
+                <a href="contact.html" class="btn btn-gold" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;">Enroll</a>
+            </div>
+            <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
         </div>
-    </div></section>
+    </header>
+    <!-- 1. Blog Hero -->
+    <section class="page-header" style="background-color: var(--c-midnight); padding: 180px 0 100px; text-align: center; color: white;">
+        <div class="container reveal">
+            <span class="section-subtitle" style="color: var(--c-gold); border-color: var(--c-gold);">The Journal</span>
+            <h1 class="hero-title" style="color: white; margin-bottom: 1.5rem;">Insights & Perspectives</h1>
+            <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem; opacity: 0.9;">Explore deep dives into linguistic mastery, cultural nuances, and the art of global communication.</p>
+        </div>
+    </section>
 
-    <!-- 4. Sidebar / Tips -->
-    <section class="section"><div class="container text-center"><h2>Language Tips</h2><p>Practice daily for 15 minutes.</p></div></section>
+    <!-- 2. Categories & Search -->
+    <section style="background-color: var(--c-bg-secondary); padding: 1.5rem 0; border-bottom: 1px solid var(--c-border);">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div style="display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 0.5rem;" class="hide-scrollbar">
+                <a href="#" class="btn" style="background-color: var(--c-burgundy); color: white; border-radius: 50px; padding: 0.5rem 1.5rem;">All Articles</a>
+                <a href="#" class="btn btn-outline" style="border-radius: 50px; padding: 0.5rem 1.5rem;">Language Tips</a>
+                <a href="#" class="btn btn-outline" style="border-radius: 50px; padding: 0.5rem 1.5rem;">Cultural Insights</a>
+                <a href="#" class="btn btn-outline" style="border-radius: 50px; padding: 0.5rem 1.5rem;">Corporate</a>
+            </div>
+            <div style="position: relative;">
+                <input type="text" placeholder="Search journal..." style="padding: 0.8rem 1.5rem 0.8rem 2.5rem; border-radius: 50px; border: 1px solid var(--c-border); background-color: var(--c-bg-primary); color: var(--c-text-primary); font-family: inherit; outline: none; width: 250px;">
+                <i class="fa-solid fa-search" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--c-slate);"></i>
+            </div>
+        </div>
+    </section>
 
-    <!-- 5. Popular Authors -->
-    <section class="section"><div class="container text-center"><h2>Our Top Authors</h2><p>Dr. Julian Reed, Prof. Clara Vance</p></div></section>
+    <!-- 3. Featured Article -->
+    <section class="section">
+        <div class="container">
+            <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background-color: var(--c-bg-secondary); border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--c-border);">
+                <div style="background-image: url('../images/about_hero.png'); background-size: cover; background-position: center; min-height: 400px;"></div>
+                <div style="padding: 4rem 3rem 4rem 0; display: flex; flex-direction: column; justify-content: center;">
+                    <span style="color: var(--c-gold); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">Cultural Insights</span>
+                    <h2 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.2;">The Silent Language of Japanese Business Meetings.</h2>
+                    <p class="text-secondary" style="margin-bottom: 2rem; font-size: 1.1rem;">Mastering the bow is just the beginning. Discover the unwritten rules of corporate negotiation in Tokyo, from seating arrangements to the subtle art of reading the air.</p>
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 40px; height: 40px; border-radius: 50%; background-color: var(--c-slate); overflow: hidden;">
+                                <img src="../images/team_leader.png" alt="Author" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div>
+                                <h4 style="margin: 0; font-size: 0.95rem;">Dr. Julian Reed</h4>
+                                <span style="font-size: 0.8rem; color: var(--c-slate);">August 12, 2026 • 8 min read</span>
+                            </div>
+                        </div>
+                        <a href="blog-details.html" style="width: 45px; height: 45px; border-radius: 50%; background-color: var(--c-burgundy); color: white; display: flex; align-items: center; justify-content: center; transition: background-color 0.3s ease;">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- 6. Newsletter / Pagination -->
-    <section class="section cta-section"><div class="container text-center"><h2>Subscribe to Journal</h2></div></section>
+    <!-- 4. Blog Grid -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+                <!-- Article 1 -->
+                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
+                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
+                        <img src="../images/about_hero.png" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                    </div>
+                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Language Tips</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">Mastering the French Subjunctive Without Tears</a></h3>
+                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">A practical, straightforward guide to understanding when and why the French use the subjunctive mood in daily conversation.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
+                            <span style="font-size: 0.85rem; color: var(--c-slate);">Aug 05, 2026</span>
+                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Article 2 -->
+                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
+                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
+                        <img src="../images/about_hero.png" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                    </div>
+                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Corporate</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">Why English is No Longer Enough for Global CEOs</a></h3>
+                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">Explore the rising trend of multilingual executives and how speaking a client's native language dramatically increases deal closures.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
+                            <span style="font-size: 0.85rem; color: var(--c-slate);">Jul 28, 2026</span>
+                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                        </div>
+                    </div>
+                </article>
 
-    <footer class="footer"><div class="container text-center">&copy; 2026 LingoSphere</div></footer>
+                <!-- Article 3 -->
+                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
+                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
+                        <img src="../images/about_hero.png" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                    </div>
+                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Cultural Insights</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">The History of Spanish Idioms</a></h3>
+                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">Uncover the fascinating, often bizarre origins behind the most common conversational phrases used in modern Spain and Latin America.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
+                            <span style="font-size: 0.85rem; color: var(--c-slate);">Jul 15, 2026</span>
+                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <!-- Pagination -->
+            <div style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 4rem;" class="reveal">
+                <a href="#" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--c-border); display: flex; align-items: center; justify-content: center; color: var(--c-text-primary);"><i class="fa-solid fa-angle-left"></i></a>
+                <a href="#" style="width: 40px; height: 40px; border-radius: 50%; background-color: var(--c-burgundy); color: white; display: flex; align-items: center; justify-content: center; font-weight: 600;">1</a>
+                <a href="#" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--c-border); display: flex; align-items: center; justify-content: center; color: var(--c-text-primary); font-weight: 600;">2</a>
+                <a href="#" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--c-border); display: flex; align-items: center; justify-content: center; color: var(--c-text-primary); font-weight: 600;">3</a>
+                <span style="display: flex; align-items: center; justify-content: center; width: 40px;">...</span>
+                <a href="#" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--c-border); display: flex; align-items: center; justify-content: center; color: var(--c-text-primary); font-weight: 600;">8</a>
+                <a href="#" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--c-border); display: flex; align-items: center; justify-content: center; color: var(--c-text-primary);"><i class="fa-solid fa-angle-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Newsletter Banner -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="reveal" style="background-color: var(--c-bg-tertiary); padding: 4rem; border-radius: var(--radius-xl); text-align: center; border: 1px solid var(--c-border);">
+                <i class="fa-regular fa-envelope-open" style="font-size: 3rem; color: var(--c-gold); margin-bottom: 1.5rem;"></i>
+                <h2 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem;">Join The Private List</h2>
+                <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; color: var(--c-text-secondary);">Get weekly curations of our best language insights, cultural deep dives, and exclusive program offers delivered to your inbox.</p>
+                <form style="display: flex; max-width: 500px; margin: 0 auto; gap: 0.5rem;">
+                    <input type="email" placeholder="Enter your email address" required style="flex-grow: 1; padding: 1rem 1.5rem; border-radius: var(--radius-sm); border: 1px solid var(--c-border); background-color: var(--c-bg-primary); color: var(--c-text-primary); font-family: inherit; outline: none;">
+                    <button type="submit" class="btn btn-gold">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="../index.html" class="logo">
+                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon" style="margin-right: 0.5rem;">
+                            <path d="M85 50C85 69.33 69.33 85 50 85C43.5 85 37.4 83.2 32.2 80.2L15 85L19.8 67.8C16.8 62.6 15 56.5 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="var(--c-gold)" stroke-width="8" stroke-linejoin="round"/>
+                            <path d="M40 35V60H60" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+                        </svg>
+                        LingoSphere
+                    </a>
+                    <span class="tagline">Empowering Global Voices</span>
+                    <p class="footer-desc">Empowering global voices through premium language education and communication mastery. A curated sanctuary where every language tells an extraordinary story.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Programs</h4>
+                    <div class="footer-links">
+                        <a href="services.html">English Mastery</a>
+                        <a href="services.html">Diplomatic French</a>
+                        <a href="services.html">Corporate German</a>
+                        <a href="services.html">Global Spanish</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <div class="footer-links">
+                        <a href="../index.html">Home</a>
+                        <a href="about.html">About</a>
+                        <a href="services.html">Services</a>
+                        <a href="blog.html">Blog</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>The Private List</h4>
+                    <p class="footer-desc">Receive exclusive previews, language insights, and early registration access before anyone else.</p>
+                    <form class="footer-newsletter">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit">JOIN</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-decorative-dot">
+                    <div class="dot"></div>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2026 LingoSphere. All rights reserved. Established 2011, NY.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-conditions.html">Terms & Conditions</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
     <script src="../js/main.js"></script>
 </body>
 </html>
