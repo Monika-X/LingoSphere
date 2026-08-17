@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -404,7 +404,42 @@
             transform: translateY(-3px);
             box-shadow: 0 16px 36px rgba(200, 169, 107, 0.55);
         }
+
+        /* ---------- RTL Support for Timeline ---------- */
+        [dir="rtl"] .timeline-item {
+            padding-right: 0;
+            padding-left: calc(50% + 24px);
+        }
+        [dir="rtl"] .timeline-item:nth-child(even) {
+            padding-left: 0;
+            padding-right: calc(50% + 24px);
+        }
+        [dir="rtl"] .timeline-content::before {
+            left: auto;
+            right: 0;
+        }
+        [dir="rtl"] .timeline-icon {
+            right: auto;
+            left: var(--s-4);
+        }
+        @media (max-width: 768px) {
+            [dir="rtl"] .timeline::before {
+                left: auto;
+                right: 20px;
+            }
+            [dir="rtl"] .timeline-item, 
+            [dir="rtl"] .timeline-item:nth-child(even) {
+                padding-left: 0;
+                padding-right: 60px;
+            }
+            [dir="rtl"] .timeline-dot {
+                left: auto;
+                right: 20px;
+                transform: translateX(50%);
+            }
+        }
     </style>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 </head>
 <body>
 

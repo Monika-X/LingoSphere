@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -535,20 +535,37 @@
             font-size: 0.78rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: var(--c-gold);
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            transition: color var(--t-fast);
         }
         .pricing-note a i {
             transition: transform var(--t-fast);
         }
-        .pricing-note a:hover {
-            color: var(--c-burgundy);
-        }
         .pricing-note a:hover i {
             transform: translateX(4px);
+        }
+        @media (max-width: 992px) {
+            .language-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            .skill-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: var(--s-4) var(--s-4);
+            }
+        @media (max-width: 480px) {
+            .pricing-card {
+                padding: var(--s-5);
+            }
+            .language-card {
+                padding: var(--s-4);
+            }
+            .price {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
@@ -740,7 +757,7 @@
                 <div class="pricing-card">
                     <div class="pricing-icon"><i class="fa-solid fa-users"></i></div>
                     <h3>Group Batches</h3>
-                    <span class="pricing-tag">Semi-Private Â· 8â€“12 Students</span>
+                    <span class="pricing-tag">Semi-Private &middot; 8&ndash;12 Students</span>
                     <div class="price">$299 <span>/ course</span></div>
                     <p class="text-secondary pricing-desc">Perfect for conversational practice and interactive learning.</p>
                     <ul class="pricing-features">
@@ -756,7 +773,7 @@
                     <div class="premium-label">Most Popular</div>
                     <div class="pricing-icon"><i class="fa-solid fa-bolt"></i></div>
                     <h3>Intensive Focus</h3>
-                    <span class="pricing-tag">Semi-Private Â· 4â€“6 Students</span>
+                    <span class="pricing-tag">Semi-Private &middot; 4&ndash;6 Students</span>
                     <div class="price">$499 <span>/ course</span></div>
                     <p class="text-secondary pricing-desc">Accelerated learning with personalized attention.</p>
                     <ul class="pricing-features">
@@ -771,7 +788,7 @@
                 <div class="pricing-card">
                     <div class="pricing-icon"><i class="fa-solid fa-crown"></i></div>
                     <h3>Private Coaching</h3>
-                    <span class="pricing-tag">1-on-1 Â· Flexible Scheduling</span>
+                    <span class="pricing-tag">1-on-1 &middot; Flexible Scheduling</span>
                     <div class="price">$85 <span>/ hour</span></div>
                     <p class="text-secondary pricing-desc">Bespoke curriculum tailored exactly to your pace and goals.</p>
                     <ul class="pricing-features">
@@ -787,7 +804,7 @@
             <div class="pricing-note reveal">
                 <i class="fa-solid fa-circle-check"></i>
                 <p class="text-secondary">Every package includes a placement assessment, official certification, and lifetime access to our digital language library.</p>
-                <a href="contact.html">Consult Our Advisors <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="contact.html" class="btn btn-gold" style="padding: 0.6rem 1.5rem; font-size: 0.75rem;">Consult Our Advisors <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
     </section>

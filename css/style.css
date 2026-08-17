@@ -75,7 +75,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -85,7 +85,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   transition: background-color var(--t-normal), color var(--t-normal);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -860,6 +860,8 @@ body.menu-open {
 }
 .footer-legal {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--s-5);
 }
 .footer-legal a {
@@ -1069,6 +1071,8 @@ body.menu-open {
   }
   .footer-bottom {
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: var(--s-4);
   }
   .footer-decorative-dot {
@@ -1114,5 +1118,48 @@ body.menu-open {
     flex-direction: column;
     align-items: center;
     gap: var(--s-2);
+  }
+}
+
+/* ============================================================
+   Responsive Hardening — all viewports
+   ============================================================ */
+@media (max-width: 992px) {
+  .section {
+    padding: var(--s-12) 0;
+  }
+}
+@media (max-width: 768px) {
+  .section {
+    padding: var(--s-10) 0;
+  }
+  .footer-desc {
+    max-width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .section {
+    padding: var(--s-8) 0;
+  }
+  .hero-title {
+    font-size: clamp(2.1rem, 9vw, 2.9rem);
+  }
+  .section-subtitle {
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
+  }
+  .back-to-top {
+    width: 40px;
+    height: 40px;
+    font-size: 0.85rem;
+  }
+  .footer-bottom {
+    font-size: 0.78rem;
+  }
+  .footer-newsletter {
+    flex-direction: column;
+  }
+  .footer-newsletter button {
+    width: 100%;
   }
 }

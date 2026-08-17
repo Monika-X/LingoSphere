@@ -472,6 +472,19 @@
             border-top: 1px solid var(--c-border);
             line-height: 1.7;
         }
+
+        @media (max-width: 768px) {
+            .branch-content { padding: var(--s-6); }
+            .branch-eyebrow { letter-spacing: 1px; font-size: 0.65rem; padding: 0.4rem 0.6rem; }
+        }
+        @media (max-width: 480px) {
+            .branch-content { padding: var(--s-4); }
+            .branch-stats { gap: var(--s-4); flex-direction: column; }
+            .branch-stats div { border-left: none; padding-left: 0; border-bottom: 1px solid rgba(200, 169, 107, 0.35); padding-bottom: 0.5rem; }
+            .branch-stats div:last-child { border-bottom: none; padding-bottom: 0; }
+            .branch-address { align-items: flex-start; }
+            .branch-address i { margin-top: 4px; }
+        }
     </style>
 </head>
 <body>
