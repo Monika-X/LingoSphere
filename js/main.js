@@ -63,21 +63,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Menu Toggle
     const mobileBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
-    // Clone Enroll button to mobile menu on small screens
     const enrollBtn = document.querySelector('.header-actions .btn-gold');
-    if (window.innerWidth <= 991 && enrollBtn && navLinks) {
-        const mobileEnroll = enrollBtn.cloneNode(true);
-        mobileEnroll.classList.add('mobile-enroll-btn');
-        mobileEnroll.style.width = '100%';
-        mobileEnroll.style.textAlign = 'center';
-        mobileEnroll.style.marginTop = '1rem';
-        navLinks.appendChild(mobileEnroll);
-    }
 
     if (mobileBtn && navLinks) {
         const overlay = document.createElement('div');
         overlay.className = 'nav-overlay';
         document.body.appendChild(overlay);
+
+        // Add Enroll button into the hamburger menu on mobile
+        const ensureMobileEnroll = () => {
+            if (enrollBtn && window.innerWidth <= 991 && !navLinks.querySelector('.mobile-enroll-btn')) {
+                const mobileEnroll = enrollBtn.cloneNode(true);
+                mobileEnroll.classList.add('mobile-enroll-btn');
+                mobileEnroll.style.width = '100%';
+                mobileEnroll.style.textAlign = 'center';
+                mobileEnroll.style.marginTop = '1rem';
+                mobileEnroll.addEventListener('click', closeMenu);
+                navLinks.appendChild(mobileEnroll);
+            }
+        };
 
         const closeMenu = () => {
             mobileBtn.classList.remove('open');
@@ -88,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         mobileBtn.addEventListener('click', () => {
+            ensureMobileEnroll();
             const isOpen = navLinks.classList.toggle('active');
             mobileBtn.classList.toggle('open', isOpen);
             overlay.classList.toggle('visible', isOpen);
