@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LingoSphere | Premium Language & Communication Skills Center</title>
+    <meta name="description" content="Master new languages and communication skills with LingoSphere. We offer premium courses in English, French, German, and Spanish for all age groups.">
+    
+    <!-- Google Fonts: Playfair Display & Manrope -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Homepage specific styles to add to style.css later or keep here for modularity */
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            background-color: var(--c-midnight);
+            color: var(--c-ivory);
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: var(--s-4);
+            line-height: 1.1;
+        }
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: var(--s-6);
+            opacity: 0.9;
+        }
+        .hero-actions {
+            display: flex;
+            gap: var(--s-4);
+        }
+        .btn-gold {
+            background-color: var(--c-gold);
+            color: var(--c-midnight);
+        }
+        .btn-gold:hover {
+            background-color: var(--c-ivory);
+        }
+
+        /* Programs Grid */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--s-6);
+            margin-top: var(--s-8);
+        }
+        .program-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background-color: var(--c-bg-secondary);
+            border: 1px solid var(--c-border);
+            transition: transform var(--t-normal), box-shadow var(--t-normal);
+        }
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--c-shadow);
+        }
+        .program-img-wrapper {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        .program-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--t-slow);
+        }
+        .program-card:hover .program-img {
+            transform: scale(1.1);
+        }
+        .program-content {
+            padding: var(--s-5);
+        }
+        .program-title {
+            font-size: 1.5rem;
+            margin-bottom: var(--s-2);
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            background-color: var(--c-midnight);
+            color: var(--c-ivory);
+            padding: var(--s-12) 0;
+            position: relative;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--s-8);
+            text-align: center;
+        }
+        .stat-item .counter {
+            font-size: 3.5rem;
+            font-family: var(--font-heading);
+            color: var(--c-gold);
+            font-weight: 700;
+            display: block;
+            margin-bottom: var(--s-2);
+        }
+
+        /* Courses Section */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--s-6);
+        }
+        .course-card {
+            padding: var(--s-6);
+        }
+        .course-level {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: rgba(122, 40, 72, 0.1);
+            color: var(--c-burgundy);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: var(--s-4);
+        }
+        [data-theme="dark"] .course-level {
+            background-color: rgba(200, 169, 107, 0.2);
+            color: var(--c-gold);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--c-bg-tertiary);
+        }
+        .testimonial-card {
+            background-color: var(--c-bg-secondary);
+            padding: var(--s-8);
+            border-radius: var(--radius-lg);
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--c-gold);
+            opacity: 0.2;
+            font-family: var(--font-heading);
+        }
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: var(--s-3);
+            margin-top: var(--s-4);
+        }
+        .client-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--c-burgundy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-family: var(--font-heading);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--c-midnight) 0%, var(--c-emerald) 100%);
+            color: var(--c-ivory);
+            text-align: center;
+            padding: var(--s-16) 0;
+        }
+        .cta-form {
+            max-width: 500px;
+            margin: var(--s-6) auto 0;
+            display: flex;
+            gap: var(--s-2);
+        }
+        .cta-input {
+            flex: 1;
+            padding: var(--s-3) var(--s-4);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Controls -->
+    <div class="floating-controls">
+        <button id="theme-toggle" class="control-btn" aria-label="Toggle Theme"></button>
+        <button id="dir-toggle" class="control-btn" aria-label="Toggle Direction"></button>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-globe"></i> LingoSphere
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="home-2.html" class="nav-link">Home 2</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section class="hero">
+        <img src="images/hero.png" alt="LingoSphere Campus" class="hero-bg">
+        <div class="container">
+            <div class="hero-content reveal">
+                <span class="section-subtitle c-gold">Master the World</span>
+                <h1 class="hero-title">Elevate Your Global Communication</h1>
+                <p class="hero-subtitle">Premium language classes and communication skills workshops designed for professionals and ambitious learners.</p>
+                <div class="hero-actions">
+                    <a href="services.html" class="btn btn-gold">Explore Programs</a>
+                    <a href="contact.html" class="btn btn-outline" style="color: white; border-color: white;">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Programs Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-subtitle">Our Expertise</span>
+                <h2 class="section-title">Language Programs</h2>
+                <p class="mb-8" style="max-width: 600px; margin-inline: auto;">Immersive courses structured by international frameworks, delivered by native-level experts.</p>
+            </div>
+            
+            <div class="programs-grid reveal">
+                <div class="program-card">
+                    <div class="program-img-wrapper">
+                        <img src="images/programs.png" alt="English Program" class="program-img">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">English Mastery</h3>
+                        <p class="c-text-secondary mb-4">From conversational fluency to advanced business communication and IELTS prep.</p>
+                        <a href="services.html" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-img-wrapper">
+                        <img src="images/programs.png" alt="French Program" class="program-img">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">Diplomatic French</h3>
+                        <p class="c-text-secondary mb-4">Embrace the language of culture, diplomacy, and international business.</p>
+                        <a href="services.html" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-img-wrapper">
+                        <img src="images/programs.png" alt="German Program" class="program-img">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">Corporate German</h3>
+                        <p class="c-text-secondary mb-4">Structured learning for technical, engineering, and enterprise communication.</p>
+                        <a href="services.html" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-img-wrapper">
+                        <img src="images/programs.png" alt="Spanish Program" class="program-img">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">Global Spanish</h3>
+                        <p class="c-text-secondary mb-4">Connect with half a billion speakers worldwide through our dynamic curriculum.</p>
+                        <a href="services.html" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Animated Counters / Stats -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid reveal">
+                <div class="stat-item">
+                    <span class="counter" data-target="15">0</span>
+                    <p>Years of Excellence</p>
+                </div>
+                <div class="stat-item">
+                    <span class="counter" data-target="50">0</span>
+                    <p>Expert Faculty</p>
+                </div>
+                <div class="stat-item">
+                    <span class="counter" data-target="10000">0</span>
+                    <p>Successful Alumni</p>
+                </div>
+                <div class="stat-item">
+                    <span class="counter" data-target="12">0</span>
+                    <p>Global Accreditations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Featured Courses & Levels -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center reveal mb-8">
+                <span class="section-subtitle">Tailored Learning</span>
+                <h2 class="section-title">Featured Batches</h2>
+            </div>
+            
+            <div class="courses-grid reveal">
+                <div class="glass-card course-card">
+                    <span class="course-level">Beginner A1-A2</span>
+                    <h3 class="mb-2">Foundation Building</h3>
+                    <p class="mb-4 text-secondary">Essential grammar, vocabulary, and basic conversational skills for adults starting fresh.</p>
+                    <ul style="margin-bottom: 1.5rem;">
+                        <li><i class="fa-solid fa-check c-gold"></i> 12 Weeks Duration</li>
+                        <li><i class="fa-solid fa-check c-gold"></i> Evening Batches</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline">Enquire</a>
+                </div>
+                <div class="glass-card course-card">
+                    <span class="course-level">Intermediate B1-B2</span>
+                    <h3 class="mb-2">Spoken Fluency</h3>
+                    <p class="mb-4 text-secondary">Focus on pronunciation, debate, presentation skills, and overcoming hesitation.</p>
+                    <ul style="margin-bottom: 1.5rem;">
+                        <li><i class="fa-solid fa-check c-gold"></i> 8 Weeks Duration</li>
+                        <li><i class="fa-solid fa-check c-gold"></i> Weekend Batches</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline">Enquire</a>
+                </div>
+                <div class="glass-card course-card">
+                    <span class="course-level">Advanced C1-C2</span>
+                    <h3 class="mb-2">Executive Communication</h3>
+                    <p class="mb-4 text-secondary">Mastering nuance, business writing, public speaking, and negotiation terminology.</p>
+                    <ul style="margin-bottom: 1.5rem;">
+                        <li><i class="fa-solid fa-check c-gold"></i> 16 Weeks Duration</li>
+                        <li><i class="fa-solid fa-check c-gold"></i> Flexible Timing</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-outline">Enquire</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Student Success Stories -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="text-center reveal mb-8">
+                <span class="section-subtitle">Our Legacy</span>
+                <h2 class="section-title">Success Stories</h2>
+            </div>
+
+            <div class="courses-grid reveal">
+                <div class="testimonial-card">
+                    <p style="position:relative; z-index:2">"LingoSphere completely transformed my confidence. The executive communication training helped me secure a role at a top international firm. The faculty is truly world-class."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">E</div>
+                        <div>
+                            <h4 style="font-size: 1rem;">Elena Rostova</h4>
+                            <span class="text-secondary" style="font-size: 0.8rem;">Advanced English Alumna</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p style="position:relative; z-index:2">"The immersive French program was incredible. The cultural context provided alongside the language lessons made the learning experience rich and deeply engaging."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">M</div>
+                        <div>
+                            <h4 style="font-size: 1rem;">Marcus Chen</h4>
+                            <span class="text-secondary" style="font-size: 0.8rem;">Diplomatic French Alumnus</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Newsletter / CTA -->
+    <section class="cta-section">
+        <div class="container reveal">
+            <h2 class="section-title" style="color: white;">Begin Your Journey Today</h2>
+            <p style="font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">Join our exclusive community of global communicators. Subscribe to receive free language learning resources and early batch notifications.</p>
+            
+            <form class="cta-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                <input type="email" class="cta-input" placeholder="Enter your email address" required>
+                <button type="submit" class="btn btn-gold">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 1rem; color: var(--c-gold);">
+                        <i class="fa-solid fa-globe"></i> LingoSphere
+                    </a>
+                    <p style="opacity: 0.8; margin-bottom: 1rem;">Empowering global voices through premium language education and communication mastery.</p>
+                    <div style="display: flex; gap: 1rem; font-size: 1.2rem;">
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="about.html">About Us</a>
+                        <a href="services.html">Our Programs</a>
+                        <a href="blog.html">Language Blog</a>
+                        <a href="contact.html">Contact & Enroll</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <div class="footer-links">
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <a href="terms-conditions.html">Terms & Conditions</a>
+                        <a href="sitemap.html">Sitemap</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <div class="footer-links" style="color: rgba(255,255,255,0.8);">
+                        <p><i class="fa-solid fa-location-dot"></i> 123 Global Avenue, NY 10001</p>
+                        <p><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fa-solid fa-envelope"></i> admissions@lingosphere.edu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 LingoSphere International Academy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#" id="back-to-top" class="back-to-top" aria-label="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>

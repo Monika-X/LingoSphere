@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | LingoSphere International Academy</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* About Page Specific Styles */
+        /* 1. Page Header */
+        .page-header {
+            padding: 150px 0 100px;
+            background-color: var(--c-midnight);
+            color: var(--c-ivory);
+            text-align: center;
+            position: relative;
+        }
+        .page-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 50px;
+            background: linear-gradient(to top, var(--c-bg-primary), transparent);
+        }
+
+        /* 2. Mission Split Section */
+        .mission-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--s-8);
+            align-items: center;
+        }
+        .mission-img {
+            border-radius: var(--radius-xl) 0 var(--radius-xl) 0;
+            box-shadow: 20px 20px 0 var(--c-gold);
+            width: 100%;
+        }
+        @media (max-width: 768px) {
+            .mission-section { grid-template-columns: 1fr; }
+        }
+
+        /* 3. Leadership Team */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--s-6);
+        }
+        .team-card {
+            background-color: var(--c-bg-secondary);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            text-align: center;
+            border: 1px solid var(--c-border);
+            transition: transform var(--t-normal);
+        }
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+        .team-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: filter var(--t-normal);
+        }
+        .team-card:hover .team-img {
+            filter: grayscale(0);
+        }
+        .team-info {
+            padding: var(--s-4);
+        }
+
+        /* 4. Awards & Accreditations */
+        .awards-section {
+            background-color: var(--c-bg-tertiary);
+            padding: var(--s-10) 0;
+            border-top: 1px solid var(--c-border);
+            border-bottom: 1px solid var(--c-border);
+        }
+        .awards-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: var(--s-6);
+            align-items: center;
+        }
+        .award-item {
+            text-align: center;
+            color: var(--c-slate);
+            font-size: 3rem;
+            transition: color var(--t-fast);
+        }
+        .award-item:hover {
+            color: var(--c-gold);
+        }
+        .award-item p {
+            font-size: 1rem;
+            font-family: var(--font-heading);
+            margin-top: var(--s-2);
+            color: var(--c-text-primary);
+        }
+
+        /* 5. Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            width: 2px; height: 100%;
+            background-color: var(--c-border);
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50%;
+            position: relative;
+            margin-bottom: var(--s-8);
+        }
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 50%;
+        }
+        .timeline-content {
+            width: 80%;
+            background-color: var(--c-bg-secondary);
+            padding: var(--s-4);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--c-border);
+            position: relative;
+        }
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 15px; height: 15px;
+            background-color: var(--c-gold);
+            border-radius: 50%;
+        }
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -48px; /* Adjusted to sit on line */
+        }
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -48px;
+        }
+        .timeline-year {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--c-burgundy);
+            margin-bottom: var(--s-2);
+        }
+        [data-theme="dark"] .timeline-year { color: var(--c-gold); }
+
+        @media (max-width: 768px) {
+            .timeline::before { left: 20px; }
+            .timeline-item { justify-content: flex-start; padding-right: 0; padding-left: 50px; }
+            .timeline-item:nth-child(even) { padding-left: 50px; }
+            .timeline-content { width: 100%; }
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: -38px;
+            }
+        }
+
+        /* 6. CTA Panel */
+        .cta-panel {
+            background-image: linear-gradient(rgba(31, 42, 68, 0.9), rgba(122, 40, 72, 0.9)), url('images/about_hero.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--c-ivory);
+            text-align: center;
+            padding: var(--s-16) 0;
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--s-8);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Controls -->
+    <div class="floating-controls">
+        <button id="theme-toggle" class="control-btn" aria-label="Toggle Theme"></button>
+        <button id="dir-toggle" class="control-btn" aria-label="Toggle Direction"></button>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-globe"></i> LingoSphere
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="home-2.html" class="nav-link">Home 2</a>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- 1. Page Header -->
+    <section class="page-header">
+        <div class="container reveal">
+            <h1 class="section-title" style="color: white; border: none;">Our Heritage</h1>
+            <p style="max-width: 600px; margin: 0 auto; font-size: 1.2rem; opacity: 0.9;">Discover the story behind LingoSphere and our commitment to breaking down global communication barriers since 2011.</p>
+        </div>
+    </section>
+
+    <!-- 2. Mission Split Section -->
+    <section class="section">
+        <div class="container mission-section">
+            <div class="reveal">
+                <img src="images/about_hero.png" alt="LingoSphere Campus" class="mission-img">
+            </div>
+            <div class="reveal">
+                <span class="section-subtitle">Our Mission</span>
+                <h2 class="section-title">Bridging Cultures Through Language</h2>
+                <p class="mb-4 text-secondary">At LingoSphere, we believe that language is more than just grammar and vocabulary. It is the key to understanding cultures, forming deep connections, and unlocking global opportunities.</p>
+                <p class="mb-6 text-secondary">Our curriculum is designed not just to teach you how to speak, but how to truly communicate. We integrate cultural nuances, professional etiquette, and practical scenarios into every lesson.</p>
+                <ul style="list-style: none;">
+                    <li class="mb-2"><i class="fa-solid fa-certificate c-gold" style="margin-right: 10px;"></i> CEFR Aligned Curriculum</li>
+                    <li class="mb-2"><i class="fa-solid fa-user-tie c-gold" style="margin-right: 10px;"></i> Native-Level Instructors</li>
+                    <li class="mb-2"><i class="fa-solid fa-building c-gold" style="margin-right: 10px;"></i> State-of-the-Art Facilities</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Leadership Team -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center reveal mb-8">
+                <span class="section-subtitle">The Experts</span>
+                <h2 class="section-title">Academic Leadership</h2>
+            </div>
+            <div class="team-grid reveal">
+                <div class="team-card">
+                    <img src="images/team_leader.png" alt="Dr. Julian Reed" class="team-img">
+                    <div class="team-info">
+                        <h3 class="mb-1">Dr. Julian Reed</h3>
+                        <p class="c-gold mb-2" style="font-size: 0.9rem;">Dean of Linguistics</p>
+                        <p class="text-secondary" style="font-size: 0.85rem;">Ph.D. in Applied Linguistics, Oxford. 20+ years of language education experience.</p>
+                    </div>
+                </div>
+                <!-- Duplicate cards for layout demo -->
+                <div class="team-card">
+                    <img src="images/team_leader.png" alt="Prof. Clara Vance" class="team-img">
+                    <div class="team-info">
+                        <h3 class="mb-1">Prof. Clara Vance</h3>
+                        <p class="c-gold mb-2" style="font-size: 0.9rem;">Head of European Languages</p>
+                        <p class="text-secondary" style="font-size: 0.85rem;">Former diplomat. Specializes in advanced French and Spanish curricula.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="images/team_leader.png" alt="Dr. Marcus Wei" class="team-img">
+                    <div class="team-info">
+                        <h3 class="mb-1">Dr. Marcus Wei</h3>
+                        <p class="c-gold mb-2" style="font-size: 0.9rem;">Director of Corporate Training</p>
+                        <p class="text-secondary" style="font-size: 0.85rem;">Specialist in cross-cultural business communication and negotiation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Awards & Accreditations -->
+    <section class="awards-section">
+        <div class="container">
+            <div class="awards-grid reveal">
+                <div class="award-item">
+                    <i class="fa-solid fa-award"></i>
+                    <p>Global Education Award '24</p>
+                </div>
+                <div class="award-item">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <p>Accredited Excellence</p>
+                </div>
+                <div class="award-item">
+                    <i class="fa-solid fa-earth-americas"></i>
+                    <p>International Standards</p>
+                </div>
+                <div class="award-item">
+                    <i class="fa-solid fa-star"></i>
+                    <p>5-Star Rating</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Timeline / History -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center reveal mb-8">
+                <span class="section-subtitle">Our Journey</span>
+                <h2 class="section-title">History of Excellence</h2>
+            </div>
+            
+            <div class="timeline reveal">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2011</div>
+                        <h3>Foundation</h3>
+                        <p class="text-secondary mt-2">LingoSphere was established in New York with a vision to redefine adult language education.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2015</div>
+                        <h3>European Expansion</h3>
+                        <p class="text-secondary mt-2">Opened our first overseas campus in London, expanding our curriculum to include diplomatic training.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2020</div>
+                        <h3>Digital Transformation</h3>
+                        <p class="text-secondary mt-2">Launched our award-winning virtual classrooms, bringing our premium education to global learners.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2026</div>
+                        <h3>Global Leader</h3>
+                        <p class="text-secondary mt-2">Recognized as the premier institute for cross-cultural communication skills worldwide.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Partnerships / Corporate Training CTA -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="cta-panel reveal">
+                <h2 style="font-family: var(--font-heading); font-size: 3rem; margin-bottom: var(--s-4);">Corporate Training & Partnerships</h2>
+                <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto var(--s-6);">Empower your workforce with custom communication workshops and language training tailored for global business.</p>
+                <a href="contact.html" class="btn btn-gold">Request Corporate Brochure</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="margin-bottom: 1rem; color: var(--c-gold);">
+                        <i class="fa-solid fa-globe"></i> LingoSphere
+                    </a>
+                    <p style="opacity: 0.8; margin-bottom: 1rem;">Empowering global voices through premium language education and communication mastery.</p>
+                    <div style="display: flex; gap: 1rem; font-size: 1.2rem;">
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="about.html">About Us</a>
+                        <a href="services.html">Our Programs</a>
+                        <a href="blog.html">Language Blog</a>
+                        <a href="contact.html">Contact & Enroll</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <div class="footer-links">
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <a href="terms-conditions.html">Terms & Conditions</a>
+                        <a href="sitemap.html">Sitemap</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <div class="footer-links" style="color: rgba(255,255,255,0.8);">
+                        <p><i class="fa-solid fa-location-dot"></i> 123 Global Avenue, NY 10001</p>
+                        <p><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fa-solid fa-envelope"></i> admissions@lingosphere.edu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 LingoSphere International Academy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#" id="back-to-top" class="back-to-top" aria-label="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>

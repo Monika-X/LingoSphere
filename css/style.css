@@ -1,0 +1,447 @@
+/* LingoSphere Premium CSS Architecture */
+
+/* ==========================================================================
+   1. Design Tokens & Variables
+   ========================================================================== */
+:root {
+  /* Colors - Light Theme (Default) */
+  --c-midnight: #1F2A44;
+  --c-burgundy: #7A2848;
+  --c-gold: #C8A96B;
+  --c-ivory: #FAF7F2;
+  --c-slate: #6B7280;
+  --c-emerald: #1F5C4A;
+  
+  --c-bg-primary: #FAF7F2;
+  --c-bg-secondary: #FFFFFF;
+  --c-bg-tertiary: #F1ECE3;
+  --c-text-primary: #1F2A44;
+  --c-text-secondary: #6B7280;
+  --c-border: #E5DFD3;
+  
+  --c-shadow: rgba(31, 42, 68, 0.08);
+
+  /* Typography */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Manrope', sans-serif;
+  
+  /* Spacing */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 1rem;
+  --s-4: 1.5rem;
+  --s-5: 2rem;
+  --s-6: 3rem;
+  --s-8: 4rem;
+  --s-10: 5rem;
+  --s-12: 6rem;
+  --s-16: 8rem;
+
+  /* Layout */
+  --max-width: 1280px;
+  --header-height: 80px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  
+  /* Transitions */
+  --t-fast: 0.2s ease;
+  --t-normal: 0.3s ease;
+  --t-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Theme Overrides */
+[data-theme="dark"] {
+  --c-bg-primary: #0F1523;
+  --c-bg-secondary: #1F2A44;
+  --c-bg-tertiary: #2A3655;
+  --c-text-primary: #FAF7F2;
+  --c-text-secondary: #A0ABC0;
+  --c-border: #3A4665;
+  
+  --c-shadow: rgba(0, 0, 0, 0.25);
+}
+
+/* ==========================================================================
+   2. Reset & Base
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--c-bg-primary);
+  color: var(--c-text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--t-normal), color var(--t-normal);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--c-text-primary);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--t-fast);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  text-align: right;
+}
+
+/* ==========================================================================
+   3. Utilities & Layout
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--s-4);
+}
+
+.section {
+  padding: var(--s-16) 0;
+}
+
+.text-center { text-align: center; }
+.mb-2 { margin-bottom: var(--s-2); }
+.mb-4 { margin-bottom: var(--s-4); }
+.mb-6 { margin-bottom: var(--s-6); }
+.mb-8 { margin-bottom: var(--s-8); }
+
+.c-gold { color: var(--c-gold); }
+.c-burgundy { color: var(--c-burgundy); }
+
+/* ==========================================================================
+   4. Components
+   ========================================================================== */
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s-3) var(--s-6);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: all var(--t-normal);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-primary {
+  background-color: var(--c-burgundy);
+  color: var(--c-ivory);
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: var(--c-midnight);
+  z-index: -1;
+  transition: transform var(--t-normal);
+  transform: scaleX(0);
+  transform-origin: right;
+}
+.btn-primary:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.btn-primary:hover {
+  color: var(--c-ivory);
+}
+
+.btn-outline {
+  border: 1px solid var(--c-gold);
+  color: var(--c-text-primary);
+}
+.btn-outline:hover {
+  background-color: var(--c-gold);
+  color: var(--c-midnight);
+}
+
+/* Glassmorphism Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px 0 var(--c-shadow);
+}
+[data-theme="dark"] .glass-card {
+  background: rgba(31, 42, 68, 0.4);
+}
+
+/* Section Titles */
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: var(--s-4);
+  position: relative;
+  display: inline-block;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--c-gold);
+}
+[dir="rtl"] .section-title::after {
+  right: 50%;
+  transform: translateX(50%);
+}
+.section-subtitle {
+  color: var(--c-gold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: var(--s-2);
+  display: block;
+}
+
+/* ==========================================================================
+   5. Global Elements (Header, Footer, Controls)
+   ========================================================================== */
+/* Controls (Theme & LTR/RTL) */
+.floating-controls {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: var(--c-bg-secondary);
+  border: 1px solid var(--c-border);
+  border-right: none;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+  padding: var(--s-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  z-index: 1000;
+  box-shadow: -4px 0 15px var(--c-shadow);
+}
+[dir="rtl"] .floating-controls {
+  right: auto;
+  left: 0;
+  border-right: 1px solid var(--c-border);
+  border-left: none;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  box-shadow: 4px 0 15px var(--c-shadow);
+}
+
+.control-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--c-bg-tertiary);
+  color: var(--c-text-primary);
+  transition: all var(--t-fast);
+}
+.control-btn:hover {
+  background-color: var(--c-gold);
+  color: var(--c-midnight);
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: transparent;
+  z-index: 999;
+  transition: all var(--t-normal);
+  display: flex;
+  align-items: center;
+}
+.header.scrolled {
+  background-color: var(--c-bg-secondary);
+  box-shadow: 0 4px 20px var(--c-shadow);
+  height: 70px;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--c-burgundy);
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+[data-theme="dark"] .logo { color: var(--c-gold); }
+
+.nav-links {
+  display: flex;
+  gap: var(--s-6);
+}
+.nav-link {
+  font-weight: 600;
+  font-size: 0.95rem;
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--c-gold);
+  transition: width var(--t-fast);
+}
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
+}
+
+.mobile-menu-btn {
+  display: none;
+  font-size: 1.5rem;
+  color: var(--c-text-primary);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--c-midnight);
+  color: var(--c-ivory);
+  padding: var(--s-10) 0 var(--s-4);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--s-8);
+  margin-bottom: var(--s-8);
+}
+.footer-col h4 {
+  color: var(--c-gold);
+  margin-bottom: var(--s-4);
+  font-size: 1.25rem;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.footer-links a {
+  color: var(--c-text-secondary);
+}
+.footer-links a:hover {
+  color: var(--c-gold);
+  padding-left: var(--s-2);
+}
+[dir="rtl"] .footer-links a:hover {
+  padding-left: 0;
+  padding-right: var(--s-2);
+}
+.footer-bottom {
+  text-align: center;
+  padding-top: var(--s-4);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  color: var(--c-text-secondary);
+  font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   6. Animations (Reveal)
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Back to Top */
+.back-to-top {
+  position: fixed;
+  bottom: var(--s-6);
+  right: var(--s-6);
+  width: 50px;
+  height: 50px;
+  background-color: var(--c-burgundy);
+  color: var(--c-ivory);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--t-normal);
+  z-index: 99;
+  box-shadow: 0 4px 15px rgba(122, 40, 72, 0.4);
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.back-to-top:hover {
+  background-color: var(--c-gold);
+  color: var(--c-midnight);
+  transform: translateY(-5px);
+}
+[dir="rtl"] .back-to-top {
+  right: auto;
+  left: var(--s-6);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .nav-links {
+    display: none; /* Add mobile menu logic later */
+  }
+  .mobile-menu-btn {
+    display: block;
+  }
+}
