@@ -219,6 +219,10 @@ button {
 }
 
 /* Campus Branch Selector */
+.branch-selector {
+  background: var(--c-bg-tertiary);
+  padding: var(--s-10) 0;
+}
 .branch-tabs {
   display: flex;
   gap: 1rem;
@@ -269,6 +273,11 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 .branch-content > * {
   position: relative;
