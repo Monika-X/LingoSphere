@@ -32,13 +32,13 @@
             <div class="header-actions">
                 <button id="theme-toggle" class="header-action-btn" aria-label="Toggle Theme"></button>
                 <button id="dir-toggle" class="header-action-btn" aria-label="Toggle Direction"></button>
-                <a href="contact.html" class="btn btn-gold" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;">Enroll</a>
+                <a href="contact.html" class="btn btn-gold">Enroll</a>
             </div>
-            <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+            <button class="mobile-menu-btn" aria-label="Toggle Menu" aria-expanded="false"><span></span><span></span><span></span></button>
         </div>
     </header>
     <!-- 1. Blog Hero -->
-    <section class="page-header" style="background-color: var(--c-midnight); padding: 180px 0 100px; text-align: center; color: white;">
+    <section class="page-header" style="background-image: linear-gradient(rgba(31, 42, 68, 0.88), rgba(122, 40, 72, 0.88)), url('../images/blog-hero.jpg'); background-size: cover; background-position: center; padding: 180px 0 100px; text-align: center; color: white;">
         <div class="container reveal">
             <span class="section-subtitle" style="color: var(--c-gold); border-color: var(--c-gold);">The Journal</span>
             <h1 class="hero-title" style="color: white; margin-bottom: 1.5rem;">Insights & Perspectives</h1>
@@ -46,27 +46,12 @@
         </div>
     </section>
 
-    <!-- 2. Categories & Search -->
-    <section style="background-color: var(--c-bg-secondary); padding: 1.5rem 0; border-bottom: 1px solid var(--c-border);">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-            <div style="display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 0.5rem;" class="hide-scrollbar">
-                <a href="#" class="btn" style="background-color: var(--c-burgundy); color: white; border-radius: 50px; padding: 0.5rem 1.5rem;">All Articles</a>
-                <a href="#" class="btn btn-outline" style="border-radius: 50px; padding: 0.5rem 1.5rem;">Language Tips</a>
-                <a href="#" class="btn btn-outline" style="border-radius: 50px; padding: 0.5rem 1.5rem;">Cultural Insights</a>
-                <a href="#" class="btn btn-outline" style="border-radius: 50px; padding: 0.5rem 1.5rem;">Corporate</a>
-            </div>
-            <div style="position: relative;">
-                <input type="text" placeholder="Search journal..." style="padding: 0.8rem 1.5rem 0.8rem 2.5rem; border-radius: 50px; border: 1px solid var(--c-border); background-color: var(--c-bg-primary); color: var(--c-text-primary); font-family: inherit; outline: none; width: 250px;">
-                <i class="fa-solid fa-search" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--c-slate);"></i>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. Featured Article -->
+    <!-- 2. Featured Article -->
+    <section class="section">
     <section class="section">
         <div class="container">
-            <div class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background-color: var(--c-bg-secondary); border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--c-border);">
-                <div style="background-image: url('../images/about_hero.png'); background-size: cover; background-position: center; min-height: 400px;"></div>
+            <div id="blog-featured" data-category="cultural-insights" class="reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background-color: var(--c-bg-secondary); border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--c-border);">
+                <div style="background-image: url('../images/blog-japanese.jpg'); background-size: cover; background-position: center; min-height: 400px;"></div>
                 <div style="padding: 4rem 3rem 4rem 0; display: flex; flex-direction: column; justify-content: center;">
                     <span style="color: var(--c-gold); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">Cultural Insights</span>
                     <h2 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.2;">The Silent Language of Japanese Business Meetings.</h2>
@@ -90,14 +75,30 @@
         </div>
     </section>
 
+    <!-- 3. Categories & Search -->
+    <section style="background-color: var(--c-bg-secondary); padding: 1.5rem 0; border-bottom: 1px solid var(--c-border);">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div style="display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 0.5rem;" class="hide-scrollbar">
+                <a href="#" class="btn filter-btn active" data-filter="all">All Articles</a>
+                <a href="#" class="btn btn-outline filter-btn" data-filter="language-tips">Language Tips</a>
+                <a href="#" class="btn btn-outline filter-btn" data-filter="cultural-insights">Cultural Insights</a>
+                <a href="#" class="btn btn-outline filter-btn" data-filter="corporate">Corporate</a>
+            </div>
+            <div style="position: relative;">
+                <input type="text" id="blog-search" placeholder="Search journal..." style="padding: 0.8rem 1.5rem 0.8rem 2.5rem; border-radius: 50px; border: 1px solid var(--c-border); background-color: var(--c-bg-primary); color: var(--c-text-primary); font-family: inherit; outline: none; width: 250px;">
+                <i class="fa-solid fa-search" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--c-slate);"></i>
+            </div>
+        </div>
+    </section>
+
     <!-- 4. Blog Grid -->
     <section class="section" style="padding-top: 0;">
         <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+            <div id="blog-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem;">
                 <!-- Article 1 -->
                 <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
                     <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/about_hero.png" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                        <img src="../images/blog-french.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
                     </div>
                     <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
                         <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Language Tips</span>
@@ -113,7 +114,7 @@
                 <!-- Article 2 -->
                 <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
                     <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/about_hero.png" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                        <img src="../images/blog-ceos.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
                     </div>
                     <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
                         <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Corporate</span>
@@ -126,10 +127,10 @@
                     </div>
                 </article>
 
-                <!-- Article 3 -->
+<!-- Article 3 -->
                 <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
                     <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
-                        <img src="../images/about_hero.png" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                        <img src="../images/blog-spanish.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
                     </div>
                     <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
                         <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Cultural Insights</span>
@@ -141,18 +142,216 @@
                         </div>
                     </div>
                 </article>
-            </div>
-            
-            <!-- Pagination -->
-            <div style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 4rem;" class="reveal">
-                <a href="#" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--c-border); display: flex; align-items: center; justify-content: center; color: var(--c-text-primary);"><i class="fa-solid fa-angle-left"></i></a>
-                <a href="#" style="width: 40px; height: 40px; border-radius: 50%; background-color: var(--c-burgundy); color: white; display: flex; align-items: center; justify-content: center; font-weight: 600;">1</a>
-                <a href="#" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--c-border); display: flex; align-items: center; justify-content: center; color: var(--c-text-primary); font-weight: 600;">2</a>
-                <a href="#" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--c-border); display: flex; align-items: center; justify-content: center; color: var(--c-text-primary); font-weight: 600;">3</a>
-                <span style="display: flex; align-items: center; justify-content: center; width: 40px;">...</span>
-                <a href="#" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--c-border); display: flex; align-items: center; justify-content: center; color: var(--c-text-primary); font-weight: 600;">8</a>
-                <a href="#" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--c-border); display: flex; align-items: center; justify-content: center; color: var(--c-text-primary);"><i class="fa-solid fa-angle-right"></i></a>
-            </div>
+
+                <!-- Article 4 -->
+                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
+                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
+                        <img src="../images/blog-german.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                    </div>
+                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Language Tips</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">The Art of German Compound Nouns</a></h3>
+                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">From Rindfleischetikettierungsüberwachung to everyday monsters, learn how Germans build meaning by stacking words with precision.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
+                            <span style="font-size: 0.85rem; color: var(--c-slate);">Jul 08, 2026</span>
+                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
+                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
+                        <img src="../images/blog-pronunciation.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                    </div>
+                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Language Tips</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">Why Pronunciation Matters More Than Vocabulary</a></h3>
+                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">A hundred perfect words spoken badly beat a hundred imperfect words spoken clearly. Here is how to reorder your priorities.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
+                            <span style="font-size: 0.85rem; color: var(--c-slate);">Jun 30, 2026</span>
+                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
+                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
+                        <img src="../images/blog-mandarin.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                    </div>
+                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Corporate</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">Negotiating in Mandarin: A Survival Guide</a></h3>
+                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">Guanxi, face, and the numbers that never sound like the numbers. Essential tactics for your first high-stakes deal in Shanghai.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
+                            <span style="font-size: 0.85rem; color: var(--c-slate);">Jun 22, 2026</span>
+                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 7 -->
+                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
+                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
+                        <img src="../images/blog-codeswitching.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                    </div>
+                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Corporate</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">Code-Switching in Multinational Offices</a></h3>
+                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">When teams flip between languages mid-meeting, what is lost, what is gained, and how leaders can harness it deliberately.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
+                            <span style="font-size: 0.85rem; color: var(--c-slate);">Jun 14, 2026</span>
+                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 8 -->
+                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
+                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
+                        <img src="../images/blog-psychology.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                    </div>
+                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Language Tips</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">The Psychology of Language Learning</a></h3>
+                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">Why adults freeze up, how motivation compounds, and the science of building a habit that actually sticks past week three.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
+                            <span style="font-size: 0.85rem; color: var(--c-slate);">Jun 05, 2026</span>
+                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 9 -->
+                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
+                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
+                        <img src="../images/blog-diplofrench.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                    </div>
+                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Cultural Insights</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">Diplomatic French: Words That Win Deals</a></h3>
+                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">The conditional tense, the art of the understatement, and why saying maybe is sometimes the strongest yes in Paris.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
+                            <span style="font-size: 0.85rem; color: var(--c-slate);">May 27, 2026</span>
+                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 10 -->
+                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
+                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
+                        <img src="../images/blog-spanishtenses.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                    </div>
+                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Language Tips</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">Mastering Spanish Verb Tenses Without Fear</a></h3>
+                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">From the dreaded subjunctive to the perfecto, a mental map that makes Spanish time feel natural instead of like algebra.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
+                            <span style="font-size: 0.85rem; color: var(--c-slate);">May 19, 2026</span>
+                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 11 -->
+                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
+                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
+                        <img src="../images/blog-techenglish.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                    </div>
+                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Corporate</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">English for Tech: Speaking Engineer</a></h3>
+                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">Standups, RFCs, and the vocabulary of shipping. The English playbook every developer relocating to an international team needs.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
+                            <span style="font-size: 0.85rem; color: var(--c-slate);">May 11, 2026</span>
+                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 12 -->
+                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
+                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
+                        <img src="../images/blog-pause.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                    </div>
+                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Language Tips</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">The Power of the Pause in Public Speaking</a></h3>
+                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">Silence is a muscle. How deliberate pauses transform nervous presenters into authoritative speakers in any language.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
+                            <span style="font-size: 0.85rem; color: var(--c-slate);">May 03, 2026</span>
+                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 13 -->
+                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
+                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
+                        <img src="../images/blog-arabic.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                    </div>
+                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Cultural Insights</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">Arabic Business Etiquette Essentials</a></h3>
+                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">The right hand, the coffee ceremony, and the pace of trust. What every professional should know before a Gulf meeting.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
+                            <span style="font-size: 0.85rem; color: var(--c-slate);">Apr 25, 2026</span>
+                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 14 -->
+                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
+                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
+                        <img src="../images/blog-ai.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                    </div>
+                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Cultural Insights</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">Learning Languages in the Age of AI</a></h3>
+                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">Apps translate, humans communicate. Where artificial fluency ends and real cultural competence begins in 2026.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
+                            <span style="font-size: 0.85rem; color: var(--c-slate);">Apr 17, 2026</span>
+                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 15 -->
+                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
+                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
+                        <img src="../images/blog-gerengineering.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                    </div>
+                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Corporate</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">German for Engineering: Precision in Words</a></h3>
+                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">From Technische Dokumentation to the passive voice of approval, the exact language that keeps Munich projects on track.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
+                            <span style="font-size: 0.85rem; color: var(--c-slate);">Apr 09, 2026</span>
+                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 16 -->
+                <article class="reveal" style="border: 1px solid var(--c-border); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--c-bg-secondary); transition: transform 0.3s ease; display: flex; flex-direction: column;">
+                    <div style="height: 220px; background-color: var(--c-slate); overflow: hidden;">
+                        <img src="../images/blog-dinner.jpg" alt="Blog Image" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%); transition: filter 0.3s ease;">
+                    </div>
+                    <div style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                        <span style="color: var(--c-gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.8rem;">Cultural Insights</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1rem;"><a href="blog-details.html" style="color: inherit;">The Etiquette of Business Dinners Abroad</a></h3>
+                        <p class="text-secondary" style="font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">Chopsticks in Tokyo, forks in Lyon, hands in Riyadh. A field guide to dining rules that close deals and avoid offense.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--c-border);">
+                            <span style="font-size: 0.85rem; color: var(--c-slate);">Apr 01, 2026</span>
+                            <a href="blog-details.html" style="color: var(--c-burgundy); font-weight: 600; font-size: 0.9rem;">Read Article</a>
+                        </div>
+                    </div>
+                </article>
+</div>
+            <div id="blog-empty" class="text-secondary" style="display: none; text-align: center; padding: 4rem 0; font-size: 1.1rem;">No articles found. Try a different category or search term.</div>
         </div>
     </section>
 
@@ -163,7 +362,7 @@
                 <i class="fa-regular fa-envelope-open" style="font-size: 3rem; color: var(--c-gold); margin-bottom: 1.5rem;"></i>
                 <h2 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem;">Join The Private List</h2>
                 <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; color: var(--c-text-secondary);">Get weekly curations of our best language insights, cultural deep dives, and exclusive program offers delivered to your inbox.</p>
-                <form style="display: flex; max-width: 500px; margin: 0 auto; gap: 0.5rem;">
+                <form class="cta-form" style="display: flex; max-width: 500px; margin: 0 auto; gap: 0.5rem;">
                     <input type="email" placeholder="Enter your email address" required style="flex-grow: 1; padding: 1rem 1.5rem; border-radius: var(--radius-sm); border: 1px solid var(--c-border); background-color: var(--c-bg-primary); color: var(--c-text-primary); font-family: inherit; outline: none;">
                     <button type="submit" class="btn btn-gold">Subscribe</button>
                 </form>
@@ -175,14 +374,18 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a href="../index.html" class="logo">
-                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon" style="margin-right: 0.5rem;">
+                    <a href="../index.html" class="logo" style="align-items: center; gap: 10px; display: flex; margin-bottom: 1rem;">
+                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
+                            
                             <path d="M85 50C85 69.33 69.33 85 50 85C43.5 85 37.4 83.2 32.2 80.2L15 85L19.8 67.8C16.8 62.6 15 56.5 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="var(--c-gold)" stroke-width="8" stroke-linejoin="round"/>
                             <path d="M40 35V60H60" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+                        
                         </svg>
-                        LingoSphere
+                        <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
+                            <span style="line-height: 1.1; color: var(--c-gold);">LingoSphere</span>
+                            <span class="tagline" style="font-size: 0.75rem; margin-bottom: 0; letter-spacing: 0; color: var(--c-text-secondary); font-style: normal; font-family: var(--font-body);">Empowering Global Voices</span>
+                        </div>
                     </a>
-                    <span class="tagline">Empowering Global Voices</span>
                     <p class="footer-desc">Empowering global voices through premium language education and communication mastery. A curated sanctuary where every language tells an extraordinary story.</p>
                     <div class="footer-socials">
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
@@ -234,6 +437,11 @@
             </div>
         </div>
     </footer>
+    <!-- Back to Top -->
+    <a href="#" id="back-to-top" class="back-to-top" aria-label="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
     <script src="../js/main.js"></script>
 </body>
 </html>

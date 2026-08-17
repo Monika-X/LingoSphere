@@ -32,9 +32,9 @@
             <div class="header-actions">
                 <button id="theme-toggle" class="header-action-btn" aria-label="Toggle Theme"></button>
                 <button id="dir-toggle" class="header-action-btn" aria-label="Toggle Direction"></button>
-                <a href="contact.html" class="btn btn-gold" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;">Enroll</a>
+                <a href="contact.html" class="btn btn-gold">Enroll</a>
             </div>
-            <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+            <button class="mobile-menu-btn" aria-label="Toggle Menu" aria-expanded="false"><span></span><span></span><span></span></button>
         </div>
     </header>
     <!-- 1. Article Hero -->
@@ -163,14 +163,18 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a href="../index.html" class="logo">
-                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon" style="margin-right: 0.5rem;">
+                    <a href="../index.html" class="logo" style="align-items: center; gap: 10px; display: flex; margin-bottom: 1rem;">
+                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
+                            
                             <path d="M85 50C85 69.33 69.33 85 50 85C43.5 85 37.4 83.2 32.2 80.2L15 85L19.8 67.8C16.8 62.6 15 56.5 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="var(--c-gold)" stroke-width="8" stroke-linejoin="round"/>
                             <path d="M40 35V60H60" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+                        
                         </svg>
-                        LingoSphere
+                        <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
+                            <span style="line-height: 1.1; color: var(--c-gold);">LingoSphere</span>
+                            <span class="tagline" style="font-size: 0.75rem; margin-bottom: 0; letter-spacing: 0; color: var(--c-text-secondary); font-style: normal; font-family: var(--font-body);">Empowering Global Voices</span>
+                        </div>
                     </a>
-                    <span class="tagline">Empowering Global Voices</span>
                     <p class="footer-desc">Empowering global voices through premium language education and communication mastery. A curated sanctuary where every language tells an extraordinary story.</p>
                     <div class="footer-socials">
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
@@ -222,6 +226,11 @@
             </div>
         </div>
     </footer>
+    <!-- Back to Top -->
+    <a href="#" id="back-to-top" class="back-to-top" aria-label="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
     <script src="../js/main.js"></script>
 </body>
 </html>

@@ -63,9 +63,95 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Menu Toggle
     const mobileBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
+    // Clone Enroll button to mobile menu on small screens
+    const enrollBtn = document.querySelector('.header-actions .btn-gold');
+    if (window.innerWidth <= 991 && enrollBtn && navLinks) {
+        const mobileEnroll = enrollBtn.cloneNode(true);
+        mobileEnroll.classList.add('mobile-enroll-btn');
+        mobileEnroll.style.width = '100%';
+        mobileEnroll.style.textAlign = 'center';
+        mobileEnroll.style.marginTop = '1rem';
+        navLinks.appendChild(mobileEnroll);
+    }
+
     if (mobileBtn && navLinks) {
+        const overlay = document.createElement('div');
+        overlay.className = 'nav-overlay';
+        document.body.appendChild(overlay);
+
+        const closeMenu = () => {
+            mobileBtn.classList.remove('open');
+            navLinks.classList.remove('active');
+            overlay.classList.remove('visible');
+            document.body.classList.remove('menu-open');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+        };
+
         mobileBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            const isOpen = navLinks.classList.toggle('active');
+            mobileBtn.classList.toggle('open', isOpen);
+            overlay.classList.toggle('visible', isOpen);
+            document.body.classList.toggle('menu-open', isOpen);
+            mobileBtn.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        overlay.addEventListener('click', closeMenu);
+        navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeMenu();
+        });
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 992) closeMenu();
+        });
+    }
+
+    // 2. Form Success Handling (no page reload)
+    const formSuccessMessages = {
+        '.cta-form': 'Subscribed successfully! Welcome to the LingoSphere list.',
+        '.footer-newsletter': 'Subscribed! You are now on the Private List.',
+        '#enquiryForm': 'Thank you! Your enquiry has been sent. We will reply within 24 hours.'
+    };
+
+    function showFormSuccess(form, message) {
+        form.reset();
+        form.querySelectorAll('.form-success').forEach(el => el.remove());
+        const msg = document.createElement('div');
+        msg.className = 'form-success';
+        msg.innerHTML = '<i class="fa-solid fa-circle-check"></i>' + message;
+        form.insertAdjacentElement('afterend', msg);
+        setTimeout(() => msg.classList.add('fade'), 6000);
+        setTimeout(() => msg.remove(), 6700);
+    }
+
+    Object.entries(formSuccessMessages).forEach(([selector, message]) => {
+        if (selector === '#enquiryForm') return;
+        document.querySelectorAll(selector).forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                showFormSuccess(form, message);
+            });
+        });
+    });
+
+    const enquiryForm = document.getElementById('enquiryForm');
+    if (enquiryForm) {
+        enquiryForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let valid = true;
+            enquiryForm.querySelectorAll('.form-control[required]').forEach(field => {
+                const error = field.closest('.form-group')?.querySelector('.form-error');
+                const isEmail = field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim());
+                const isEmpty = !field.value.trim();
+                if (isEmpty || isEmail) {
+                    field.classList.add('invalid');
+                    error?.classList.add('visible');
+                    valid = false;
+                } else {
+                    field.classList.remove('invalid');
+                    error?.classList.remove('visible');
+                }
+            });
+            if (valid) showFormSuccess(enquiryForm, formSuccessMessages['#enquiryForm']);
         });
     }
 
@@ -135,5 +221,53 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.5 });
 
     counters.forEach(counter => counterObserver.observe(counter));
+
+    // 5. Blog Category & Search Filtering
+    const filterBtns = document.querySelectorAll('[data-filter]');
+    const blogSearch = document.getElementById('blog-search');
+    const blogCards = document.querySelectorAll('#blog-grid > article');
+    const blogEmpty = document.getElementById('blog-empty');
+
+    if (filterBtns.length) {
+        let activeFilter = 'all';
+        let searchQuery = '';
+
+        const normalize = (text) => (text || '').trim().toLowerCase().replace(/\s+/g, '-');
+        const matchesFilters = (element) => {
+            const category = normalize(element.dataset.category || element.querySelector('span')?.textContent || '');
+            const title = (element.querySelector('h3')?.textContent || '').toLowerCase();
+            const excerpt = (element.querySelector('p')?.textContent || '').toLowerCase();
+            const okCategory = activeFilter === 'all' || category === activeFilter;
+            const okSearch = !searchQuery
+                || title.includes(searchQuery)
+                || excerpt.includes(searchQuery)
+                || category.includes(searchQuery);
+            return okCategory && okSearch;
+        };
+
+        const applyFilters = () => {
+            let visible = 0;
+            blogCards.forEach(card => {
+                const show = matchesFilters(card);
+                card.style.display = show ? '' : 'none';
+                if (show) visible++;
+            });
+            if (blogEmpty) blogEmpty.style.display = visible === 0 ? 'block' : 'none';
+        };
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                activeFilter = btn.dataset.filter;
+                filterBtns.forEach(b => b.classList.toggle('active', b === btn));
+                applyFilters();
+            });
+        });
+
+        blogSearch?.addEventListener('input', () => {
+            searchQuery = blogSearch.value.trim().toLowerCase();
+            applyFilters();
+        });
+    }
 
 });

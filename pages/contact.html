@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | LingoSphere International Academy</title>
+    <title>Contact Us | LingoSphere</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,9 +15,11 @@
         /* Contact Page Styles */
         
         /* 1. Page Header */
-        .page-header {
+.page-header {
             padding: 150px 0 100px;
-            background-color: var(--c-midnight);
+            background-image: linear-gradient(rgba(31, 42, 68, 0.88), rgba(122, 40, 72, 0.88)), url('../images/contact-hero.jpg');
+            background-size: cover;
+            background-position: center;
             color: var(--c-ivory);
             text-align: center;
         }
@@ -52,7 +54,7 @@
             margin: 0 auto var(--s-4);
         }
 
-        /* 3. Form Section */
+        /* 4. Form Section */
         .form-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -185,24 +187,14 @@
             border-top: 1px solid var(--c-border);
         }
 
-        /* 6. Map Section */
+/* 6. Map */
         .map-section {
-            height: 400px;
-            background: #e5e5e5;
-            position: relative;
-        }
-        .map-placeholder {
             width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            color: var(--c-slate);
-            background-image: repeating-linear-gradient(45deg, #e0e0e0 25%, transparent 25%, transparent 75%, #e0e0e0 75%, #e0e0e0), repeating-linear-gradient(45deg, #e0e0e0 25%, var(--c-bg-tertiary) 25%, var(--c-bg-tertiary) 75%, #e0e0e0 75%, #e0e0e0);
-            background-position: 0 0, 20px 20px;
-            background-size: 40px 40px;
+            height: 450px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-top: var(--s-8);
+            border: 1px solid var(--c-border);
         }
     </style>
 </head>
@@ -232,9 +224,9 @@
             <div class="header-actions">
                 <button id="theme-toggle" class="header-action-btn" aria-label="Toggle Theme"></button>
                 <button id="dir-toggle" class="header-action-btn" aria-label="Toggle Direction"></button>
-                <a href="contact.html" class="btn btn-gold" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;">Enroll</a>
+                <a href="contact.html" class="btn btn-gold">Enroll</a>
             </div>
-            <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+            <button class="mobile-menu-btn" aria-label="Toggle Menu" aria-expanded="false"><span></span><span></span><span></span></button>
         </div>
     </header>
 
@@ -249,28 +241,28 @@
     <!-- 2. Info Cards -->
     <div class="container">
         <div class="contact-cards-container reveal">
-            <div class="contact-card">
+<div class="contact-card">
                 <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
                 <h3 class="mb-2">Call Us</h3>
-                <p class="text-secondary mb-1">Admissions: +1 (555) 123-4567</p>
-                <p class="text-secondary">Corporate: +1 (555) 987-6543</p>
+                <p class="text-secondary mb-1">Admissions: <a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+                <p class="text-secondary">Corporate: <a href="tel:+15559876543">+1 (555) 987-6543</a></p>
             </div>
             <div class="contact-card">
                 <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
                 <h3 class="mb-2">Email Us</h3>
-                <p class="text-secondary mb-1">admissions@lingosphere.edu</p>
-                <p class="text-secondary">info@lingosphere.edu</p>
+                <p class="text-secondary mb-1"><a href="mailto:admissions@lingosphere.edu">admissions@lingosphere.edu</a></p>
+                <p class="text-secondary"><a href="mailto:info@lingosphere.edu">info@lingosphere.edu</a></p>
             </div>
             <div class="contact-card">
                 <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
                 <h3 class="mb-2">Visit Us</h3>
                 <p class="text-secondary">123 Global Avenue, Floor 4</p>
-                <p class="text-secondary">New York, NY 10001</p>
+<p class="text-secondary">New York, NY 10001</p>
             </div>
-        </div>
+    </div>
     </div>
 
-    <!-- 3. Form Section -->
+<!-- 3. Form Section -->
     <section class="section">
         <div class="container form-section">
             <div class="reveal">
@@ -341,17 +333,17 @@
             <div class="branch-content active" id="ny">
                 <h3 class="mb-2">LingoSphere New York</h3>
                 <p class="text-secondary mb-4">123 Global Avenue, Manhattan, NY 10001</p>
-                <a href="#" class="btn btn-outline">Get Directions</a>
+<a href="https://www.google.com/maps/search/?api=1&query=123+Global+Avenue+Manhattan+NY+10001" target="_blank" rel="noopener" class="btn btn-outline">Get Directions</a>
             </div>
             <div class="branch-content" id="ldn">
                 <h3 class="mb-2">LingoSphere London</h3>
                 <p class="text-secondary mb-4">45 Victoria Street, Westminster, London SW1H 0EU</p>
-                <a href="#" class="btn btn-outline">Get Directions</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=45+Victoria+Street+Westminster+London+SW1H+0EU" target="_blank" rel="noopener" class="btn btn-outline">Get Directions</a>
             </div>
             <div class="branch-content" id="ber">
                 <h3 class="mb-2">LingoSphere Berlin</h3>
                 <p class="text-secondary mb-4">Friedrichstraße 140, 10117 Berlin, Germany</p>
-                <a href="#" class="btn btn-outline">Get Directions</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Friedrichstra%C3%9Fe+140+10117+Berlin+Germany" target="_blank" rel="noopener" class="btn btn-outline">Get Directions</a>
             </div>
         </div>
     </section>
@@ -400,27 +392,29 @@
                 </div>
             </div>
         </div>
-    </section>
+</section>
 
-    <!-- 6. Map -->
+    <!-- Map -->
     <section class="map-section reveal">
-        <div class="map-placeholder">
-            Interactive Map Area
-        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.25279998634!2d-74.1197621415053!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1684490807653!5m2!1sen!2sus" width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(100%) contrast(85%); opacity: 0.8;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
-    <footer class="footer">
+<footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a href="../index.html" class="logo">
-                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon" style="margin-right: 0.5rem;">
+                    <a href="../index.html" class="logo" style="align-items: center; gap: 10px; display: flex; margin-bottom: 1rem;">
+                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
+                            
                             <path d="M85 50C85 69.33 69.33 85 50 85C43.5 85 37.4 83.2 32.2 80.2L15 85L19.8 67.8C16.8 62.6 15 56.5 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="var(--c-gold)" stroke-width="8" stroke-linejoin="round"/>
                             <path d="M40 35V60H60" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+                        
                         </svg>
-                        LingoSphere
+                        <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
+                            <span style="line-height: 1.1; color: var(--c-gold);">LingoSphere</span>
+                            <span class="tagline" style="font-size: 0.75rem; margin-bottom: 0; letter-spacing: 0; color: var(--c-text-secondary); font-style: normal; font-family: var(--font-body);">Empowering Global Voices</span>
+                        </div>
                     </a>
-                    <span class="tagline">Empowering Global Voices</span>
                     <p class="footer-desc">Empowering global voices through premium language education and communication mastery. A curated sanctuary where every language tells an extraordinary story.</p>
                     <div class="footer-socials">
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
@@ -482,9 +476,12 @@
             e.preventDefault();
             let isValid = true;
             
-            const inputs = form.querySelectorAll('input[required], textarea[required]');
+const inputs = form.querySelectorAll('input[required], textarea[required]');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             inputs.forEach(input => {
-                if(!input.value.trim() || (input.type === 'email' && !input.value.includes('@'))) {
+                const isEmpty = !input.value.trim();
+                const isInvalidEmail = input.type === 'email' && !emailRegex.test(input.value.trim());
+                if (isEmpty || isInvalidEmail) {
                     input.parentElement.classList.add('error');
                     isValid = false;
                 } else {

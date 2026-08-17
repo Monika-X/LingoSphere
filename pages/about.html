@@ -18,9 +18,11 @@
     <style>
         /* About Page Specific Styles */
         /* 1. Page Header */
-        .page-header {
+.page-header {
             padding: 150px 0 100px;
-            background-color: var(--c-midnight);
+            background-image: linear-gradient(rgba(31, 42, 68, 0.88), rgba(122, 40, 72, 0.88)), url('../images/about-hero.jpg');
+            background-size: cover;
+            background-position: center;
             color: var(--c-ivory);
             text-align: center;
             position: relative;
@@ -112,68 +114,104 @@
         /* 5. Timeline */
         .timeline {
             position: relative;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
         .timeline::before {
             content: '';
             position: absolute;
             top: 0; left: 50%;
-            width: 2px; height: 100%;
-            background-color: var(--c-border);
+            width: 3px; height: 100%;
+            background: linear-gradient(to bottom, var(--c-gold), var(--c-burgundy), transparent);
             transform: translateX(-50%);
+            border-radius: 2px;
         }
         .timeline-item {
             display: flex;
             justify-content: flex-end;
-            padding-right: 50%;
+            padding-right: calc(50% + 24px);
             position: relative;
             margin-bottom: var(--s-8);
         }
         .timeline-item:nth-child(even) {
             justify-content: flex-start;
             padding-right: 0;
-            padding-left: 50%;
+            padding-left: calc(50% + 24px);
         }
+        .timeline-dot {
+            position: absolute;
+            top: 28px; left: 50%;
+            width: 18px; height: 18px;
+            border-radius: 50%;
+            background-color: var(--c-bg-primary);
+            border: 3px solid var(--c-gold);
+            transform: translateX(-50%);
+            z-index: 1;
+            box-shadow: 0 0 0 6px rgba(200, 169, 107, 0.15);
+            transition: background-color var(--t-normal);
+        }
+        .timeline-item:hover .timeline-dot { background-color: var(--c-gold); }
         .timeline-content {
-            width: 80%;
+            width: 100%;
             background-color: var(--c-bg-secondary);
-            padding: var(--s-4);
-            border-radius: var(--radius-md);
+            padding: var(--s-5);
+            border-radius: var(--radius-lg);
             border: 1px solid var(--c-border);
             position: relative;
+            overflow: hidden;
+            transition: transform var(--t-normal), box-shadow var(--t-normal);
         }
         .timeline-content::before {
             content: '';
             position: absolute;
-            top: 20px;
-            width: 15px; height: 15px;
-            background-color: var(--c-gold);
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: linear-gradient(to bottom, var(--c-gold), var(--c-burgundy));
+        }
+        .timeline-item:hover .timeline-content {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px var(--c-shadow);
+        }
+        .timeline-icon {
+            position: absolute;
+            top: var(--s-4); right: var(--s-4);
+            width: 44px; height: 44px;
             border-radius: 50%;
+            background: rgba(200, 169, 107, 0.12);
+            border: 1px solid rgba(200, 169, 107, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--c-gold);
+            font-size: 1.1rem;
+            transition: background-color var(--t-normal), color var(--t-normal);
         }
-        .timeline-item:nth-child(odd) .timeline-content::before {
-            right: -48px; /* Adjusted to sit on line */
-        }
-        .timeline-item:nth-child(even) .timeline-content::before {
-            left: -48px;
+        .timeline-item:hover .timeline-icon {
+            background-color: var(--c-gold);
+            color: var(--c-midnight);
         }
         .timeline-year {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
+            display: inline-block;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             color: var(--c-burgundy);
-            margin-bottom: var(--s-2);
+            background: rgba(200, 169, 107, 0.15);
+            border: 1px solid rgba(200, 169, 107, 0.4);
+            padding: 0.3rem 0.9rem;
+            border-radius: 50px;
+            margin-bottom: var(--s-3);
         }
         [data-theme="dark"] .timeline-year { color: var(--c-gold); }
 
         @media (max-width: 768px) {
             .timeline::before { left: 20px; }
-            .timeline-item { justify-content: flex-start; padding-right: 0; padding-left: 50px; }
-            .timeline-item:nth-child(even) { padding-left: 50px; }
+            .timeline-item { justify-content: flex-start; padding-right: 0; padding-left: 60px; }
+            .timeline-item:nth-child(even) { padding-left: 60px; }
+            .timeline-dot { left: 20px; }
             .timeline-content { width: 100%; }
-            .timeline-item:nth-child(odd) .timeline-content::before,
-            .timeline-item:nth-child(even) .timeline-content::before {
-                left: -38px;
-            }
         }
 
         /* 6. CTA Panel */
@@ -216,9 +254,9 @@
             <div class="header-actions">
                 <button id="theme-toggle" class="header-action-btn" aria-label="Toggle Theme"></button>
                 <button id="dir-toggle" class="header-action-btn" aria-label="Toggle Direction"></button>
-                <a href="contact.html" class="btn btn-gold" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;">Enroll</a>
+                <a href="contact.html" class="btn btn-gold">Enroll</a>
             </div>
-            <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+            <button class="mobile-menu-btn" aria-label="Toggle Menu" aria-expanded="false"><span></span><span></span><span></span></button>
         </div>
     </header>
 
@@ -268,7 +306,7 @@
                 </div>
                 <!-- Duplicate cards for layout demo -->
                 <div class="team-card">
-                    <img src="../images/team_leader.png" alt="Prof. Clara Vance" class="team-img">
+                    <img src="../images/clara-vance.jpg" alt="Prof. Clara Vance" class="team-img" style="object-position: top center;">
                     <div class="team-info">
                         <h3 class="mb-1">Prof. Clara Vance</h3>
                         <p class="c-gold mb-2" style="font-size: 0.9rem;">Head of European Languages</p>
@@ -276,7 +314,7 @@
                     </div>
                 </div>
                 <div class="team-card">
-                    <img src="../images/team_leader.png" alt="Dr. Marcus Wei" class="team-img">
+                    <img src="../images/marcus-wei.jpg" alt="Dr. Marcus Wei" class="team-img" style="object-position: top center;">
                     <div class="team-info">
                         <h3 class="mb-1">Dr. Marcus Wei</h3>
                         <p class="c-gold mb-2" style="font-size: 0.9rem;">Director of Corporate Training</p>
@@ -321,29 +359,37 @@
             
             <div class="timeline reveal">
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-year">2011</div>
+                        <span class="timeline-icon"><i class="fa-solid fa-seedling"></i></span>
+                        <span class="timeline-year">2011</span>
                         <h3>Foundation</h3>
                         <p class="text-secondary mt-2">LingoSphere was established in New York with a vision to redefine adult language education.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-year">2015</div>
+                        <span class="timeline-icon"><i class="fa-solid fa-earth-europe"></i></span>
+                        <span class="timeline-year">2015</span>
                         <h3>European Expansion</h3>
                         <p class="text-secondary mt-2">Opened our first overseas campus in London, expanding our curriculum to include diplomatic training.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-year">2020</div>
+                        <span class="timeline-icon"><i class="fa-solid fa-laptop-code"></i></span>
+                        <span class="timeline-year">2020</span>
                         <h3>Digital Transformation</h3>
                         <p class="text-secondary mt-2">Launched our award-winning virtual classrooms, bringing our premium education to global learners.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-year">2026</div>
+                        <span class="timeline-icon"><i class="fa-solid fa-trophy"></i></span>
+                        <span class="timeline-year">2026</span>
                         <h3>Global Leader</h3>
                         <p class="text-secondary mt-2">Recognized as the premier institute for cross-cultural communication skills worldwide.</p>
                     </div>
@@ -368,14 +414,18 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a href="../index.html" class="logo">
-                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon" style="margin-right: 0.5rem;">
+                    <a href="../index.html" class="logo" style="align-items: center; gap: 10px; display: flex; margin-bottom: 1rem;">
+                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
+                            
                             <path d="M85 50C85 69.33 69.33 85 50 85C43.5 85 37.4 83.2 32.2 80.2L15 85L19.8 67.8C16.8 62.6 15 56.5 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="var(--c-gold)" stroke-width="8" stroke-linejoin="round"/>
                             <path d="M40 35V60H60" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+                        
                         </svg>
-                        LingoSphere
+                        <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
+                            <span style="line-height: 1.1; color: var(--c-gold);">LingoSphere</span>
+                            <span class="tagline" style="font-size: 0.75rem; margin-bottom: 0; letter-spacing: 0; color: var(--c-text-secondary); font-style: normal; font-family: var(--font-body);">Empowering Global Voices</span>
+                        </div>
                     </a>
-                    <span class="tagline">Empowering Global Voices</span>
                     <p class="footer-desc">Empowering global voices through premium language education and communication mastery. A curated sanctuary where every language tells an extraordinary story.</p>
                     <div class="footer-socials">
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>

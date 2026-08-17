@@ -7,6 +7,81 @@
     <link href='https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap' rel='stylesheet'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'>
     <link rel='stylesheet' href="../css/style.css">
+    <style>
+        /* Enterprise Solutions */
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--s-6);
+            margin-top: var(--s-8);
+        }
+        .solution-card {
+            position: relative;
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--c-border);
+            background-color: var(--c-bg-secondary);
+            overflow: hidden;
+            transition: transform var(--t-normal), box-shadow var(--t-normal), border-color var(--t-normal);
+        }
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--c-gold), var(--c-burgundy));
+            opacity: 0;
+            transition: opacity var(--t-normal);
+        }
+        .solution-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px var(--c-shadow);
+            border-color: transparent;
+        }
+        .solution-card:hover::before { opacity: 1; }
+        .solution-number {
+            position: absolute;
+            top: 1.5rem; right: 1.75rem;
+            font-family: var(--font-heading);
+            font-size: 3.25rem;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--c-border);
+            transition: color var(--t-normal);
+        }
+        .solution-card:hover .solution-number { color: rgba(200, 169, 107, 0.4); }
+        .solution-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: var(--radius-md);
+            background: rgba(200, 169, 107, 0.12);
+            border: 1px solid rgba(200, 169, 107, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            color: var(--c-gold);
+            margin-bottom: 1.5rem;
+            transition: background-color var(--t-normal), color var(--t-normal), transform var(--t-normal);
+        }
+        .solution-card:hover .solution-icon {
+            background-color: var(--c-gold);
+            color: var(--c-midnight);
+            transform: rotate(-6deg);
+        }
+        .solution-title { font-size: 1.4rem; margin-bottom: 0.75rem; }
+        .solution-text { color: var(--c-text-secondary); margin-bottom: 1.75rem; }
+        .solution-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--c-gold);
+        }
+        .solution-link i { transition: transform var(--t-normal); }
+        .solution-link:hover i { transform: translateX(5px); }
+    </style>
 </head>
 <body>
     <header class="header header-inverse">
@@ -32,13 +107,13 @@
             <div class="header-actions">
                 <button id="theme-toggle" class="header-action-btn" aria-label="Toggle Theme"></button>
                 <button id="dir-toggle" class="header-action-btn" aria-label="Toggle Direction"></button>
-                <a href="contact.html" class="btn btn-gold" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;">Enroll</a>
+                <a href="contact.html" class="btn btn-gold">Enroll</a>
             </div>
-            <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+            <button class="mobile-menu-btn" aria-label="Toggle Menu" aria-expanded="false"><span></span><span></span><span></span></button>
         </div>
     </header>
     <!-- 1. Corporate Hero Section -->
-    <section class="hero" style="background-color: var(--c-midnight); padding-top: 180px; padding-bottom: 120px;">
+    <section class="hero" style="background-image: linear-gradient(rgba(31, 42, 68, 0.88), rgba(122, 40, 72, 0.88)), url('../images/home-2-hero.jpg'); background-size: cover; background-position: center; padding-top: 180px; padding-bottom: 120px;">
         <div class="container">
             <div class="hero-content reveal" style="max-width: 800px; margin: 0 auto; text-align: center;">
                 <span class="section-subtitle" style="color: var(--c-gold); border-color: var(--c-gold);">Enterprise Solutions</span>
@@ -91,27 +166,30 @@
                 <p style="max-width: 600px; margin: 0 auto;" class="text-secondary">We align our linguistic training with your strategic business objectives to ensure immediate, measurable ROI.</p>
             </div>
             
-            <div class="program-grid reveal">
+<div class="program-grid reveal">
                 <!-- Solution 1 -->
-                <div class="program-card" style="padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--c-border); background-color: var(--c-bg-secondary);">
-                    <i class="fa-solid fa-handshake c-gold" style="font-size: 2.5rem; margin-bottom: 1.5rem;"></i>
-                    <h3 class="mb-2">Executive Coaching</h3>
-                    <p class="text-secondary mb-4">One-on-one intensive language and cultural nuance training for C-suite executives preparing for international deployment or board roles.</p>
-                    <a href="services.html" class="c-gold" style="font-weight: 600; font-size: 0.9rem;">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="solution-card">
+                    <span class="solution-number">01</span>
+                    <div class="solution-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <h3 class="solution-title">Executive Coaching</h3>
+                    <p class="solution-text">One-on-one intensive language and cultural nuance training for C-suite executives preparing for international deployment or board roles.</p>
+                    <a href="services.html" class="solution-link">Discover More <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <!-- Solution 2 -->
-                <div class="program-card" style="padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--c-border); background-color: var(--c-bg-secondary);">
-                    <i class="fa-solid fa-users-gear c-gold" style="font-size: 2.5rem; margin-bottom: 1.5rem;"></i>
-                    <h3 class="mb-2">Team Integration</h3>
-                    <p class="text-secondary mb-4">Group workshops designed to bridge communication gaps in multinational teams, fostering an inclusive and highly efficient corporate culture.</p>
-                    <a href="services.html" class="c-gold" style="font-weight: 600; font-size: 0.9rem;">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="solution-card">
+                    <span class="solution-number">02</span>
+                    <div class="solution-icon"><i class="fa-solid fa-users-gear"></i></div>
+                    <h3 class="solution-title">Team Integration</h3>
+                    <p class="solution-text">Group workshops designed to bridge communication gaps in multinational teams, fostering an inclusive and highly efficient corporate culture.</p>
+                    <a href="services.html" class="solution-link">Discover More <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <!-- Solution 3 -->
-                <div class="program-card" style="padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--c-border); background-color: var(--c-bg-secondary);">
-                    <i class="fa-solid fa-file-contract c-gold" style="font-size: 2.5rem; margin-bottom: 1.5rem;"></i>
-                    <h3 class="mb-2">Negotiation & Diplomacy</h3>
-                    <p class="text-secondary mb-4">Specialized modules focusing on high-stakes negotiation vocabulary, international etiquette, and persuasive cross-border communication.</p>
-                    <a href="services.html" class="c-gold" style="font-weight: 600; font-size: 0.9rem;">Discover More <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="solution-card">
+                    <span class="solution-number">03</span>
+                    <div class="solution-icon"><i class="fa-solid fa-file-contract"></i></div>
+                    <h3 class="solution-title">Negotiation & Diplomacy</h3>
+                    <p class="solution-text">Specialized modules focusing on high-stakes negotiation vocabulary, international etiquette, and persuasive cross-border communication.</p>
+                    <a href="services.html" class="solution-link">Discover More <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -148,11 +226,8 @@
                     </li>
                 </ul>
             </div>
-            <div class="reveal" style="position: relative;">
-                <!-- Placeholder for a sleek corporate image -->
-                <div style="width: 100%; height: 500px; background: linear-gradient(135deg, var(--c-midnight), var(--c-burgundy)); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
-                    <i class="fa-solid fa-chart-line" style="font-size: 8rem; color: rgba(255,255,255,0.1);"></i>
-                </div>
+<div class="reveal" style="position: relative;">
+                <img src="../images/data-driven.jpg" alt="Data-Driven Fluency" style="width: 100%; height: 500px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
                 <!-- Floating stat badge -->
                 <div style="position: absolute; bottom: -20px; left: -20px; background-color: var(--c-bg-primary); padding: 1.5rem; border-radius: var(--radius-md); box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid var(--c-border);">
                     <div style="display: flex; align-items: center; gap: 1rem;">
@@ -186,14 +261,18 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a href="../index.html" class="logo">
-                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon" style="margin-right: 0.5rem;">
+                    <a href="../index.html" class="logo" style="align-items: center; gap: 10px; display: flex; margin-bottom: 1rem;">
+                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
+                            
                             <path d="M85 50C85 69.33 69.33 85 50 85C43.5 85 37.4 83.2 32.2 80.2L15 85L19.8 67.8C16.8 62.6 15 56.5 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="var(--c-gold)" stroke-width="8" stroke-linejoin="round"/>
                             <path d="M40 35V60H60" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+                        
                         </svg>
-                        LingoSphere
+                        <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
+                            <span style="line-height: 1.1; color: var(--c-gold);">LingoSphere</span>
+                            <span class="tagline" style="font-size: 0.75rem; margin-bottom: 0; letter-spacing: 0; color: var(--c-text-secondary); font-style: normal; font-family: var(--font-body);">Empowering Global Voices</span>
+                        </div>
                     </a>
-                    <span class="tagline">Empowering Global Voices</span>
                     <p class="footer-desc">Empowering global voices through premium language education and communication mastery. A curated sanctuary where every language tells an extraordinary story.</p>
                     <div class="footer-socials">
                         <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
@@ -245,6 +324,11 @@
             </div>
         </div>
     </footer>
+    <!-- Back to Top -->
+    <a href="#" id="back-to-top" class="back-to-top" aria-label="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
     <script src="../js/main.js"></script>
 </body>
 </html>
