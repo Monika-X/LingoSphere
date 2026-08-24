@@ -180,32 +180,56 @@ button {
 .btn-primary {
   background-color: var(--c-burgundy);
   color: var(--c-ivory);
-}
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background-color: var(--c-midnight);
-  z-index: -1;
-  transition: transform var(--t-normal);
-  transform: scaleX(0);
-  transform-origin: right;
-}
-.btn-primary:hover::before {
-  transform: scaleX(1);
-  transform-origin: left;
+  transition: all var(--t-normal);
 }
 .btn-primary:hover {
-  color: var(--c-ivory);
+  background-color: var(--c-gold);
+  color: var(--c-midnight);
+  box-shadow: 0 10px 24px rgba(200, 169, 107, 0.4);
+  transform: translateY(-2px);
+}
+[data-theme="dark"] .btn-primary:hover {
+  background-color: var(--c-gold);
+  color: #0F1523;
+  box-shadow: 0 10px 24px rgba(200, 169, 107, 0.5);
+}
+
+.btn-gold {
+  background: linear-gradient(90deg, var(--c-gold), #E0C58F);
+  color: var(--c-midnight);
+  font-weight: 700;
+  transition: all var(--t-normal);
+}
+.btn-gold:hover {
+  background: linear-gradient(90deg, #FAF7F2, var(--c-gold));
+  color: #0F1523;
+  box-shadow: 0 10px 25px rgba(200, 169, 107, 0.45);
+  transform: translateY(-2px);
+}
+[data-theme="dark"] .btn-gold:hover {
+  background: linear-gradient(90deg, #FAF7F2, #E0C58F);
+  color: #0F1523;
+  box-shadow: 0 12px 28px rgba(200, 169, 107, 0.6);
 }
 
 .btn-outline {
   border: 1px solid var(--c-gold);
   color: var(--c-text-primary);
+  background-color: transparent;
+  transition: all var(--t-normal);
 }
 .btn-outline:hover {
   background-color: var(--c-gold);
   color: var(--c-midnight);
+  border-color: var(--c-gold);
+  box-shadow: 0 8px 20px rgba(200, 169, 107, 0.35);
+  transform: translateY(-2px);
+}
+[data-theme="dark"] .btn-outline:hover {
+  background-color: var(--c-gold);
+  color: #0F1523;
+  border-color: var(--c-gold);
+  box-shadow: 0 10px 24px rgba(200, 169, 107, 0.45);
 }
 
 /* Blog Filter Buttons */
