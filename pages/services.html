@@ -555,17 +555,120 @@
                 align-items: center;
                 text-align: center;
                 padding: var(--s-4) var(--s-4);
-            }
+        /* ---------- Batch Classification (Adults vs Children) ---------- */
+        .batch-tabs-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-top: 2rem;
         }
-        @media (max-width: 480px) {
-            .pricing-card {
-                padding: var(--s-5);
+        .batch-category-card {
+            background-color: var(--c-bg-primary);
+            border: 1px solid var(--c-border);
+            border-radius: var(--radius-xl);
+            padding: 2.25rem;
+            transition: transform var(--t-normal), box-shadow var(--t-normal);
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+        .batch-category-card.highlight {
+            border-color: rgba(200, 169, 107, 0.4);
+            box-shadow: 0 10px 30px var(--c-shadow);
+        }
+        .batch-category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 36px var(--c-shadow);
+        }
+        .batch-category-header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--c-border);
+        }
+        .batch-icon-badge {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: rgba(122, 40, 72, 0.12);
+            border: 1px solid var(--c-burgundy);
+            color: var(--c-burgundy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        [data-theme="dark"] .batch-icon-badge {
+            background: rgba(200, 169, 107, 0.12);
+            border-color: var(--c-gold);
+            color: var(--c-gold);
+        }
+        .batch-icon-badge.gold {
+            background: rgba(200, 169, 107, 0.12);
+            border-color: var(--c-gold);
+            color: var(--c-gold);
+        }
+        .batch-category-header h3 {
+            font-family: var(--font-heading);
+            font-size: 1.45rem;
+            margin-bottom: 0.2rem;
+        }
+        .batch-tagline {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--c-gold);
+        }
+        .batch-items-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin-top: 1rem;
+        }
+        .batch-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            background-color: var(--c-bg-secondary);
+            border: 1px solid var(--c-border);
+            transition: border-color var(--t-fast);
+        }
+        .batch-item:hover {
+            border-color: var(--c-gold);
+        }
+        .batch-item-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--c-bg-tertiary);
+            color: var(--c-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .batch-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.35rem;
+        }
+        .batch-item p {
+            font-size: 0.88rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+        @media (max-width: 992px) {
+            .batch-tabs-container {
+                grid-template-columns: 1fr;
             }
-            .language-card {
-                padding: var(--s-4);
-            }
-            .price {
-                font-size: 2.5rem;
+            .batch-category-card {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -651,6 +754,89 @@
                     <div class="lang-foot">
                         <span class="lang-level">A1 &mdash; B1</span>
                         <a href="contact.html" class="lang-link">Explore <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2.5 Batch Classification: Adults vs Children -->
+    <section class="section batch-classification-section" style="background-color: var(--c-bg-secondary); border-top: 1px solid var(--c-border); border-bottom: 1px solid var(--c-border);">
+        <div class="container">
+            <div class="text-center reveal mb-8">
+                <span class="section-subtitle" style="color: var(--c-gold);">Targeted Learning Tracks</span>
+                <h2 class="section-title">Adult &amp; Children <em>Batches</em></h2>
+                <p style="max-width: 660px; margin: 0 auto;" class="text-secondary">Customized pedagogical frameworks tailored specifically for adult career progression and age-appropriate young learner development.</p>
+            </div>
+
+            <div class="batch-tabs-container reveal">
+                <!-- Adult Batches Block -->
+                <div class="batch-category-card">
+                    <div class="batch-category-header">
+                        <div class="batch-icon-badge"><i class="fa-solid fa-user-tie"></i></div>
+                        <div>
+                            <h3>Adult Programs &amp; Batches</h3>
+                            <span class="batch-tagline">Ages 18+ &middot; Professional &amp; Higher Ed</span>
+                        </div>
+                    </div>
+                    <p class="text-secondary mt-3 mb-4">Focused, result-oriented tracks engineered for professionals, university scholars, and adult learners demanding real-world fluency and career leverage.</p>
+                    <div class="batch-items-grid">
+                        <div class="batch-item">
+                            <div class="batch-item-icon"><i class="fa-solid fa-briefcase"></i></div>
+                            <div>
+                                <h4>Executive &amp; Professional Cohorts</h4>
+                                <p>Evening &amp; weekend schedules focusing on business negotiations, corporate communications, and industry-specific vocabulary.</p>
+                            </div>
+                        </div>
+                        <div class="batch-item">
+                            <div class="batch-item-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <div>
+                                <h4>University &amp; Study Abroad Batches</h4>
+                                <p>Academic writing, research paper preparation, and CEFR C1/C2 advanced fluency for international university admission.</p>
+                            </div>
+                        </div>
+                        <div class="batch-item">
+                            <div class="batch-item-icon"><i class="fa-solid fa-earth-americas"></i></div>
+                            <div>
+                                <h4>Global Immersion &amp; Relocation</h4>
+                                <p>Accelerated survival and cultural integration modules for adults relocating to new international markets.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Children & Young Learners Block -->
+                <div class="batch-category-card highlight">
+                    <div class="batch-category-header">
+                        <div class="batch-icon-badge gold"><i class="fa-solid fa-child-reaching"></i></div>
+                        <div>
+                            <h3>Children &amp; Young Learner Batches</h3>
+                            <span class="batch-tagline">Ages 5&ndash;17 &middot; Foundation to Academic Prep</span>
+                        </div>
+                    </div>
+                    <p class="text-secondary mt-3 mb-4">Interactive, engaging curricula designed to nurture bilingualism, cognitive development, and academic confidence from early childhood to high school.</p>
+                    <div class="batch-items-grid">
+                        <div class="batch-item">
+                            <div class="batch-item-icon"><i class="fa-solid fa-shapes"></i></div>
+                            <div>
+                                <h4>Junior Explorers (Ages 5&ndash;9)</h4>
+                                <p>Gamified phonics, songs, interactive storytelling, and conversational play that make language learning natural and fun.</p>
+                            </div>
+                        </div>
+                        <div class="batch-item">
+                            <div class="batch-item-icon"><i class="fa-solid fa-book-open"></i></div>
+                            <div>
+                                <h4>Young Scholars (Ages 10&ndash;14)</h4>
+                                <p>Structured grammar foundations, reading comprehension, vocabulary expansion, and school curriculum alignment.</p>
+                            </div>
+                        </div>
+                        <div class="batch-item">
+                            <div class="batch-item-icon"><i class="fa-solid fa-award"></i></div>
+                            <div>
+                                <h4>Teen Leaders &amp; Exam Prep (Ages 15&ndash;17)</h4>
+                                <p>High school diploma support (IB, IGCSE, AP French/Spanish/German), youth debate, and university prep.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
