@@ -442,6 +442,7 @@ button {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  gap: clamp(1rem, 2vw, 2.5rem);
 }
 .logo {
   font-family: var(--font-heading);
@@ -451,6 +452,7 @@ button {
   display: flex;
   align-items: center;
   gap: var(--s-2);
+  flex-shrink: 0;
 }
 .logo > div > span:first-child {
   background: linear-gradient(120deg, var(--c-burgundy) 15%, var(--c-gold) 85%);
@@ -492,22 +494,27 @@ button {
 
 .nav-links {
   display: flex;
-  gap: var(--s-6);
+  align-items: center;
+  gap: clamp(1rem, 1.8vw, 2rem);
 }
 .nav-link {
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   text-transform: uppercase;
-  letter-spacing: 1.6px;
+  letter-spacing: 1.4px;
   position: relative;
+  padding: 0.5rem 0.2rem;
+  white-space: nowrap;
+  transition: color var(--t-fast);
 }
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: -6px;
+  bottom: -2px;
   left: 0;
   width: 100%;
-  height: 1px;
+  height: 2px;
+  border-radius: 2px;
   background: linear-gradient(90deg, var(--c-gold), var(--c-burgundy));
   transform: scaleX(0);
   transform-origin: center;
@@ -520,6 +527,12 @@ button {
   color: var(--c-gold);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  flex-shrink: 0;
+}
 .header-actions .btn-gold {
   padding: 0.5rem 1.5rem;
   font-size: 0.8rem;
@@ -1032,20 +1045,17 @@ body.menu-open {
   }
   .header-actions {
     display: flex;
-    gap: var(--s-2);
+    align-items: center;
+    gap: 0.75rem;
+    margin-left: auto;
+  }
+  [dir="rtl"] .header-actions {
+    margin-left: 0;
+    margin-right: auto;
   }
   .header-actions .btn-gold {
     display: none;
   }
-  .nav-links .header-action-btn {
-    padding: 0.875rem 0;
-    border-bottom: 1px solid var(--c-border);
-    width: 100%;
-    justify-content: flex-start;
-    gap: var(--s-3);
-    font-size: 1rem;
-  }
-  .nav-links .header-actions .btn-gold,
   .mobile-enroll-btn {
     width: 100%;
     text-align: center;
@@ -1097,9 +1107,6 @@ body.menu-open {
   .logo .tagline {
     font-size: 0.55rem !important;
     white-space: nowrap;
-  }
-  .header-actions {
-    gap: 8px;
   }
   #theme-toggle {
     font-size: 1rem;
