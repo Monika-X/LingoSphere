@@ -353,11 +353,13 @@
         }
         .testimonial-card {
             background-color: var(--c-bg-secondary);
-            padding: var(--s-8);
+            padding: clamp(1.25rem, 4vw, 3rem);
             border-radius: var(--radius-lg);
             position: relative;
             border: 1px solid var(--c-border);
             transition: transform var(--t-normal), box-shadow var(--t-normal);
+            box-sizing: border-box;
+            max-width: 100%;
         }
         .testimonial-card:hover {
             transform: translateY(-6px);
@@ -366,19 +368,20 @@
         .testimonial-card::before {
             content: '\201C';
             position: absolute;
-            top: 12px;
-            left: 22px;
-            font-size: 6rem;
+            top: 10px;
+            left: 16px;
+            font-size: clamp(3rem, 6vw, 5.5rem);
             color: var(--c-gold);
             opacity: 0.18;
             font-family: var(--font-heading);
             line-height: 1;
+            pointer-events: none;
         }
         .testimonial-card > p {
             position: relative;
             z-index: 2;
-            font-size: 1.05rem;
-            line-height: 1.8;
+            font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+            line-height: 1.7;
         }
         .client-info {
             display: flex;
@@ -480,6 +483,18 @@
             }
             .cta-form {
                 flex-direction: column;
+            }
+            .testimonial-card {
+                padding: 1.25rem 1.25rem 1.5rem !important;
+            }
+            .course-card,
+            .program-content {
+                padding: 1.25rem !important;
+            }
+            .client-avatar {
+                width: 48px;
+                height: 48px;
+                font-size: 1.2rem;
             }
         }
     </style>

@@ -1156,9 +1156,11 @@ body.menu-open {
     letter-spacing: 1.5px;
   }
   .back-to-top {
-    width: 40px;
-    height: 40px;
-    font-size: 0.85rem;
+    width: 42px;
+    height: 42px;
+    font-size: 1rem;
+    right: 1rem;
+    bottom: 1rem;
   }
   .footer-bottom {
     font-size: 0.78rem;
@@ -1168,5 +1170,81 @@ body.menu-open {
   }
   .footer-newsletter button {
     width: 100%;
+  }
+}
+
+/* ============================================================
+   Universal Card Sizing & Screen Fitting
+   ============================================================ */
+.card,
+.glass-card,
+.program-card,
+.course-card,
+.testimonial-card,
+.team-card,
+.lang-card,
+.pricing-card,
+.contact-card,
+.blog-card,
+.timeline-content,
+.faq-cta-card,
+.accordion-item,
+.contact-form {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+}
+
+@media (max-width: 640px) {
+  .card,
+  .glass-card,
+  .program-card,
+  .course-card,
+  .testimonial-card,
+  .team-card,
+  .lang-card,
+  .pricing-card,
+  .contact-card,
+  .blog-card,
+  .timeline-content,
+  .faq-cta-card,
+  .contact-form {
+    padding: 1.25rem !important;
+  }
+  .testimonial-card {
+    padding-bottom: 1.5rem !important;
+  }
+  .testimonial-card::before {
+    font-size: 3.5rem !important;
+    top: 6px !important;
+    left: 10px !important;
+  }
+  .testimonial-card > p {
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+  }
+  .back-to-top {
+    right: 1rem !important;
+    bottom: 1rem !important;
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem !important;
+  }
+  .card,
+  .glass-card,
+  .program-card,
+  .course-card,
+  .testimonial-card,
+  .team-card,
+  .lang-card,
+  .pricing-card,
+  .contact-card,
+  .contact-form {
+    padding: 1rem !important;
   }
 }
