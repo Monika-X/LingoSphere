@@ -395,14 +395,28 @@
         }
         .cta-panel .btn-gold {
             border-radius: 50px;
-            letter-spacing: 2px;
+            padding: 0.85rem 2rem;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
             background: linear-gradient(90deg, var(--c-gold), #E0C58F);
-            box-shadow: 0 10px 24px rgba(200, 169, 107, 0.4);
+            box-shadow: 0 8px 20px rgba(200, 169, 107, 0.35);
             transition: all var(--t-normal);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 90%;
         }
         .cta-panel .btn-gold:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 16px 36px rgba(200, 169, 107, 0.55);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(200, 169, 107, 0.5);
+        }
+        @media (max-width: 640px) {
+            .cta-panel .btn-gold {
+                padding: 0.75rem 1.4rem !important;
+                font-size: 0.78rem !important;
+                letter-spacing: 1px !important;
+                max-width: 100%;
+            }
         }
 
         /* ---------- RTL Support for Timeline ---------- */
