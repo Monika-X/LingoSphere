@@ -1,5 +1,36 @@
 <svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="128" height="128" rx="24" fill="#1F2A44"/>
-    <path d="M108 64C108 88.3005 88.3005 108 64 108C55.8118 108 48.1465 105.767 41.597 101.884L19.9998 108L26.1157 86.4026C22.2332 79.8533 20 72.1881 20 64C20 39.6995 39.6995 20 64 20C88.3005 20 108 39.6995 108 64Z" stroke="#C8A96B" stroke-width="8" stroke-linejoin="round"/>
-    <path d="M48 42V72H76" stroke="#FAF7F2" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter"/>
+    <defs>
+        <linearGradient id="favBg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1F2A44"/>
+            <stop offset="100%" stop-color="#0F1523"/>
+        </linearGradient>
+        <linearGradient id="favGold" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFF2D4"/>
+            <stop offset="35%" stop-color="#E5C57E"/>
+            <stop offset="70%" stop-color="#C89D46"/>
+            <stop offset="100%" stop-color="#9A7025"/>
+        </linearGradient>
+        <linearGradient id="favGold2" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#FFF5DC"/>
+            <stop offset="50%" stop-color="#DFBA68"/>
+            <stop offset="100%" stop-color="#7A2848"/>
+        </linearGradient>
+        <radialGradient id="favGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#E5C57E" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#C89D46" stop-opacity="0"/>
+        </radialGradient>
+    </defs>
+    <rect width="128" height="128" rx="28" fill="url(#favBg)" stroke="rgba(200, 169, 107, 0.3)" stroke-width="2"/>
+    <circle cx="64" cy="64" r="48" fill="url(#favGlow)"/>
+    <circle cx="64" cy="64" r="46" stroke="url(#favGold)" stroke-width="1.8" stroke-dasharray="3 3" opacity="0.6"/>
+    <circle cx="64" cy="64" r="42" stroke="url(#favGold)" stroke-width="1.8" opacity="0.85"/>
+    <circle cx="64" cy="18" r="2.5" fill="url(#favGold)"/>
+    <circle cx="64" cy="110" r="2.5" fill="url(#favGold)"/>
+    <circle cx="18" cy="64" r="2.5" fill="url(#favGold)"/>
+    <circle cx="110" cy="64" r="2.5" fill="url(#favGold)"/>
+    <ellipse cx="64" cy="64" rx="17" ry="40" transform="rotate(-30 64 64)" stroke="url(#favGold)" stroke-width="2.2" fill="none" opacity="0.75"/>
+    <ellipse cx="64" cy="64" rx="40" ry="15" transform="rotate(-30 64 64)" stroke="url(#favGold)" stroke-width="2" stroke-dasharray="4 3" fill="none" opacity="0.6"/>
+    <path d="M48 36 C48 36 48 83 48 83 C48 89 55 90 66 90 C79 90 89 86 89 79" stroke="url(#favGold)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M80 44 C73 35 57 35 50 44 C42 54 53 63 64 66 C77 69.5 86 75.5 79 86 C72 96.5 56 95 46 87" stroke="url(#favGold2)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M64 57 L66.5 62.5 L72 64.5 L66.5 66.5 L64 72 L61.5 66.5 L56 64.5 L61.5 62.5 Z" fill="#FFFFFF" opacity="0.95"/>
 </svg>

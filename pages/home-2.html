@@ -396,29 +396,82 @@
         .h2-manifesto-counters {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
+            gap: 0;
             position: relative;
+            margin-top: var(--s-6);
+            border: 1px solid rgba(250, 247, 242, 0.08);
+            border-radius: 16px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
+            overflow: hidden;
+            backdrop-filter: blur(8px);
         }
         .h2-counter {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: var(--s-4) 0;
-            border-left: 1px solid rgba(250, 247, 242, 0.1);
+            padding: 2.5rem 1.5rem 2.25rem;
+            position: relative;
+            min-height: 148px;
+            gap: 0;
         }
-        .h2-counter:first-child {
-            border-left: none;
+        .h2-counter + .h2-counter {
+            border-left: 1px solid rgba(250, 247, 242, 0.08);
+        }
+        .h2-counter::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 56px;
+            background: linear-gradient(180deg, transparent, rgba(200,169,107,0.28), transparent);
+            opacity: 0;
+            pointer-events: none;
         }
         .h2-counter strong {
             font-family: var(--font-heading);
-            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-size: clamp(2.4rem, 3.6vw, 3.4rem);
+            line-height: 1;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--c-gold);
+            display: inline-flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.08em;
+            margin: 0 0 0.85rem;
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "tnum";
+            white-space: nowrap;
+        }
+        .h2-counter strong .counter {
+            display: inline-block;
+            min-width: 1ch;
+            text-align: right;
+        }
+        .h2-counter-suffix {
+            font-size: 0.72em;
+            font-weight: 700;
             line-height: 1;
             color: var(--c-gold);
-            display: block;
-            margin-bottom: 0.75rem;
+            opacity: 0.95;
+            transform: translateY(-0.06em);
         }
-        .h2-counter span {
+        .h2-counter-label {
+            display: block;
+            max-width: 16ch;
+            margin: 0 auto;
+            font-family: var(--font-body);
             font-size: 0.72rem;
+            font-weight: 600;
+            line-height: 1.55;
             text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: rgba(250, 247, 242, 0.55);
+            letter-spacing: 2.4px;
+            color: rgba(250, 247, 242, 0.62);
+            text-wrap: balance;
         }
 
         /* ---------- 5. Process ---------- */
@@ -616,8 +669,18 @@
             .h2-manifesto-counters {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .h2-counter:nth-child(3) {
+            .h2-counter {
+                padding: 2.1rem 1.25rem 1.95rem;
+                min-height: 138px;
+            }
+            .h2-counter:nth-child(odd) {
                 border-left: none;
+            }
+            .h2-counter:nth-child(n+3) {
+                border-top: 1px solid rgba(250, 247, 242, 0.08);
+            }
+            .h2-counter strong {
+                font-size: clamp(2.2rem, 5vw, 2.85rem);
             }
             .h2-process-grid {
                 grid-template-columns: 1fr;
@@ -653,10 +716,33 @@
             }
             .h2-manifesto-counters {
                 grid-template-columns: 1fr;
+                border-radius: 14px;
             }
             .h2-counter {
+                border-left: none !important;
+                border-top: none !important;
+                padding: 1.75rem 1.25rem;
+                min-height: 0;
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+                gap: 1rem;
+            }
+            .h2-counter + .h2-counter {
                 border-left: none;
-                border-bottom: 1px solid rgba(250, 247, 242, 0.1);
+                border-top: 1px solid rgba(250, 247, 242, 0.08);
+            }
+            .h2-counter strong {
+                margin-bottom: 0;
+                font-size: 2rem;
+                flex-shrink: 0;
+            }
+            .h2-counter-label {
+                margin: 0;
+                text-align: right;
+                max-width: 12ch;
+                font-size: 0.68rem;
+                letter-spacing: 1.8px;
             }
             .h2-quote-mark {
                 font-size: 4rem;
@@ -669,13 +755,41 @@
     <header class="header header-inverse">
         <div class="container nav-container">
             <a href="../index.html" class="logo">
-                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
-                    <path d="M85 50C85 69.33 69.33 85 50 85C43.5 85 37.4 83.2 32.2 80.2L15 85L19.8 67.8C16.8 62.6 15 56.5 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="var(--c-gold)" stroke-width="8" stroke-linejoin="round"/>
-                    <path d="M40 35V60H60" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+                <svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="lsGold1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FFF2D4"/>
+                            <stop offset="35%" stop-color="#E5C57E"/>
+                            <stop offset="70%" stop-color="#C89D46"/>
+                            <stop offset="100%" stop-color="#9A7025"/>
+                        </linearGradient>
+                        <linearGradient id="lsGold2" x1="100%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#FFF5DC"/>
+                            <stop offset="50%" stop-color="#DFBA68"/>
+                            <stop offset="100%" stop-color="#7A2848"/>
+                        </linearGradient>
+                        <radialGradient id="lsGlow" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#E5C57E" stop-opacity="0.32"/>
+                            <stop offset="70%" stop-color="#C89D46" stop-opacity="0.08"/>
+                            <stop offset="100%" stop-color="#C89D46" stop-opacity="0"/>
+                        </radialGradient>
+                    </defs>
+                    <circle cx="50" cy="50" r="45" fill="url(#lsGlow)"/>
+                    <circle cx="50" cy="50" r="44" stroke="url(#lsGold1)" stroke-width="1.8" stroke-dasharray="2 3" opacity="0.55"/>
+                    <circle cx="50" cy="50" r="40" stroke="url(#lsGold1)" stroke-width="1.5" opacity="0.85"/>
+                    <circle cx="50" cy="6" r="2.2" fill="url(#lsGold1)"/>
+                    <circle cx="50" cy="94" r="2.2" fill="url(#lsGold1)"/>
+                    <circle cx="6" cy="50" r="2.2" fill="url(#lsGold1)"/>
+                    <circle cx="94" cy="50" r="2.2" fill="url(#lsGold1)"/>
+                    <ellipse cx="50" cy="50" rx="16" ry="38" transform="rotate(-30 50 50)" stroke="url(#lsGold1)" stroke-width="2" fill="none" opacity="0.75"/>
+                    <ellipse cx="50" cy="50" rx="38" ry="14" transform="rotate(-30 50 50)" stroke="url(#lsGold1)" stroke-width="1.8" stroke-dasharray="4 2.5" fill="none" opacity="0.55"/>
+                    <path d="M35 24 C35 24 35 68 35 68 C35 73.5 41 75 52 75 C64 75 73 71.5 73 65" stroke="url(#lsGold1)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M65 31 C59 23 44 23 38 31 C31 40 40 48 50 50.5 C62 53.5 70 58.5 64 68 C58 77.5 43 76 34 69" stroke="url(#lsGold2)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M50 43 L52 48 L57 50 L52 52 L50 57 L48 52 L43 50 L48 48 Z" fill="#FFFFFF" opacity="0.95"/>
                 </svg>
-                <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
-                    <span style="line-height: 1.1;">LingoSphere</span>
-                    <span class="tagline" style="font-size: 0.75rem; margin-bottom: 0; letter-spacing: 0; color: var(--c-text-secondary); font-style: normal; font-family: var(--font-body);">Empowering Global Voices</span>
+                <div class="logo-text">
+                    <span class="logo-title">Lingo<span class="logo-accent">Sphere</span></span>
+                    <span class="logo-tagline">Empowering Global Voices</span>
                 </div>
             </a>
             <nav class="nav-links">
@@ -826,20 +940,20 @@
             </div>
             <div class="h2-manifesto-counters reveal">
                 <div class="h2-counter">
-                    <strong><span class="counter" data-target="150">0</span>+</strong>
-                    <span>Enterprise Clients</span>
+                    <strong><span class="counter" data-target="150">0</span><span class="h2-counter-suffix">+</span></strong>
+                    <span class="h2-counter-label">Enterprise Clients</span>
                 </div>
                 <div class="h2-counter">
-                    <strong><span class="counter" data-target="20">0</span>k+</strong>
-                    <span>Professionals Trained</span>
+                    <strong><span class="counter" data-target="20">0</span><span class="h2-counter-suffix">k+</span></strong>
+                    <span class="h2-counter-label">Professionals Trained</span>
                 </div>
                 <div class="h2-counter">
-                    <strong><span class="counter" data-target="40">0</span>+</strong>
-                    <span>Languages Delivered</span>
+                    <strong><span class="counter" data-target="40">0</span><span class="h2-counter-suffix">+</span></strong>
+                    <span class="h2-counter-label">Languages Delivered</span>
                 </div>
                 <div class="h2-counter">
-                    <strong><span class="counter" data-target="98">0</span>%</strong>
-                    <span>Client Retention</span>
+                    <strong><span class="counter" data-target="98">0</span><span class="h2-counter-suffix">%</span></strong>
+                    <span class="h2-counter-label">Client Retention</span>
                 </div>
             </div>
         </div>
@@ -925,16 +1039,42 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a href="../index.html" class="logo" style="align-items: center; gap: 10px; display: flex; margin-bottom: 1rem;">
-                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
-                            
-                            <path d="M85 50C85 69.33 69.33 85 50 85C43.5 85 37.4 83.2 32.2 80.2L15 85L19.8 67.8C16.8 62.6 15 56.5 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="var(--c-gold)" stroke-width="8" stroke-linejoin="round"/>
-                            <path d="M40 35V60H60" stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
-                        
+                    <a href="../index.html" class="logo" style="align-items: center; gap: 12px; display: inline-flex; margin-bottom: 1rem;">
+                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="lsGoldFooter1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#FFF3D6"/>
+                                    <stop offset="35%" stop-color="#E5C57E"/>
+                                    <stop offset="70%" stop-color="#C89D46"/>
+                                    <stop offset="100%" stop-color="#9A7025"/>
+                                </linearGradient>
+                                <linearGradient id="lsGoldFooter2" x1="100%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#FFF5DC"/>
+                                    <stop offset="50%" stop-color="#DFBA68"/>
+                                    <stop offset="100%" stop-color="#9E385D"/>
+                                </linearGradient>
+                                <radialGradient id="lsGlowFooter" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="#E5C57E" stop-opacity="0.38"/>
+                                    <stop offset="70%" stop-color="#C89D46" stop-opacity="0.1"/>
+                                    <stop offset="100%" stop-color="#C89D46" stop-opacity="0"/>
+                                </radialGradient>
+                            </defs>
+                            <circle cx="50" cy="50" r="45" fill="url(#lsGlowFooter)"/>
+                            <circle cx="50" cy="50" r="44" stroke="url(#lsGoldFooter1)" stroke-width="1.8" stroke-dasharray="2 3" opacity="0.55"/>
+                            <circle cx="50" cy="50" r="40" stroke="url(#lsGoldFooter1)" stroke-width="1.5" opacity="0.85"/>
+                            <circle cx="50" cy="6" r="2.2" fill="url(#lsGoldFooter1)"/>
+                            <circle cx="50" cy="94" r="2.2" fill="url(#lsGoldFooter1)"/>
+                            <circle cx="6" cy="50" r="2.2" fill="url(#lsGoldFooter1)"/>
+                            <circle cx="94" cy="50" r="2.2" fill="url(#lsGoldFooter1)"/>
+                            <ellipse cx="50" cy="50" rx="16" ry="38" transform="rotate(-30 50 50)" stroke="url(#lsGoldFooter1)" stroke-width="2" fill="none" opacity="0.75"/>
+                            <ellipse cx="50" cy="50" rx="38" ry="14" transform="rotate(-30 50 50)" stroke="url(#lsGoldFooter1)" stroke-width="1.8" stroke-dasharray="4 2.5" fill="none" opacity="0.55"/>
+                            <path d="M35 24 C35 24 35 68 35 68 C35 73.5 41 75 52 75 C64 75 73 71.5 73 65" stroke="url(#lsGoldFooter1)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M65 31 C59 23 44 23 38 31 C31 40 40 48 50 50.5 C62 53.5 70 58.5 64 68 C58 77.5 43 76 34 69" stroke="url(#lsGoldFooter2)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M50 43 L52 48 L57 50 L52 52 L50 57 L48 52 L43 50 L48 48 Z" fill="#FFFFFF" opacity="0.95"/>
                         </svg>
-                        <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
-                            <span style="line-height: 1.1; color: var(--c-gold);">LingoSphere</span>
-                            <span class="tagline" style="font-size: 0.75rem; margin-bottom: 0; letter-spacing: 0; color: var(--c-text-secondary); font-style: normal; font-family: var(--font-body);">Empowering Global Voices</span>
+                        <div class="logo-text">
+                            <span class="logo-title">Lingo<span class="logo-accent">Sphere</span></span>
+                            <span class="logo-tagline">Empowering Global Voices</span>
                         </div>
                     </a>
                     <p class="footer-desc">Empowering global voices through premium language education and communication mastery. A curated sanctuary where every language tells an extraordinary story.</p>

@@ -470,41 +470,91 @@ button {
 }
 .logo {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--c-burgundy);
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: var(--s-2);
+  gap: 12px;
+  text-decoration: none;
   flex-shrink: 0;
+  transition: opacity var(--t-fast);
 }
+.logo:hover {
+  opacity: 0.95;
+}
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), filter var(--t-normal);
+  filter: drop-shadow(0 2px 8px rgba(200, 169, 107, 0.3));
+}
+.logo:hover .logo-icon {
+  transform: rotate(12deg) scale(1.1);
+  filter: drop-shadow(0 4px 16px rgba(200, 169, 107, 0.6));
+}
+.logo-text,
+.logo > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  line-height: 1;
+}
+.logo-title,
 .logo > div > span:first-child {
-  background: linear-gradient(120deg, var(--c-burgundy) 15%, var(--c-gold) 85%);
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  line-height: 1.1;
+  background: linear-gradient(135deg, var(--c-midnight) 0%, var(--c-burgundy) 40%, var(--c-gold) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  letter-spacing: 0.5px;
+  transition: all var(--t-normal);
 }
+.logo-accent {
+  background: linear-gradient(135deg, var(--c-gold) 0%, #E8D5AC 50%, #9A7025 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: italic;
+  font-weight: 700;
+}
+[data-theme="dark"] .logo-title,
 [data-theme="dark"] .logo > div > span:first-child {
-  background: linear-gradient(120deg, var(--c-gold), #E8D5AC);
+  background: linear-gradient(135deg, #FAF7F2 15%, var(--c-gold) 65%, #E8D5AC 100%);
   -webkit-background-clip: text;
   background-clip: text;
 }
-
+.footer-col .logo-title,
 .footer-col .logo > div > span:first-child {
-  background: linear-gradient(120deg, var(--c-gold), #F0E2C0);
+  background: linear-gradient(135deg, #FAF7F2 10%, var(--c-gold) 60%, #F5E2B3 100%);
   -webkit-background-clip: text;
   background-clip: text;
 }
-.logo-icon {
-  flex-shrink: 0;
-  transition: transform var(--t-normal);
+.logo-tagline,
+.logo .tagline {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--c-gold);
+  margin-top: 3px;
+  margin-bottom: 0;
+  opacity: 0.9;
+  line-height: 1;
+  font-style: normal;
 }
-.logo:hover .logo-icon {
-  transform: scale(1.05);
+[data-theme="dark"] .logo-tagline,
+[data-theme="dark"] .logo .tagline {
+  color: rgba(200, 169, 107, 0.95);
 }
-[data-theme="dark"] .logo { color: var(--c-gold); }
+.footer-col .logo-tagline,
+.footer-col .logo .tagline {
+  color: rgba(200, 169, 107, 0.85);
+}
 
 .tagline {
   display: block;
@@ -1143,15 +1193,20 @@ body.menu-open {
   
   /* Reduce logo size to fit navbar buttons */
   .logo {
-    font-size: 1.05rem;
-    gap: 6px;
+    gap: 8px;
+  }
+  .logo-title,
+  .logo > div > span:first-child {
+    font-size: 1.2rem;
   }
   .logo-icon {
-    width: 20px;
-    height: 20px;
+    width: 28px;
+    height: 28px;
   }
+  .logo-tagline,
   .logo .tagline {
-    font-size: 0.55rem !important;
+    font-size: 0.52rem !important;
+    letter-spacing: 1.2px;
     white-space: nowrap;
   }
   #theme-toggle {
