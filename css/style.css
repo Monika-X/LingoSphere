@@ -39,7 +39,7 @@
 
   /* Layout */
   --max-width: 1280px;
-  --header-height: 80px;
+  --header-height: 64px;
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 16px;
@@ -90,7 +90,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
   color: var(--c-text-primary);
   overflow-wrap: break-word;
@@ -340,7 +340,19 @@ button {
   font-size: clamp(2rem, 4vw, 3rem);
   margin-bottom: var(--s-4);
   position: relative;
-  display: inline-block;
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+h2 {
+  text-align: center;
+}
+h2.section-title {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .section-title::after {
   content: '';
@@ -361,9 +373,12 @@ button {
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   margin-bottom: var(--s-2);
   display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Global Hero Typography */
@@ -455,7 +470,7 @@ button {
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(200, 169, 107, 0.35);
   box-shadow: 0 10px 30px rgba(31, 42, 68, 0.07);
-  height: 70px;
+  height: 60px;
 }
 [data-theme="dark"] .header.scrolled {
   background-color: rgba(15, 21, 35, 0.82);
@@ -502,8 +517,8 @@ button {
 .logo-title,
 .logo > div > span:first-child {
   font-family: var(--font-heading);
-  font-size: 1.45rem;
-  font-weight: 700;
+  font-size: 1.40rem;
+  font-weight: 600;
   letter-spacing: 0.4px;
   line-height: 1.1;
   background: linear-gradient(135deg, var(--c-midnight) 0%, var(--c-burgundy) 40%, var(--c-gold) 100%);
@@ -519,7 +534,65 @@ button {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-style: italic;
-  font-weight: 700;
+  font-weight: 600;
+}
+/* Light-mode visibility — darker gradients without extra pill/tag */
+[data-theme="light"] .logo {
+  background: transparent;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+[data-theme="light"] .logo-title,
+[data-theme="light"] .logo > div > span:first-child {
+  background: linear-gradient(135deg, #0D1A33 0%, #5A1430 45%, #6E4E0A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,1));
+  font-weight: 700 !important;
+}
+[data-theme="light"] .logo-accent {
+  background: linear-gradient(135deg, #7A4E0A 0%, #9A7025 55%, #5A3D06 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: 700 !important;
+}
+[data-theme="light"] .logo-icon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  box-sizing: content-box;
+  filter: drop-shadow(0 1px 1px rgba(31,42,68,0.35)) drop-shadow(0 2px 6px rgba(31,42,68,0.18)) contrast(1.45) saturate(1.35) brightness(0.72);
+  opacity: 1;
+}
+/* Recolor light-gold SVG strokes/fills to deep bronze/midnight for light header — no extra tag */
+[data-theme="light"] .logo-icon [stroke*="url(#lsGold"] {
+  stroke: #7A4E0A !important;
+  stroke-opacity: 1 !important;
+}
+[data-theme="light"] .logo-icon circle[fill*="url(#lsGold"] {
+  fill: #7A4E0A !important;
+}
+[data-theme="light"] .logo-icon [fill="#FFFFFF"],
+[data-theme="light"] .logo-icon [fill="white"] {
+  fill: #1F2A44 !important;
+}
+[data-theme="light"] .logo-icon [fill*="url(#lsGlow"] {
+  fill: rgba(122,40,72,0.10) !important;
+}
+[data-theme="light"] .header {
+  background-color: #FFFCF7;
+  border-bottom: 1px solid rgba(122, 40, 72, 0.14);
+  box-shadow: 0 2px 20px rgba(31, 42, 68, 0.07);
+}
+[data-theme="light"] .header.scrolled {
+  background-color: rgba(255,252,247,0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 [data-theme="dark"] .logo-title,
 [data-theme="dark"] .logo > div > span:first-child {
@@ -537,15 +610,23 @@ button {
 .logo .tagline {
   font-family: var(--font-body);
   font-size: 0.625rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--c-gold);
   margin-top: 3px;
   margin-bottom: 0;
-  opacity: 0.9;
+  opacity: 1;
   line-height: 1;
   font-style: normal;
+}
+[data-theme="light"] .logo-tagline,
+[data-theme="light"] .logo .tagline {
+  color: #7A5015;
+  opacity: 1;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.9);
+  font-weight: 500;
+  letter-spacing: 1.8px;
 }
 [data-theme="dark"] .logo-tagline,
 [data-theme="dark"] .logo .tagline {
@@ -1357,4 +1438,35 @@ body.menu-open {
     font-size: 0.78rem !important;
     letter-spacing: 1px !important;
   }
+}
+
+/* ============================================================
+   Hierarchy Enforcement — Headings ≤600, Subheadings 400-550
+   ============================================================ */
+h1, h2, h3, h4, h5, h6,
+.hero-title,
+.section-title,
+.h2-title,
+.h2-cap-title,
+.h2-cta-title,
+.program-main-card h3,
+.lang-card h3,
+.pricing-card h3,
+.team-info h3,
+.skill-item h4,
+.timeline-content h3 {
+  font-weight: 600 !important;
+}
+.section-subtitle,
+.program-subtitle,
+.batch-tagline,
+.team-role,
+.pricing-tag,
+.lang-level,
+.h2-eyebrow,
+.h2-hero-stat-label,
+.h2-counter-label,
+.logo-tagline,
+.tagline {
+  font-weight: 500 !important;
 }

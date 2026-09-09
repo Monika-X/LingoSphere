@@ -106,24 +106,63 @@
         }
         .h2-hero-stats {
             display: flex;
-            gap: 3rem;
+            align-items: flex-start;
+            gap: 3.5rem;
+            row-gap: 1.5rem;
             flex-wrap: wrap;
-            padding-top: 2.5rem;
+            padding-top: 2.25rem;
             border-top: 1px solid rgba(250, 247, 242, 0.12);
         }
+        .h2-hero-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.4rem;
+        }
+        .h2-hero-stat-value,
         .h2-hero-stats strong {
-            display: block;
+            display: inline-flex;
+            align-items: baseline;
             font-family: var(--font-heading);
-            font-size: 2.6rem;
+            font-size: clamp(2.2rem, 3.2vw, 2.75rem);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            color: var(--c-gold);
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "tnum";
+            margin: 0;
+            white-space: nowrap;
+        }
+        .h2-hero-stat-value .counter,
+        .h2-hero-stats strong .counter {
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            color: inherit;
+            line-height: inherit;
+            letter-spacing: inherit;
+            text-transform: none;
+            display: inline-block;
+        }
+        .h2-hero-stat-suffix {
+            font-size: 0.72em;
+            font-weight: 700;
             line-height: 1;
             color: var(--c-gold);
-            margin-bottom: 0.5rem;
+            opacity: 0.95;
+            margin-left: 2px;
+            transform: translateY(-0.04em);
         }
-        .h2-hero-stats span {
-            font-size: 0.72rem;
+        .h2-hero-stat-label {
+            font-family: var(--font-body);
+            font-size: 0.74rem;
+            font-weight: 600;
+            line-height: 1.4;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: rgba(250, 247, 242, 0.6);
+            color: rgba(250, 247, 242, 0.65);
+            white-space: nowrap;
         }
         .h2-hero-visual {
             position: relative;
@@ -702,10 +741,17 @@
         }
         @media (max-width: 768px) {
             .h2-hero-stats {
-                gap: 2rem;
+                gap: 2.25rem;
+                row-gap: 1.5rem;
+                padding-top: 1.75rem;
             }
+            .h2-hero-stat-value,
             .h2-hero-stats strong {
                 font-size: 2rem;
+            }
+            .h2-hero-stat-label {
+                font-size: 0.7rem;
+                letter-spacing: 1.6px;
             }
             .h2-glass-badge {
                 left: 0;
@@ -825,17 +871,17 @@
                     <a href="#capabilities" class="h2-ghost">Explore Capabilities <i class="fa-solid fa-arrow-down"></i></a>
                 </div>
                 <div class="h2-hero-stats">
-                    <div>
-                        <strong><span class="counter" data-target="150">0</span></strong>
-                        <span>Enterprise Clients</span>
+                    <div class="h2-hero-stat">
+                        <strong class="h2-hero-stat-value"><span class="counter" data-target="150">0</span></strong>
+                        <span class="h2-hero-stat-label">Enterprise Clients</span>
                     </div>
-                    <div>
-                        <strong><span class="counter" data-target="20">0</span>k+</strong>
-                        <span>Professionals Trained</span>
+                    <div class="h2-hero-stat">
+                        <strong class="h2-hero-stat-value"><span class="counter" data-target="20">0</span><span class="h2-hero-stat-suffix">k+</span></strong>
+                        <span class="h2-hero-stat-label">Professionals Trained</span>
                     </div>
-                    <div>
-                        <strong><span class="counter" data-target="98">0</span>%</strong>
-                        <span>Retention Rate</span>
+                    <div class="h2-hero-stat">
+                        <strong class="h2-hero-stat-value"><span class="counter" data-target="98">0</span><span class="h2-hero-stat-suffix">%</span></strong>
+                        <span class="h2-hero-stat-label">Retention Rate</span>
                     </div>
                 </div>
             </div>
