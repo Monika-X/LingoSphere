@@ -872,9 +872,16 @@ body.menu-open {
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.9fr 1fr 1fr 1.5fr 1.6fr;
-  gap: var(--s-6);
-  padding-bottom: var(--s-10);
+  grid-template-columns: 1.35fr 0.85fr 0.95fr 1.2fr 1.35fr;
+  gap: 2rem;
+  padding-bottom: 3rem;
+  align-items: start;
+}
+.footer-col {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 /* ── Footer — light / dark stay MIDNIGHT (premium) — force readable colors ── */
 [data-theme="light"] .footer,
@@ -904,24 +911,29 @@ body.menu-open {
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--c-gold);
-  display: inline-block;
-  margin-bottom: var(--s-4);
+  display: inline-flex;
+  align-items: center;
+  height: 42px;
+  margin-bottom: 1rem !important;
   opacity: 1;
 }
 .footer-col h4 {
   color: var(--c-gold);
   text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 0.8rem;
-  margin-bottom: var(--s-5);
+  letter-spacing: 2.8px;
+  font-size: 0.78rem;
+  height: 42px;
+  margin-bottom: 1rem;
   font-weight: 700;
   position: relative;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  line-height: 1;
 }
 .footer-col h4::after {
   content: '';
   position: absolute;
-  bottom: -8px;
+  bottom: 6px;
   left: 0;
   width: 28px;
   height: 1px;
@@ -929,14 +941,18 @@ body.menu-open {
 }
 .footer-desc {
   color: var(--c-text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  max-width: 90%;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  max-width: 100%;
+  text-wrap: balance;
+  hyphens: auto;
+  margin: 0;
+  min-height: 4.5em; /* ~2.7 lines — balances brand (4 lines) vs Private List (2 lines) to even block height */
 }
 .footer-links {
   display: flex;
   flex-direction: column;
-  gap: var(--s-3);
+  gap: 0.65rem;
 }
 .footer-links a {
   color: var(--c-text-secondary);
@@ -954,8 +970,8 @@ body.menu-open {
 }
 .footer-socials {
   display: flex;
-  gap: var(--s-3);
-  margin-top: var(--s-6);
+  gap: 0.65rem;
+  margin-top: 1rem;
 }
 .footer-social-btn {
   width: 38px;
@@ -1304,17 +1320,17 @@ body.menu-open {
   left: var(--s-6);
 }
 
-/* Responsive — Footer 5-col handling */
+/* Responsive — Footer evenly balanced (weighted for content, even gaps) */
 @media (max-width: 1200px) {
   .footer-grid {
-    grid-template-columns: 1.6fr 0.95fr 0.95fr 1.3fr 1.4fr;
-    gap: var(--s-6);
+    grid-template-columns: 1.35fr 0.85fr 0.95fr 1.2fr 1.35fr;
+    gap: 1.75rem;
   }
 }
 @media (max-width: 1100px) {
   .footer-grid {
-    grid-template-columns: 1.4fr 0.9fr 0.9fr 1.2fr 1.3fr;
-    gap: var(--s-5);
+    grid-template-columns: 1.35fr 0.85fr 0.95fr 1.2fr 1.35fr;
+    gap: 1.5rem;
   }
 }
 /* Responsive */
@@ -1486,7 +1502,7 @@ body.menu-open {
   }
   .footer-grid {
     grid-template-columns: 1fr 1fr;
-    gap: var(--s-8);
+    gap: 2rem;
   }
   /* Visit Us + Private List balanced; brand full width at tablet */
   .footer-grid .footer-col:first-child {
